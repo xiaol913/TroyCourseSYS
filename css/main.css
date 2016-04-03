@@ -1,0 +1,57 @@
+/*reset*/
+*{margin: 0;padding: 0;}
+li{list-style: none;}
+input,select,textarea{outline: none;border: none; background: none;}
+textarea{resize: none;}
+a{text-decoration: none;}
+a:link,a:visited{color:#000;}
+a:hover,a:active{text-decoration: none;color: #a02638;}
+.fl{float: left;}
+.fr{float: right;}
+/*clearfix为伪元素，用来做闭合浮动*/
+.clearfix:after,
+.clearfix:before{content: ""; display: table;}
+.clearfix:after{ clear: both;}
+.clearfix{zoom:1;}
+
+/*头部*/
+.head{height: 129px;width:100%; background:url(../admin/img/Header-Repeat.jpg);overflow: hidden;}
+.logo{width: 282px; height: 100%; background: url(../img/logo-TROY.png) 10px center no-repeat;}
+.head_text{height: 100%; font-size:25px;line-height:129px ; color: #FFF; padding-right: 10px;font-family: "微软雅黑"}
+
+/*底部*/
+.footer{float:left;width:100%;text-align:center; color:#5C5C5C;background-color:#A22638; padding:25px 0;line-height:24px;border-top: solid 5px rgb(221,221,221)}
+.footer a{color:#FFF;}
+
+/*登录信息*/
+.operation_user{height:27px;font-size:14px; font-family: "微软雅黑";background:url(../admin/img/operation_user_bg.jpg);overflow: hidden;}
+.link{line-height:27px;}
+.link span{padding: 0 10px;font-family: "微软雅黑";}
+.link input{padding: 0 8px;font-family: "微软雅黑";}
+.link a{padding: 0 8px;}
+
+/*登录界面*/
+.loginBox{width:458px; margin:10px auto; position:relative;}
+.login_cont{padding:15px 76px;}
+.autoLogin{padding-top:27px; padding-bottom:28px;}
+.f_txt, .login label{color:#a12638; line-height:20px;}
+.f_inp{margin-bottom:10px;}
+.login_input{border:#999 solid 1px; height:32px; line-height:32px\9; text-indent:5px; width:100%;}
+
+/*按钮图片样式*/
+.loginBtn64x64{background: url(../admin/img/icon/loginBtn64x64.png) no-repeat left center;width: 130px;height: 34px;}
+.closeBtn24x24{background: url(../admin/img/icon/closeBtn24x24.png) no-repeat left center;padding-left:30px;width: 80px;height: 34px;}
+.closeMenu16x16{background: url(../img/icon/closeMenu16x16.png) no-repeat left center;width: 20px;height: 20px;}
+.backBtn20x20{background: url(../admin/img/icon/goBack20x20.png) no-repeat left center;padding-top:5px;width: 65px;height: 20px;}
+.homeBtn20x20{background: url(../admin/img/icon/homePage20x20.png) no-repeat left center;padding-top:5px;width: 65px;height: 20px;}
+.logoutBtn16x16{background: url(../admin/img/icon/logoutBtn16x16.png) no-repeat left center;padding-top:5px;width: 65px;height: 20px;}
+.loginBtn16x16{background: url(../admin/img/icon/loginBtn16x16.png) no-repeat left center;padding-top:5px;width: 65px;height: 20px;}
+
+/*导航样式*/
+.nav{height:25px;line-height: 25px;border-bottom:solid 5px #a12638;background-color: #f4f4f4;font-family: "微软雅黑";}
+.nav li{display:block;float: left;width:120px;position: relative;height: 25px;text-align: center; line-height:25px;margin-left: 1px;}
+.nav li a{display: block;height: 25px; text-align: center;line-height: 25px;width:120px;margin-left: 1px;color:#a12638}
+.nav li a:hover{background-color: #a12638;height:35px;color:white;margin-top: -10px;line-height: 35px;}
+.nav2{ position:absolute; top:25px; left:0; width:120px; height:0; overflow:hidden;}
+.nav2 li a{background-color: #f4f4f4;}
+.nav2 li a:hover{background-color: #a12638;height:25px;margin-top:0px;line-height: 25px;}
