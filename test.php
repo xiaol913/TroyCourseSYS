@@ -2,10 +2,14 @@
 
 require_once 'include.php';
 
-$sql="select courseAvai from troy_courses WHERE courseId=1100";
-$res=fetchOne($sql);
-foreach ($res as $num)
-    $newNum=$num-1;
-$arr['courseAvai']=$newNum;
 
-
+//通过课程ID找到该课程时间表
+$scheInfos=getScheByCourId(1100);
+foreach ($scheInfos as $key=> $scheInfo){
+    if($scheInfos[$key]){
+        $notNulls[$key]=$key;
+    }
+}
+foreach ($notNulls as $notNull){
+    echo $notNull." ";
+}

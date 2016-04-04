@@ -12,7 +12,7 @@
  * @return array
  */
 function getScheByCourId($id){
-    $sql="select * from troy_schedule WHERE mon={$id} OR tue={$id} OR wed={$id} OR thu={$id} OR fri={$id} OR sat={$id} OR sun={$id}";
+    $sql="select mon,tue,wed,thu,fri,sat,sun from troy_schedule WHERE mon={$id} OR tue={$id} OR wed={$id} OR thu={$id} OR fri={$id} OR sat={$id} OR sun={$id}";
     $result=fetchOne($sql);
     return $result;
 }

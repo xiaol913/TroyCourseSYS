@@ -63,7 +63,18 @@ $rows=search();
                                 </tr>
                                 <tr>
                                     <td width="20%" align="right">Time</td>
-                                    <td><?php echo $row['courseStartTime'].":00-".$row['courseEndTime'].":00";?></td>
+                                    <td><?php
+                                        $scheInfos=getScheByCourId($row['courseId']);
+                                        foreach ($scheInfos as $key=> $scheInfo){
+                                            if($scheInfos[$key]){
+                                                $notNulls[$key]=$key;
+                                            }
+                                        }
+                                        foreach ($notNulls as $notNull){
+                                            echo $notNull." ";
+                                        }
+                                        $notNulls="";
+                                        echo "<br>".$row['courseStartTime'].":00-".$row['courseEndTime'].":00";?></td>
                                 </tr>
                                 <tr>
                                     <td width="20%" align="right">Status</td>
