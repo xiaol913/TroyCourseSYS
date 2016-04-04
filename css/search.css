@@ -1,0 +1,38 @@
+/*reset*/
+*{margin: 0;padding: 0;}
+li{list-style: none;}
+input,select,textarea{outline: none;border: none; background: none;}
+textarea{resize: none;}
+a{text-decoration: none;}
+a:link,a:visited{color:#000;}
+a:hover,a:active{text-decoration: none;color: #a02638;}
+.fl{float: left;}
+.fr{float: right;}
+/*clearfix为伪元素，用来做闭合浮动*/
+.clearfix:after,
+.clearfix:before{content: ""; display: table;}
+.clearfix:after{ clear: both;}
+.clearfix{zoom:1;}
+
+/*表格*/
+.searchBox{margin:50px;color:#a02638;}
+.text {text-indent: 1em;height:50px;line-height: 50px;display: inline-flex}
+.text span{float: left;height:30px;}
+.select{font-family: "微软雅黑"; font-size: 14px; height: 22px; margin: 4px 8px;background-color: #d3d3d3}
+.search {background-color: #d3d3d3;height: 22px;margin-top: 15px;}
+option{color:#a02638}
+.text1{text-indent: 1em;height: 50px;line-height: 50px;}
+.text1 label{margin-right: 5px}
+.btn{color:#a02638;margin-left: 1em;}
+/*
+.details{padding: 1em; font-family: "微软雅黑";}
+.bui_select{background-color: #e7e9ea; height: 30px; float: left;}
+.add{width: 92px; height: 30px; font-family: "微软雅黑"; font-size: 14px;}
+.select{font-family: "微软雅黑"; font-size: 14px; height: 22px; margin: 4px 8px;}
+.text { margin-left: 30px; display: inline;}
+.text span{line-height: 30px; font-size: 14px; float:left; margin-right: 10px;}
+.search{width: 140px; height: 30px; line-height: 30px\9; background-color: #E8E8E8; padding: 0 8px;}
+*/
+/*按钮图片样式*/
+.sub24x24{background: url(../admin/img/icon/submitBtn24x24.png) no-repeat left center;padding-left:25px;width: 70px;height: 24px;border:none;color:#a02638}
+.res24x24{background: url(../admin/img/icon/resetBtn24x24.png) no-repeat left center;padding-left:25px;width: 70px;height: 24px;margin-left: 10px;border:none;color:#a02638}
