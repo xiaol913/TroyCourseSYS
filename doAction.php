@@ -22,4 +22,6 @@ if($act==studLogin){
     $mes=register($cId,$sId);
 }elseif($act==drop){
     $mes=drop($cId,$sId);
+}elseif($act==editStudProfile){
+    $mes=editStudProfile($id);
 }

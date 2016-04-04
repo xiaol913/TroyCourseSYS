@@ -1,0 +1,77 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: ShawnG
+ * Date: 2016/4/4
+ * Time: 11:51
+ */
+require_once "include.php";
+$id=$_REQUEST['id'];
+$sql="select * from troy_students where sId='{$id}'";
+//得到该学生信息
+$studInfo=getStudById($id);
+//得到所有等级信息
+$levelInfos=getAllLevel();
+$row=fetchOne($sql);
+$major=getSubById($row['sMajorId']);
+$level=getLevelById($row['level']);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Setting</title>
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+    <script src="admin/js/formVerify.js" type="text/javascript"></script>
+</head>
+<body>
+<form class="table" action="doAction.php?act=editStudProfile&id=<?php echo $id;?>" onsubmit="return FormProfileCheck()" method="post" enctype="multipart/form-data">
+    <table width="70%" border="1" cellpadding="5" cellspacing="0" bgcolor="#cccccc">
+        <caption>Setting</caption>
+        <tr>
+            <th align="right">Your Student ID:</th>
+            <td><?php echo $row['sId'];?></td>
+        </tr>
+        <tr>
+            <th align="right">Password</th>
+            <td><input type="password" name="password" value=""/><span style="color:#a12638;font-size:8px;"><li>(6-20 characters long</li><li>First character must be uppercase letter</li><li>Can't be a same type)</li></span></td>
+        </tr>
+        <tr>
+            <th align="right">Your First Name:</th>
+            <td><?php echo $studInfo['sFirstName'];?></td>
+        </tr>
+        <tr>
+            <th align="right">Your Last Name:</th>
+            <td><?php echo $studInfo['sLastName'];?></td>
+        </tr>
+        <tr>
+            <th align="right">Your Birthday:</th>
+            <td><?php echo $studInfo['sBTD'];?></td>
+        </tr>
+        <tr>
+            <th align="right">Your Address:</th>
+            <td><input type="text" name="sAddress" value="<?php echo $studInfo['sAddress'];?>"/><span style="color:#a12638;font-size:8px;"><li>(Max 50 characters long)</li></span></td>
+        </tr>
+        <tr>
+            <th align="right">Your Email:</th>
+            <td><input type="email" name="sEmail" value="<?php echo $studInfo['sEmail'];?>"/><span style="color:#a12638;font-size:8px;"><li>(email@email.com)</li></span></td>
+        </tr>
+        <tr>
+            <th align="right">Your Phone #:</th>
+            <td><input type="number" name="phoneNum" value="<?php echo $studInfo['phoneNum'];?>"/><span style="color:#a12638;font-size:8px;"><li>(10 characters long)</li></span></td>
+        </tr>
+        <tr>
+            <th align="right">Your Major:</th>
+            <td><?php echo $major['subShortName']."--".$major['subName'];?></td>
+        </tr>
+        <tr>
+            <th align="right">Academic Level:</th>
+            <td><?php echo $level['levelName'];?></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" class="sub24x24" value="Submit"/><input type="reset" class="res24x24"  value="Reset"/></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

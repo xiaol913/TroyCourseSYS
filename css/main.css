@@ -41,6 +41,8 @@ a:hover,a:active{text-decoration: none;color: #a02638;}
 /*按钮图片样式*/
 .loginBtn64x64{background: url(../admin/img/icon/loginBtn64x64.png) no-repeat left center;width: 130px;height: 34px;}
 .closeBtn24x24{background: url(../admin/img/icon/closeBtn24x24.png) no-repeat left center;padding-left:30px;width: 80px;height: 34px;}
+.sub24x24{background: url(../admin/img/icon/submitBtn24x24.png) no-repeat left center;padding-left:25px;width: 70px;height: 24px;}
+.res24x24{background: url(../admin/img/icon/resetBtn24x24.png) no-repeat left center;padding-left:25px;width: 70px;height: 24px;margin-left: 10px}
 .detail20x20{background: url(../admin/img/icon/detailBtn20x20.png) no-repeat left center;padding-left:15px;width: 61px;height: 20px;}
 .backBtn20x20{background: url(../admin/img/icon/goBack20x20.png) no-repeat left center;padding-top:5px;width: 65px;height: 20px;}
 .homeBtn20x20{background: url(../admin/img/icon/homePage20x20.png) no-repeat left center;padding-top:5px;width: 65px;height: 20px;}

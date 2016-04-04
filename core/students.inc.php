@@ -145,3 +145,15 @@ function getStudById($id){
     $sql="select * from troy_students as stud LEFT JOIN troy_subjects as sub ON stud.sMajorId=sub.id WHERE stud.sId={$id}";
     return fetchOne($sql);
 }
+
+function editStudProfile($id){
+    $where="sId={$id}";
+    $arr=$_POST;
+    $arr['password']=md5($_POST['password']);
+    if(update("troy_students",$arr,$where)){
+        echo "Successful!!!<br/><a href='yourProfile.php?id={$id}'>Return to yourProfile</a>";
+    }else{
+        echo "Fail!!!<br/><a href='yourProfile.php?id={$id}'>Return to yourProfile</a>";
+    }
+    return;
+}

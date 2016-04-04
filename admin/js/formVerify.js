@@ -44,8 +44,12 @@ function passwordCheck(passW){
  * @returns {boolean}
  */
 function emailCheck(eMail){
+    var reg_email = /^[a-z0-9](\w|\.|-)*@([a-z0-9]+-?[a-z0-9]+\.){1,3}[a-z]{2,4}$/g;
     if(eMail.value==""){
         alert("Please enter email address!!!");
+        return false;
+    }else if(reg_email.test(eMail.value)==false){
+        alert("Email is invalid!!!")
         return false;
     }
     return true;
@@ -91,10 +95,11 @@ function lstCheck(lstN){
  * @returns {boolean}
  */
 function phNumCheck(phNum){
+    var re_num = /[^\d]/g;
     if(phNum.value==""){
         alert("please enter phone number!!!");
         return false;
-    }else if(phNum.value.length>10 || phNum.value.length<10){
+    }else if(re_num.test(phNum.value)==false||phNum.value.length>10 || phNum.value.length<10){
         alert("Phone number is invalid!!!");
         return false;
     }
@@ -380,6 +385,31 @@ function FormTermCheck() {
     return true;
 }
 
+/**
+ * 学生档案修改
+ * @returns {boolean}
+ * @constructor
+ */
+function FormProfileCheck() {
+    var allIn = document.getElementsByTagName('input');
+    var passW = allIn[0];
+    var Addre = allIn[1];
+    var eMail = allIn[2];
+    var phNum = allIn[3];
+    //password验证
+    if(passwordCheck(passW)==false){
+        return false;
+    }
+    if(addressCheck(Addre)==false){
+        return false;
+    }
+    if(emailCheck(eMail)==false){
+        return false;
+    }
+    if(phNumCheck(phNum)==false){
+        return false;
+    }
+}
 
 /*获取含中文的字符串长度
 
