@@ -12,8 +12,10 @@ $rows=getAllSub();
 if(!$rows){
     alertMes("No Subjects!!!", "addSub.php");
 }
-$sql="select * from troy_students as stud LEFT JOIN troy_subjects as sub ON stud.sMajorId=sub.id WHERE stud.sId={$id}";
-$studInfo=fetchOne($sql);
+//得到该学生信息
+$studInfo=getStudById($id);
+//得到所有等级信息
+$levelInfos=getAllLevel();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,10 +75,9 @@ $studInfo=fetchOne($sql);
             <td>Level</td>
             <td>
                 <select name="level">
-                    <option value="Doctorate" <?php echo ($studInfo['level']=="Doctorate")?"selected=selected":NULL;?>>Doctorate</option>
-                    <option value="Education Specialist" <?php echo ($studInfo['level']=="Education Specialist")?"selected=selected":NULL;?>>Education</option>
-                    <option value="Graduate" <?php echo ($studInfo['level']=="Graduate")?"selected=selected":NULL;?>>Graduate</option>
-                    <option value="Undergrad" <?php echo ($studInfo['level']=="Undergrad")?"selected=selected":NULL;?>>Undergrad</option>
+                    <?php foreach($levelInfos as $levelInfo):?>
+                        <option value="<?php echo $levelInfo['id'];?>" <?php echo ($levelInfo['id']==$studInfo['level'])?"selected=selected":NULL;?>><?php echo $levelInfo['levelName'];?></option>
+                    <?php endforeach;?>
                 </select>
             </td>
         </tr>

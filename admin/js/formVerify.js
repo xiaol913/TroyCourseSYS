@@ -217,6 +217,23 @@ function subShortNameCheck(subN_short){
 }
 
 /**
+ * 学期名字验证
+ * @param termN
+ * @returns {boolean}
+ */
+function termNameCheck(termN) {
+    var re_cha = /[^\w]/g;
+    if(termN.value==""){
+        alert("Please enter term's name!!!");
+        return false;
+    }else if(re_cha.test(termN.value)==true || termN.value.length>40){
+        alert("Term's name is invalid!!!");
+        return false;
+    }
+    return true;
+}
+
+/**
  * 添加管理员单表验证by ID
  * @returns {boolean}
  */
@@ -349,6 +366,19 @@ function FormSubCheck(){
     return true;
 }
 
+/**
+ * 学期单表验证
+ * @returns {boolean}
+ * @constructor
+ */
+function FormTermCheck() {
+    var allIn = document.getElementsByTagName('input');
+    var termN = allIn[0];
+    if(termNameCheck(termN)==false){
+        return false;
+    }
+    return true;
+}
 
 
 /*获取含中文的字符串长度

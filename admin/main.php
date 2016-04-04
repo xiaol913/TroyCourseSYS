@@ -1,3 +1,7 @@
+<?php
+require_once "../include.php";
+checkLogined();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

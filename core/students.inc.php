@@ -135,3 +135,13 @@ function studLogout(){
     session_destroy();
     alertMes("Bye Bye!!","index.php");
 }
+
+/**
+ * 通过ID找学生信息
+ * @param $id
+ * @return array|null
+ */
+function getStudById($id){
+    $sql="select * from troy_students as stud LEFT JOIN troy_subjects as sub ON stud.sMajorId=sub.id WHERE stud.sId={$id}";
+    return fetchOne($sql);
+}

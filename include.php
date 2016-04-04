@@ -25,3 +25,5 @@ require_once 'upload.func.php';
 require_once 'album.inc.php';
 require_once 'schedule.inc.php';
 require_once 'students.inc.php';
+require_once 'level.inc.php';
+require_once 'term.inc.php';

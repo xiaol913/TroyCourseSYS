@@ -13,7 +13,7 @@ $orderBy=$order?"order by ".$order:null;
 $keywords=$_REQUEST['keywords']?$_REQUEST['keywords']:null;
 $where=$keywords?"where sFirstName like '%{$keywords}%' or sLastName like '%{$keywords}%'":null;
 //得到所有学科信息，并分页
-$sql="select * from troy_students as stud LEFT JOIN troy_subjects as sub ON stud.sMajorId=sub.id {$where}";
+$sql="select * from troy_students as stud LEFT JOIN troy_subjects as sub ON stud.sMajorId=sub.id LEFT JOIN troy_level as l on stud.level=l.id {$where}";
 $totalRows=getResultNum($sql);
 $pageSize=2;
 $totalPage=ceil($totalRows/$pageSize);
@@ -21,7 +21,7 @@ $page=$_REQUEST['page']?(int)$_REQUEST['page']:1;
 if($page<1||$page==null||!is_numeric($page))$page=1;
 if($page>=$totalPage)$page=$totalPage;
 $offset=($page-1)*$pageSize;
-$sql="select * from troy_students as stud LEFT JOIN troy_subjects as sub ON stud.sMajorId=sub.id {$where} {$orderBy} limit {$offset},{$pageSize}";
+$sql="select * from troy_students as stud LEFT JOIN troy_subjects as sub ON stud.sMajorId=sub.id LEFT JOIN troy_level as l on stud.level=l.id {$where} {$orderBy} limit {$offset},{$pageSize}";
 $rows=fetchAll($sql);
 
 //验证是否有数据从数据库里返回
@@ -110,7 +110,7 @@ if(!$rows){
                 <td><?php echo $row['sEmail']; ?></td>
                 <td><?php echo $row['phoneNum']; ?></td>
                 <td><?php echo $row['subShortName']."--".$row['subName']; ?></td>
-                <td><?php echo $row['level']; ?></td>
+                <td><?php echo $row['levelName']; ?></td>
                 <!--                    修改按钮添加editSub()函数,删除添加delSub()-->
                 <td align="center"><input type="button" value="Edit" class="btn edit20x20" onclick="editStud(<?php echo $row['sId']; ?>)"><input type="button" value="Delete" class="btn del20x20" onclick="delStud(<?php echo $row['sId']; ?>)"></td>
             </tr>
@@ -134,6 +134,7 @@ if(!$rows){
     }
     //    搜索事件，keycode=13为回车,在本页面返回一个keywords=val值
     function search(){
+        var event=arguments.callee.caller.arguments[0]||window.event;//消除浏览器差异
         if(event.keyCode==13){
             var val=document.getElementById("search").value;
             window.location="listStud.php?keywords="+val;

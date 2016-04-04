@@ -12,6 +12,11 @@ $rows=getAllSub();
 if(!$rows){
     alertMes("No Subjects!!!", "addSub.php");
 }
+//得到所有等级信息
+$levelInfos=getAllLevel();
+if(!$levelInfos){
+    alertMes("No Level Data!!!", "index.php");
+}
 
 ?>
 <!DOCTYPE html>
@@ -72,10 +77,9 @@ if(!$rows){
             <td>Level</td>
             <td>
                 <select name="level">
-                    <option value="Doctorate">Doctorate</option>
-                    <option value="Education Specialist">Education Specialist</option>
-                    <option value="Graduate">Graduate</option>
-                    <option value="Undergrad">Undergrad</option>
+                    <?php foreach($levelInfos as $levelInfo):?>
+                        <option value="<?php echo $levelInfo['id'];?>"><?php echo $levelInfo['levelName'];?></option>
+                    <?php endforeach;?>
                 </select>
             </td>
         </tr>

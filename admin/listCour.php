@@ -13,7 +13,7 @@ $orderBy=$order?"order by ".$order:null;
 $keywords=$_REQUEST['keywords']?$_REQUEST['keywords']:null;
 $where=$keywords?"where courseName like '%{$keywords}%'":null;
 //得到所有课程信息，并分页
-$sql="select c.id,c.courseName,c.courseId,c.subjectId,c.courseStartTime,c.courseEndTime,c.courseAvai,c.courseCapa,c.courseTerm,c.courseStat,c.courseLoca,c.courseDesc,c.courseProfId,c.courseCred,c.courseLevel,p.profFirstName,p.profLastName,p.profEmail,p.profPhoneNum,p.profDesc,s.subShortName,s.subName from troy_courses as c left join troy_subjects s on c.subjectId=s.id left join troy_professors as p on c.courseProfId=p.id {$where}";
+$sql="select c.id,c.courseName,c.courseId,c.subjectId,c.courseStartTime,c.courseEndTime,c.courseAvai,c.courseCapa,c.courseTerm,c.courseStat,c.courseLoca,c.courseDesc,c.courseProfId,c.courseCred,c.courseLevel,p.profFirstName,p.profLastName,p.profEmail,p.profPhoneNum,p.profDesc,s.subShortName,s.subName,t.termName,l.levelName from troy_courses as c left join troy_subjects s on c.subjectId=s.id left join troy_professors as p on c.courseProfId=p.id LEFT JOIN troy_term as t on c.courseTerm=t.id LEFT JOIN troy_level as l on c.courseLevel=l.id {$where}";
 $totalRows=getResultNum($sql);
 $pageSize=2;
 $totalPage=ceil($totalRows/$pageSize);
@@ -21,7 +21,7 @@ $page=$_REQUEST['page']?(int)$_REQUEST['page']:1;
 if($page<1||$page==null||!is_numeric($page))$page=1;
 if($page>=$totalPage)$page=$totalPage;
 $offset=($page-1)*$pageSize;
-$sql="select c.id,c.courseName,c.courseId,c.subjectId,c.courseStartTime,c.courseEndTime,c.courseAvai,c.courseCapa,c.courseTerm,c.courseStat,c.courseLoca,c.courseDesc,c.courseProfId,c.courseCred,c.courseLevel,p.profFirstName,p.profLastName,p.profEmail,p.profDesc,p.profPhoneNum,s.subShortName,s.subName from troy_courses as c left join troy_subjects s on c.subjectId=s.id left join troy_professors as p on c.courseProfId=p.id {$where} {$orderBy} limit {$offset},{$pageSize}";
+$sql="select c.id,c.courseName,c.courseId,c.subjectId,c.courseStartTime,c.courseEndTime,c.courseAvai,c.courseCapa,c.courseTerm,c.courseStat,c.courseLoca,c.courseDesc,c.courseProfId,c.courseCred,c.courseLevel,p.profFirstName,p.profLastName,p.profEmail,p.profDesc,p.profPhoneNum,s.subShortName,s.subName,t.termName,l.levelName from troy_courses as c left join troy_subjects s on c.subjectId=s.id left join troy_professors as p on c.courseProfId=p.id LEFT JOIN troy_term as t on c.courseTerm=t.id LEFT JOIN troy_level as l on c.courseLevel=l.id {$where} {$orderBy} limit {$offset},{$pageSize}";
 $rows=fetchAll($sql);
 
 //得到图片
@@ -139,7 +139,9 @@ if(!$rows){
                             </tr>
                             <tr>
                                 <td width="20%" align="right">Term</td>
-                                <td><?php echo $row['courseTerm'];?></td>
+                                <td>
+                                    <?php echo $row['termName'];?>
+                                </td>
                             </tr>
                             <tr>
                                 <td width="20%" align="right">Location</td>
@@ -176,7 +178,9 @@ if(!$rows){
                             </tr>
                             <tr>
                                 <td width="20%" align="right">Level</td>
-                                <td><?php echo $row['courseLevel'];?></td>
+                                <td>
+                                    <?php echo $row['levelName'];?>
+                                </td>
                             </tr>
                             <tr>
                                 <td width="20%" align="right">Description</td>
@@ -206,6 +210,7 @@ if(!$rows){
     }
     //    搜索事件，keycode=13为回车,在本页面返回一个keywords=val值
     function search(){
+        var event=arguments.callee.caller.arguments[0]||window.event;//消除浏览器差异
         if(event.keyCode==13){
             var val=document.getElementById("search").value;
             window.location="listCour.php?keywords="+val;

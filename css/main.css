@@ -55,3 +55,20 @@ a:hover,a:active{text-decoration: none;color: #a02638;}
 .nav2{ position:absolute; top:25px; left:0; width:120px; height:0; overflow:hidden;}
 .nav2 li a{background-color: #f4f4f4;}
 .nav2 li a:hover{background-color: #a12638;height:25px;margin-top:0px;line-height: 25px;}
+
+/*表格样式*/
+table {overflow:hidden;font-size: 15px;font-family: "微软雅黑";border:1px solid #d3d3d3;background:#fefefe;border-collapse:collapse;width:70%;margin:5% auto;border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);-moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);-ms-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);}
+.table caption {color: #a12638;padding-bottom: 20px;font-size: 20px;font-family: "微软雅黑";font-weight: bold}
+.table th, .table td{padding:18px 28px 18px; text-align:left;}
+.table th, .table th:hover{padding-top:22px; text-shadow: 1px 1px 1px #fff; background:#e8eaeb;color: #a12638!important;}
+.table td{ border-right:1px solid #e0e0e0;}
+.table tr:nth-child(even){background:#f6f6f6;}
+.table tbody tr:hover *{color: #a12638;background-color: #e7e9ea}
+.table tfoot{padding-top:22px; text-shadow: 1px 1px 1px #fff; background:#e8eaeb !important;color: #a12638!important;}
+
+/*排序搜索样式*/
+.bui_select{background-color: #e7e9ea; height: 30px; float: left;}
+.text {float: left; margin-left: 30px; display: inline;}
+.text span{line-height: 30px; font-size: 14px; float:left; margin-right: 10px;}
+.search{width: 140px; height: 30px; line-height: 30px\9; background-color: #E8E8E8; padding: 0 8px;}
+.select{font-family: "微软雅黑"; font-size: 14px; height: 22px; margin: 4px 8px;}

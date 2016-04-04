@@ -7,12 +7,23 @@
  */
 require_once "../include.php";
 checkLogined();
+//得到所有学科
 $rows=getAllSub();
 if(!$rows){
     alertMes("No Subjects!!!", "addSub.php");
 }
+//得到所有教授信息
 $profRows=getAllProf();
-
+if(!$profRows){
+    alertMes("No Professor!!!", "addSub.php");
+}
+//得到所有学期信息
+$termInfos=getAllTerm();
+//得到所有等级信息
+$levelInfos=getAllLevel();
+if(!$levelInfos){
+    alertMes("No Level Data!!!", "index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -117,14 +128,9 @@ $profRows=getAllProf();
             <td>Term</td>
             <td>
                 <select name="courseTerm">
-                    <option value="Fall Semester 2016">Fall Semester 2016</option>
-                    <option value="Summer Semester 2016">Summer Semester 2016</option>
-                    <option value="Spring Semester 2016">Spring Semester 2016</option>
-                    <option value="Term V 2016">Term V 2016</option>
-                    <option value="Term IV 2016">Term IV 2016</option>
-                    <option value="Term III 2016">Term III 2016</option>
-                    <option value="Summer International 2016">Summer International 2016</option>
-                    <option value="Spring International 2016">Spring International 2016</option>
+                    <?php foreach($termInfos as $termInfo):?>
+                        <option value="<?php echo $termInfo['id'];?>"><?php echo $termInfo['termName'];?></option>
+                    <?php endforeach;?>
                 </select>
             </td>
         </tr>
@@ -164,13 +170,12 @@ $profRows=getAllProf();
             </td>
         </tr>
         <tr>
-            <td>Academic Level</td>
+            <td>Course Level</td>
             <td>
                 <select name="courseLevel">
-                    <option value="Doctorate">Doctorate</option>
-                    <option value="Education Specialist">Education Specialist</option>
-                    <option value="Graduate">Graduate</option>
-                    <option value="Undergrad">Undergrad</option>
+                    <?php foreach($levelInfos as $levelInfo):?>
+                        <option value="<?php echo $levelInfo['id'];?>"><?php echo $levelInfo['levelName'];?></option>
+                    <?php endforeach;?>
                 </select>
             </td>
         </tr>

@@ -64,29 +64,31 @@ require_once "include.php";
         </li>
         <li id="n1" style="display: none;width: 25px;;" onclick="closeFirstMenu()"><input type="button" class="closeMenu16x16" value="">
         </li>
-        <li id="n2" style="display: none"><a href="#">Courses</a>
+        <li id="n2" style="display: none"><a href="#">Academics</a>
             <ul class="nav2">
-                <li><a href="#">List</a></li>
-                <li><a href="#">Search</a></li>
+                <li><a href="undergradList.php" target="indexFrame">Undergrad</a></li>
+                <li><a href="graduateList.php" target="indexFrame">Graduate</a></li>
+                <li><a href="educationList.php" target="indexFrame">Education</a></li>
+                <li><a href="doctorateList.php" target="indexFrame">Doctorate</a></li>
             </ul>
         </li>
-        <li id="n3" style="display: none"><a href="#">Professor</a>
-            <ul class="nav2">
-                <li><a href="#">List</a></li>
-                <li><a href="#">Search</a></li>
-            </ul>
+        <li id="n3" style="display: none"><a href="profList.php" target="indexFrame">Professors</a>
         </li>
         <li id="n4" style="display: none"><a href="#">Search</a>
         </li>
         <?php if(checkStudLogin()==true):?>
         <li id="n5" style="display: none"><a href="#">About You</a>
+            <ul class="nav2">
+                <li><a href="#">Your Profile</a></li>
+                <li><a href="#">Setting</a></li>
+            </ul>
         </li>
         <?php endif;?>
     </ul>
 </div>
 <!--主要内容嵌套区-->
 <div>
-    <iframe name="indexFrame" src="admin/main.php" frameborder="0" id="indexFrame" width="100%" onload="setIframeHeight(this)"></iframe>
+    <iframe name="indexFrame" src="main.php" frameborder="0" id="indexFrame" width="100%" onload="setIframeHeight(this)"></iframe>
 </div>
 <!--底部嵌套-->
 <div class="">
@@ -134,7 +136,7 @@ require_once "include.php";
                 clearInterval(allUl.time);
                 allUl.time=setInterval(function () {
                     allUl.style.height=allUl.offsetHeight+6+"px";
-                    if(allUl.offsetHeight>=50)
+                    if(allUl.offsetHeight>=100)
                         clearInterval(allUl.time);
                 },50);
             }

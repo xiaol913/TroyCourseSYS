@@ -80,6 +80,14 @@ checkLogined();
                         <dd><a href="addProf.php" target="mainPage">Add Professor</a></dd>
                     </dl>
                 </li>
+<!--                学期管理菜单-->
+                <li>
+                    <a href="#" onclick="show('menu5','change5')"><span id="change5">+</span>Term Info</a>
+                    <dl id="menu5" style="display:none">
+                        <dd><a href="listTerm.php" target="mainPage">Term List</a></dd>
+                        <dd><a href="addTerm.php" target="mainPage">Term Professor</a></dd>
+                    </dl>
+                </li>
                 <!--管理员管理菜单，通过level判断是否显示-->
                 <li>
                     <?php
@@ -94,8 +102,8 @@ checkLogined();
                     $lvl=$serLvl['level'];
                     if($lvl==1):
                     ?>
-                    <a href="#" onclick="show('menu5','change5')"><span id="change5">+</span>Administrators</a>
-                    <dl id="menu5" style="display:none">
+                    <a href="#" onclick="show('menu6','change6')"><span id="change6">+</span>Administrators</a>
+                    <dl id="menu6" style="display:none">
                         <dd><a href="listAdmin.php" target="mainPage">Admin List</a></dd>
                         <dd><a href="addAdmin.php" target="mainPage">Add Admin</a></dd>
                         <?php endif;?>

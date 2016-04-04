@@ -46,4 +46,10 @@ if($act=="logout") {
     $mes=editStud($id);
 }elseif($act=="delStud"){
     $mes=delStud($id);
+}elseif ($act=="addTerm"){
+    $mes=addTerm();
+}elseif ($act=="editTerm"){
+    $mes=editTerm($id);
+}elseif ($act=="delTerm"){
+    $mes=delTerm($id);
 }

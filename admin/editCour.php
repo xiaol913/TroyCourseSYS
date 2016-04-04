@@ -12,6 +12,10 @@ $rows=getAllSub();
 $id=$_REQUEST['id'];
 //得到所有教授信息
 $profRows=getAllProf();
+//得到所有学期信息
+$termInfos=getAllTerm();
+//得到所有等级信息
+$levelInfos=getAllLevel();
 //通过ID找到该课程信息
 $courInfo=getCourById($id);
 //通过课程ID找到该课程时间表
@@ -125,14 +129,9 @@ print_r($scheInfo);*/
             <td>Term</td>
             <td>
                 <select name="courseTerm">
-                    <option value="Fall Semester 2016" <?php echo ($courInfo['courseTerm']=="Fall Semester 2016")?"selected=selected":NULL;?>>Fall Semester 2016</option>
-                    <option value="Summer Semester 2016" <?php echo ($courInfo['courseTerm']=="Summer Semester 2016")?"selected=selected":NULL;?>>Summer Semester 2016</option>
-                    <option value="Spring Semester 2016" <?php echo ($courInfo['courseTerm']=="Spring Semester 2016")?"selected=selected":NULL;?>>Spring Semester 2016</option>
-                    <option value="Term V 2016" <?php echo ($courInfo['courseTerm']=="Term V 2016")?"selected=selected":NULL;?>>Term V 2016</option>
-                    <option value="Term IV 2016" <?php echo ($courInfo['courseTerm']=="Term IV 2016")?"selected=selected":NULL;?>>Term IV 2016</option>
-                    <option value="Term III 2016" <?php echo ($courInfo['courseTerm']=="Term III 2016")?"selected=selected":NULL;?>>Term III 2016</option>
-                    <option value="Summer International 2016" <?php echo ($courInfo['courseTerm']=="Summer International 2016")?"selected=selected":NULL;?>>Summer International 2016</option>
-                    <option value="Spring International 2016" <?php echo ($courInfo['courseTerm']=="Spring International 2016")?"selected=selected":NULL;?>>Spring International 2016</option>
+                    <?php foreach ($termInfos as $termInfo):?>
+                    <option value="Fall Semester 2016" <?php echo ($courInfo['courseTerm']==$termInfo['id'])?"selected=selected":NULL;?>><?php echo $termInfo['termName'];?></option>
+                    <?php endforeach;?>
                 </select>
             </td>
         </tr>
@@ -172,13 +171,12 @@ print_r($scheInfo);*/
             </td>
         </tr>
         <tr>
-            <td>Academic Level</td>
+            <td>Course Level</td>
             <td>
                 <select name="courseLevel">
-                    <option value="Doctorate" <?php echo ($courInfo['courseLevel']=="Doctorate")?"selected=selected":NULL;?>>Doctorate</option>
-                    <option value="Education Specialist" <?php echo ($courInfo['courseLevel']=="Education Specialist")?"selected=selected":NULL;?>>Education Specialist</option>
-                    <option value="Graduate" <?php echo ($courInfo['courseLevel']=="Graduate")?"selected=selected":NULL;?>>Graduate</option>
-                    <option value="Undergrad" <?php echo ($courInfo['courseLevel']=="Undergrad")?"selected=selected":NULL;?>>Undergrad</option>
+                    <?php foreach ($levelInfos as $levelInfo):?>
+                        <option value="Fall Semester 2016" <?php echo ($courInfo['courseLevel']==$levelInfo['id'])?"selected=selected":NULL;?>><?php echo $levelInfo['levelName'];?></option>
+                    <?php endforeach;?>
                 </select>
             </td>
         </tr>

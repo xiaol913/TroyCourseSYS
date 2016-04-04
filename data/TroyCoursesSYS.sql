@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS `TroyCourses`;
-USE `TroyCourses`;
+CREATE DATABASE IF NOT EXISTS `TroyCourseSYS`;
+USE `TroyCourseSYS`;
 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT;
 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS;
 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION ;
@@ -67,12 +67,12 @@ CREATE TABLE `troy_courses` (
   `courseEndTime` varchar(50) NOT NULL,
   `courseAvai` int unsigned NOT NULL,
   `courseCapa` int unsigned NOT NULL,
-  `courseTerm` varchar(255) NOT NULL,
+  `courseTerm` int(10) NOT NULL,
   `courseStat` varchar(45) NOT NULL,
   `courseLoca` varchar(45) NOT NULL,
   `courseDesc` TEXT NOT NULL,
   `courseCred` decimal(10,2) NOT NULL,
-  `courseLevel` varchar(255) NOT NULL,
+  `courseLevel` int(10) NOT NULL,
   `courseProfId` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `courseName` (`courseName`),
@@ -81,9 +81,9 @@ CREATE TABLE `troy_courses` (
 SET character_set_client = @saved_cs_client;
 LOCK TABLES `troy_courses` WRITE;
 ALTER TABLE `troy_courses` DISABLE KEYS;
-INSERT INTO troy_courses (courseAvai,courseName,courseId,subjectId,courseStartTime,courseEndTime,courseCapa,courseTerm,courseStat,courseLoca,courseDesc,courseCred,courseLevel,courseProfId) VALUES ('30','Advanced Programming I','2265','1','11am','12pm','30','2016 spring','open','troy','Provides student the opportunity to gain experience and training in an additional high-level language. The course focuses on advanced topics including objects, structures, applets, graphics, exception handling, files, and streaming.','3','Undergrad','1');
-INSERT INTO troy_courses (courseAvai,courseName,courseId,subjectId,courseStartTime,courseEndTime,courseCapa,courseTerm,courseStat,courseLoca,courseDesc,courseCred,courseLevel,courseProfId) VALUES ('30','Fundamentals of Algebra','1100','2','5pm','6pm','30','2016 spring','open','troy','Topics include integer and rational arithmetic, linear equations, inequalities, integer exponents, polynomials and factoring, rational expression. Prerequisite: Placement or a grade of C or better in MTH 0096. Note: This course is for institutional credit only and will not be used in meeting degree requirements. This course will not substitute for any general studies requirement.','3','Undergrad','2');
-INSERT INTO troy_courses (courseAvai,courseName,courseId,subjectId,courseStartTime,courseEndTime,courseCapa,courseTerm,courseStat,courseLoca,courseDesc,courseCred,courseLevel,courseProfId) VALUES ('30','Introductory Spanish II','1142','3','8am','9am','30','2016 spring','open','troy','Introduction to the Spanish language and cultures.','3','Undergrad','3');
+INSERT INTO troy_courses (courseAvai,courseName,courseId,subjectId,courseStartTime,courseEndTime,courseCapa,courseTerm,courseStat,courseLoca,courseDesc,courseCred,courseLevel,courseProfId) VALUES ('30','Advanced Programming I','2265','1','11am','12pm','30','3','open','troy','Provides student the opportunity to gain experience and training in an additional high-level language. The course focuses on advanced topics including objects, structures, applets, graphics, exception handling, files, and streaming.','3','1','1');
+INSERT INTO troy_courses (courseAvai,courseName,courseId,subjectId,courseStartTime,courseEndTime,courseCapa,courseTerm,courseStat,courseLoca,courseDesc,courseCred,courseLevel,courseProfId) VALUES ('30','Fundamentals of Algebra','1100','2','5pm','6pm','30','3','open','troy','Topics include integer and rational arithmetic, linear equations, inequalities, integer exponents, polynomials and factoring, rational expression. Prerequisite: Placement or a grade of C or better in MTH 0096. Note: This course is for institutional credit only and will not be used in meeting degree requirements. This course will not substitute for any general studies requirement.','3','1','2');
+INSERT INTO troy_courses (courseAvai,courseName,courseId,subjectId,courseStartTime,courseEndTime,courseCapa,courseTerm,courseStat,courseLoca,courseDesc,courseCred,courseLevel,courseProfId) VALUES ('30','Introductory Spanish II','1142','3','8am','9am','30','3','open','troy','Introduction to the Spanish language and cultures.','3','1','3');
 ALTER TABLE `troy_courses` ENABLE KEYS;
 UNLOCK TABLES;
 /*添加课程表 done*/
@@ -109,9 +109,9 @@ CREATE TABLE `troy_students` (
 SET character_set_client = @saved_cs_client;
 LOCK TABLES `troy_students` WRITE;
 ALTER TABLE `troy_students` DISABLE KEYS;
-INSERT INTO troy_students (username,password,sFirstName,sLastName,sBTD,sAddress,sEmail,phoneNum,sMajorId,level) VALUES ('student1',md5('student1'),'First','Last','1995-01-30','Address','email@email.com','123456789','1','Undergrad');
-INSERT INTO troy_students (username, password,sFirstName,sLastName,sBTD,sAddress,sEmail,phoneNum,sMajorId,level) VALUES ('student2',md5('student2'),'ABC','EFD','1990-02-15','Address','email@email.com','987654321','2','Undergrad');
-INSERT INTO troy_students (username, password,sFirstName,sLastName,sBTD,sAddress,sEmail,phoneNum,sMajorId,level) VALUES ('student3',md5('student3'),'ZXC','VCN','1989-11-01','Address','email@email.com','555555555','3','Graduate');
+INSERT INTO troy_students (username,password,sFirstName,sLastName,sBTD,sAddress,sEmail,phoneNum,sMajorId,level) VALUES ('student1',md5('student1'),'First','Last','1995-01-30','Address','email@email.com','123456789','1','1');
+INSERT INTO troy_students (username, password,sFirstName,sLastName,sBTD,sAddress,sEmail,phoneNum,sMajorId,level) VALUES ('student2',md5('student2'),'ABC','EFD','1990-02-15','Address','email@email.com','987654321','2','1');
+INSERT INTO troy_students (username, password,sFirstName,sLastName,sBTD,sAddress,sEmail,phoneNum,sMajorId,level) VALUES ('student3',md5('student3'),'ZXC','VCN','1989-11-01','Address','email@email.com','555555555','3','2');
 ALTER TABLE `troy_students` ENABLE KEYS;
 UNLOCK TABLES;
 /*添加学生表 done*/
@@ -172,6 +172,48 @@ CREATE TABLE `troy_album` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 # 添加相册表 done
+
+DROP TABLE IF EXISTS `troy_term`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `troy_term` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `termName` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+SET character_set_client = @saved_cs_client;
+LOCK TABLES `troy_term` WRITE;
+ALTER TABLE `troy_term` DISABLE KEYS;
+INSERT INTO troy_term (termName) VALUES ('Fall Semester 2016');
+INSERT INTO troy_term (termName) VALUES ('Summer Semester 2016');
+INSERT INTO troy_term (termName) VALUES ('Spring Semester 2016');
+INSERT INTO troy_term (termName) VALUES ('Term V 2016');
+INSERT INTO troy_term (termName) VALUES ('Term IV 2016');
+INSERT INTO troy_term (termName) VALUES ('Term III 2016');
+INSERT INTO troy_term (termName) VALUES ('Summer International 2016');
+INSERT INTO troy_term (termName) VALUES ('Spring International 2016');
+ALTER TABLE `troy_professors` ENABLE KEYS;
+UNLOCK TABLES;
+# 添加学期表 done
+
+DROP TABLE IF EXISTS `troy_level`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `troy_level` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `levelName` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+SET character_set_client = @saved_cs_client;
+LOCK TABLES `troy_level` WRITE;
+ALTER TABLE `troy_level` DISABLE KEYS;
+INSERT INTO troy_level (levelName) VALUES ('Undergraduate');
+INSERT INTO troy_level (levelName) VALUES ('Graduate');
+INSERT INTO troy_level (levelName) VALUES ('Education Specialist');
+INSERT INTO troy_level (levelName) VALUES ('Doctorate');
+ALTER TABLE `troy_professors` ENABLE KEYS;
+UNLOCK TABLES;
+# 添加学期表 done
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

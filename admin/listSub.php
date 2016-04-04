@@ -121,6 +121,7 @@ if(!$rows){
     }
 //    搜索事件，keycode=13为回车,在本页面返回一个keywords=val值
     function search(){
+        var event=arguments.callee.caller.arguments[0]||window.event;//消除浏览器差异
         if(event.keyCode==13){
             var val=document.getElementById("search").value;
             window.location="listSub.php?keywords="+val;
