@@ -52,7 +52,7 @@ if(!$rows){
         <div class="additionBtn fl">
             <input type="button" value="Addition" class="add add48x48" onclick="addTerm()">
         </div>
-        <!--            右部排序以及搜索-->
+       0 <!--            右部排序以及搜索-->
         <div class="fr">
             <!--                排序-->
             <div class="text">

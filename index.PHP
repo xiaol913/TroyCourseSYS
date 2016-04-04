@@ -36,11 +36,13 @@ require_once "include.php";
         </b>&nbsp;&nbsp;<a href="index.php" class="homeBtn20x20"><span>Home</span></a><input type="button" class="backBtn20x20" onclick="history.go(-1)" value="Back"/><a href="doAction.php?act=studLogout" class="logoutBtn16x16"><span>Logout</span></a>
         <?php }else{?>
         <input type="button" class="loginBtn16x16" value="Login" onclick="loginBox.style.display=''">
-            <div id="loginBox" class="loginBox" style="position: fixed;top: 25%;left:35%;width: 240px;z-index:1; display: none; background-color: #e0e0e0;padding: 10px 25px 10px 10px;">
-                <form cellpadding="0" cellspacing="0" action="doAction.php?act=studLogin" method="post">
+            <div id="loginBox" class="loginBox" style="position: fixed;top: 0;left: 0;width: 100%;height: 100%;display: none; background-color: #e0e0e0;opacity:0.9;z-index:2;">
+            <div style="position: fixed;top: 25%;left:35%;width: 500px;z-index:2;padding: 10px 25px 10px 10px;background: url(img/TROY-login.png) no-repeat top left white ;opacity: 1.0;">
+                <div style="padding-left: 230px;width: 100%;color:#a12638">Troy Courses System</div>
+                <form cellpadding="0" cellspacing="0" style="margin-top: 20px;margin-left:220px;width:240px" action="doAction.php?act=studLogin" method="post">
                     <ul class="login">
                         <li class="f_txt">Username:</li>
-                        <li class="f_inp"><input type="text" name="username" class="login_input"></li>
+                        <li class="f_inp"><input type="text"  name="username" class="login_input"></li>
                         <li class="f_txt">Password:</li>
                         <li class="f_inp"><input type="password" name="password" class="login_input"></li>
                         <li class="f_txt">Verification:</li>
@@ -53,6 +55,7 @@ require_once "include.php";
                         </li>
                     </ul>
                 </form>
+            </div>
             </div>
             <?php };?>
     </div>
@@ -72,9 +75,22 @@ require_once "include.php";
                 <li><a href="doctorateList.php" target="indexFrame">Doctorate</a></li>
             </ul>
         </li>
-        <li id="n3" style="display: none"><a href="profList.php" target="indexFrame">Professors</a>
+        <li id="n3" style="display: none"><a href="profList.php" target="indexFrame">Instructors</a>
         </li>
-        <li id="n4" style="display: none"><a href="#">Search</a>
+        <li id="n4" style="display: none"><a href="#">Registration</a>
+            <ul class="nav2">
+                <li><a href="search.php" target="indexFrame">Search</a></li>
+                <?php if(checkStudLogin()==true):?>
+                <li><a href="searchAndRegister.php" target="indexFrame">Register</a></li>
+                <li><a href="dropCour.php?id=<?php
+                    if(isset($_SESSION['TroyCourSYSstudentId'])){
+                        echo $_SESSION['TroyCourSYSstudentId'];
+                    }elseif(isset($_COOKIE['TroyCourSYSstudentId'])){
+                        echo $_COOKIE['TroyCourSYSstudentId'];
+                    }
+                    ?>" target="indexFrame">Drop</a></li>
+                <?php endif;?>
+            </ul>
         </li>
         <?php if(checkStudLogin()==true):?>
         <li id="n5" style="display: none"><a href="#">About You</a>

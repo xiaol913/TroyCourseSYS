@@ -39,7 +39,7 @@ print_r($totalPage);*/
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Professors List</title>
+    <title>Instructors List</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
@@ -77,7 +77,7 @@ print_r($totalPage);*/
     <!--        建立表格-->
     <table class="table" cellpadding="0" cellspacing="0">
         <!--靠左显示页面名字-->
-        <caption>Professors List</caption>
+        <caption>Instructors List</caption>
         <!--            表头-->
         <thead>
         <tr>

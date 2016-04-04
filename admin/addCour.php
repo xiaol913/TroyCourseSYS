@@ -71,24 +71,24 @@ if(!$levelInfos){
             <td>Sections Meeting After</td>
             <td>
                 <select name="courseStartTime">
-                    <option value="5am">5am</option>
-                    <option value="6am">6am</option>
-                    <option value="7am">7am</option>
-                    <option value="8am">8am</option>
-                    <option value="9am">9am</option>
-                    <option value="10am">10m</option>
-                    <option value="11am">11am</option>
-                    <option value="12pm">12pm</option>
-                    <option value="1pm">1pm</option>
-                    <option value="2pm">2pm</option>
-                    <option value="3pm">3pm</option>
-                    <option value="4pm">4pm</option>
-                    <option value="5pm">5pm</option>
-                    <option value="6pm">6pm</option>
-                    <option value="7pm">7pm</option>
-                    <option value="8pm">8pm</option>
-                    <option value="9pm">9pm</option>
-                    <option value="10pm">10pm</option>
+                    <option value="5">5am</option>
+                    <option value="6">6am</option>
+                    <option value="7">7am</option>
+                    <option value="8">8am</option>
+                    <option value="9">9am</option>
+                    <option value="10">10m</option>
+                    <option value="11">11am</option>
+                    <option value="12">12pm</option>
+                    <option value="13">1pm</option>
+                    <option value="14">2pm</option>
+                    <option value="15">3pm</option>
+                    <option value="16">4pm</option>
+                    <option value="17">5pm</option>
+                    <option value="18">6pm</option>
+                    <option value="19">7pm</option>
+                    <option value="20">8pm</option>
+                    <option value="21">9pm</option>
+                    <option value="22">10pm</option>
                 </select>
             </td>
         </tr>
@@ -96,24 +96,24 @@ if(!$levelInfos){
             <td>Sections Ending Before</td>
             <td>
                 <select name="courseEndTime">
-                    <option value="5am">5am</option>
-                    <option value="6am">6am</option>
-                    <option value="7am">7am</option>
-                    <option value="8am">8am</option>
-                    <option value="9am">9am</option>
-                    <option value="10am">10m</option>
-                    <option value="11am">11am</option>
-                    <option value="12pm">12pm</option>
-                    <option value="1pm">1pm</option>
-                    <option value="2pm">2pm</option>
-                    <option value="3pm">3pm</option>
-                    <option value="4pm">4pm</option>
-                    <option value="5pm">5pm</option>
-                    <option value="6pm">6pm</option>
-                    <option value="7pm">7pm</option>
-                    <option value="8pm">8pm</option>
-                    <option value="9pm">9pm</option>
-                    <option value="10pm">10pm</option>
+                    <option value="5">5am</option>
+                    <option value="6">6am</option>
+                    <option value="7">7am</option>
+                    <option value="8">8am</option>
+                    <option value="9">9am</option>
+                    <option value="10">10m</option>
+                    <option value="11">11am</option>
+                    <option value="12">12pm</option>
+                    <option value="13">1pm</option>
+                    <option value="14">2pm</option>
+                    <option value="15">3pm</option>
+                    <option value="16">4pm</option>
+                    <option value="17">5pm</option>
+                    <option value="18">6pm</option>
+                    <option value="19">7pm</option>
+                    <option value="20">8pm</option>
+                    <option value="21">9pm</option>
+                    <option value="22">10pm</option>
                 </select>
             </td>
         </tr>

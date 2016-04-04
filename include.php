@@ -27,3 +27,4 @@ require_once 'schedule.inc.php';
 require_once 'students.inc.php';
 require_once 'level.inc.php';
 require_once 'term.inc.php';
+require_once 'register.inc.php';

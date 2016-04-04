@@ -42,7 +42,7 @@ if(!$rows){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Professors List</title>
+    <title>Instructors List</title>
     <link rel="stylesheet" href="css/backstage.css">
 </head>
 <body>
@@ -84,7 +84,7 @@ if(!$rows){
     <!--        建立表格-->
     <table class="table" cellpadding="0" cellspacing="0">
         <!--靠左显示页面名字-->
-        <caption>Professors List</caption>
+        <caption>Instructors List</caption>
         <!--            表头-->
         <thead>
         <tr>

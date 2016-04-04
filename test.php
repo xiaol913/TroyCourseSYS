@@ -1,20 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ShawnG
- * Date: 2016/4/2
- * Time: 2:53
- */
-require_once "include.php";
 
-if(checkStudLogin()==false){
-    echo "<br>---<br>";
-}else{
-    echo "<br>+++<br>";
-}
-print_r($_SESSION['TroyCourSYSstudentId']);
+require_once 'include.php';
 
-echo "<br>***<br>";
-print_r($_COOKIE['TroyCourSYSstudentId']);
+$sql="select courseAvai from troy_courses WHERE courseId=1100";
+$res=fetchOne($sql);
+foreach ($res as $num)
+    $newNum=$num-1;
+$arr['courseAvai']=$newNum;
 
 

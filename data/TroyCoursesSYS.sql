@@ -63,8 +63,8 @@ CREATE TABLE `troy_courses` (
   `courseName` varchar(255) NOT NULL,
   `courseId` int unsigned NOT NULL,
   `subjectId` int unsigned NOT NULL,
-  `courseStartTime` varchar(50) NOT NULL,
-  `courseEndTime` varchar(50) NOT NULL,
+  `courseStartTime` int(50) NOT NULL,
+  `courseEndTime` int(50) NOT NULL,
   `courseAvai` int unsigned NOT NULL,
   `courseCapa` int unsigned NOT NULL,
   `courseTerm` int(10) NOT NULL,
@@ -81,9 +81,9 @@ CREATE TABLE `troy_courses` (
 SET character_set_client = @saved_cs_client;
 LOCK TABLES `troy_courses` WRITE;
 ALTER TABLE `troy_courses` DISABLE KEYS;
-INSERT INTO troy_courses (courseAvai,courseName,courseId,subjectId,courseStartTime,courseEndTime,courseCapa,courseTerm,courseStat,courseLoca,courseDesc,courseCred,courseLevel,courseProfId) VALUES ('30','Advanced Programming I','2265','1','11am','12pm','30','3','open','troy','Provides student the opportunity to gain experience and training in an additional high-level language. The course focuses on advanced topics including objects, structures, applets, graphics, exception handling, files, and streaming.','3','1','1');
-INSERT INTO troy_courses (courseAvai,courseName,courseId,subjectId,courseStartTime,courseEndTime,courseCapa,courseTerm,courseStat,courseLoca,courseDesc,courseCred,courseLevel,courseProfId) VALUES ('30','Fundamentals of Algebra','1100','2','5pm','6pm','30','3','open','troy','Topics include integer and rational arithmetic, linear equations, inequalities, integer exponents, polynomials and factoring, rational expression. Prerequisite: Placement or a grade of C or better in MTH 0096. Note: This course is for institutional credit only and will not be used in meeting degree requirements. This course will not substitute for any general studies requirement.','3','1','2');
-INSERT INTO troy_courses (courseAvai,courseName,courseId,subjectId,courseStartTime,courseEndTime,courseCapa,courseTerm,courseStat,courseLoca,courseDesc,courseCred,courseLevel,courseProfId) VALUES ('30','Introductory Spanish II','1142','3','8am','9am','30','3','open','troy','Introduction to the Spanish language and cultures.','3','1','3');
+INSERT INTO troy_courses (courseAvai,courseName,courseId,subjectId,courseStartTime,courseEndTime,courseCapa,courseTerm,courseStat,courseLoca,courseDesc,courseCred,courseLevel,courseProfId) VALUES ('30','Advanced Programming I','2265','1','11','12','30','3','open','Troy','Provides student the opportunity to gain experience and training in an additional high-level language. The course focuses on advanced topics including objects, structures, applets, graphics, exception handling, files, and streaming.','3','1','1');
+INSERT INTO troy_courses (courseAvai,courseName,courseId,subjectId,courseStartTime,courseEndTime,courseCapa,courseTerm,courseStat,courseLoca,courseDesc,courseCred,courseLevel,courseProfId) VALUES ('30','Fundamentals of Algebra','1100','2','17','18','30','3','open','Troy','Topics include integer and rational arithmetic, linear equations, inequalities, integer exponents, polynomials and factoring, rational expression. Prerequisite: Placement or a grade of C or better in MTH 0096. Note: This course is for institutional credit only and will not be used in meeting degree requirements. This course will not substitute for any general studies requirement.','3','1','2');
+INSERT INTO troy_courses (courseAvai,courseName,courseId,subjectId,courseStartTime,courseEndTime,courseCapa,courseTerm,courseStat,courseLoca,courseDesc,courseCred,courseLevel,courseProfId) VALUES ('30','Introductory Spanish II','1142','3','8','9','30','3','open','Troy','Introduction to the Spanish language and cultures.','3','1','3');
 ALTER TABLE `troy_courses` ENABLE KEYS;
 UNLOCK TABLES;
 /*添加课程表 done*/
@@ -214,6 +214,18 @@ INSERT INTO troy_level (levelName) VALUES ('Doctorate');
 ALTER TABLE `troy_professors` ENABLE KEYS;
 UNLOCK TABLES;
 # 添加学期表 done
+
+DROP TABLE IF EXISTS `troy_register`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `troy_register` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `sId` int(50) NOT NULL,
+  `cId` int(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+UNLOCK TABLES;
+# 添加注册表 done
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

@@ -127,7 +127,7 @@ if(!$rows){
                             </tr>
                             <tr>
                                 <td width="20%" align="right">Time</td>
-                                <td><?php echo $row['courseStartTime']."-".$row['courseEndTime'];?></td>
+                                <td><?php echo $row['courseStartTime'].":00-".$row['courseEndTime'].":00";?></td>
                             </tr>
                             <tr>
                                 <td width="20%" align="right">Status</td>
