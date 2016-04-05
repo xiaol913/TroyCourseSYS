@@ -143,10 +143,7 @@ checkLogined();
     function setIframeHeight() {
         var iframe=document.getElementById("mainPage");
         var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
-        iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
-        if(iframe.height>1200){
-            iframe.height=1200;
-        }
+        iframe.height = Math.max(iframeWin.document.body.scrollHeight, iframeWin.document.documentElement.scrollHeight);
     }
 </script>
 </body>
