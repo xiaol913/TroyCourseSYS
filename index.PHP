@@ -12,6 +12,7 @@ require_once "include.php";
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" initial-scale="1">
     <title>Troy Courses System</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
@@ -67,7 +68,9 @@ require_once "include.php";
         </li>
         <li id="n1" style="display: none;width: 25px;;" onclick="closeFirstMenu()"><input type="button" class="closeMenu16x16" value="">
         </li>
-        <li id="n2" style="display: none"><a href="#">Academics</a>
+        <li id="n2" style="display: none"><a href="http://troy.edu">troy.edu</a>
+        </li>
+        <li id="n3" style="display: none"><a href="#">Academics</a>
             <ul class="nav2">
                 <li><a href="undergradList.php" target="indexFrame">Undergrad</a></li>
                 <li><a href="graduateList.php" target="indexFrame">Graduate</a></li>
@@ -75,9 +78,9 @@ require_once "include.php";
                 <li><a href="doctorateList.php" target="indexFrame">Doctorate</a></li>
             </ul>
         </li>
-        <li id="n3" style="display: none"><a href="profList.php" target="indexFrame">Instructors</a>
+        <li id="n4" style="display: none"><a href="profList.php" target="indexFrame">Instructors</a>
         </li>
-        <li id="n4" style="display: none"><a href="#">Registration</a>
+        <li id="n5" style="display: none"><a href="#">Registration</a>
             <ul class="nav2">
                 <li><a href="search.php" target="indexFrame">Search</a></li>
                 <?php if(checkStudLogin()==true):?>
@@ -93,10 +96,22 @@ require_once "include.php";
             </ul>
         </li>
         <?php if(checkStudLogin()==true):?>
-        <li id="n5" style="display: none"><a href="#">About You</a>
+        <li id="n6" style="display: none"><a href="#">About You</a>
             <ul class="nav2">
-                <li><a href="#">Your Profile</a></li>
-                <li><a href="#">Setting</a></li>
+                <li><a href="yourProfile.php?id=<?php
+                    if(isset($_SESSION['TroyCourSYSstudentId'])){
+                        echo $_SESSION['TroyCourSYSstudentId'];
+                    }elseif(isset($_COOKIE['TroyCourSYSstudentId'])){
+                        echo $_COOKIE['TroyCourSYSstudentId'];
+                    }
+                    ?>" target="indexFrame">Your Profile</a></li>
+                <li><a href="studSetting.php?id=<?php
+                    if(isset($_SESSION['TroyCourSYSstudentId'])){
+                        echo $_SESSION['TroyCourSYSstudentId'];
+                    }elseif(isset($_COOKIE['TroyCourSYSstudentId'])){
+                        echo $_COOKIE['TroyCourSYSstudentId'];
+                    }
+                    ?>" target="indexFrame">Setting</a></li>
             </ul>
         </li>
         <?php endif;?>
@@ -104,7 +119,7 @@ require_once "include.php";
 </div>
 <!--主要内容嵌套区-->
 <div>
-    <iframe name="indexFrame" src="main.php" frameborder="0" id="indexFrame" width="100%" onload="setIframeHeight(this)"></iframe>
+    <iframe name="indexFrame" src="main.php" frameborder="0" id="indexFrame" width="100%" ></iframe>
 </div>
 <!--底部嵌套-->
 <div class="">
@@ -115,16 +130,13 @@ require_once "include.php";
 //    页面加载时加载的函数
     window.onload = function () {
         showSecondMenu();
-        setIframeHeight(document.getElementById('indexFrame'));
+        window.setInterval("setIframeHeight()",200);
     }
 //嵌套页面自适应内容页面高度
-    function setIframeHeight(iframe) {
-        if (iframe) {
-            var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
-            if (iframeWin.document.body) {
-                iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
-            }
-        }
+    function setIframeHeight() {
+        var iframe=document.getElementById("indexFrame");
+        var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+        iframe.height = Math.max(iframeWin.document.body.scrollHeight, iframeWin.document.documentElement.scrollHeight);
     }
 //menu菜单显示和隐藏
     function showFirstMenu() {
@@ -133,6 +145,7 @@ require_once "include.php";
         n3.style.display='';
         n4.style.display='';
         n5.style.display='';
+        n6.style.display='';
     }
     function closeFirstMenu() {
         n1.style.display='none';
@@ -140,6 +153,7 @@ require_once "include.php";
         n3.style.display='none';
         n4.style.display='none';
         n5.style.display='none';
+        n6.style.display='none';
     }
 //显示二级菜单
     function showSecondMenu() {
