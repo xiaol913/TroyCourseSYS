@@ -37,7 +37,7 @@ checkLogined();
             <div class="title">Management System</div>
             <div class="ifrPage">
                 <!--嵌套网页-->
-                <iframe src="main.php" frameborder="0" name="mainPage" id="mainPage"width="100%" onload="setIframeHeight(this)"></iframe>
+                <iframe src="main.php" frameborder="0" name="mainPage" scrolling="no" id="mainPage"width="100%" ></iframe>
             </div>
         </div>
     </div>
@@ -135,16 +135,17 @@ checkLogined();
         }
     }
 
+    //    页面加载时加载的函数
     window.onload = function () {
-        setIframeHeight(document.getElementById('indexFrame'));
+        window.setInterval("setIframeHeight()",200);
     }
     //嵌套页面自适应内容页面高度
-    function setIframeHeight(iframe) {
-        if (iframe) {
-            var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
-            if (iframeWin.document.body) {
-                iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
-            }
+    function setIframeHeight() {
+        var iframe=document.getElementById("mainPage");
+        var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+        iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+        if(iframe.height>1200){
+            iframe.height=1200;
         }
     }
 </script>
