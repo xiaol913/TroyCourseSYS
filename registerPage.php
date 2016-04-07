@@ -27,11 +27,11 @@ if(checkStudLogin()==false){
 <body>
 <!--头部框架嵌套-->
 <div>
-    <iframe src="header.php" frameborder="0" name="headerFrame" width="100%" height="129px" scrolling="no"></iframe>
+    <iframe style="z-index: 99999999" src="header.php" frameborder="0" name="headerFrame" width="100%" height="129px" scrolling="no"></iframe>
 </div>
 <!--main page-->
 <div class="container">
-    <div class="st-container">
+    <div class="st-container" style="top: 129px;">
              <!--首先将整个页面编辑为一个大框体-->
         <div class="details">
             <!--        建立表格-->

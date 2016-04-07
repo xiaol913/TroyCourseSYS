@@ -38,7 +38,7 @@ require_once "include.php";
                         echo $_COOKIE['TroyCourSYSstudentName'];
                     }
                     ?>
-                </b>&nbsp;&nbsp;<a href="localhost://index.php" style="color:#fff" class="" ><i class="fa fa-home" ></i><span>Home</span></a><a href="#" class="" onclick="history.go(-1)" style="color:#fff"><i class="fa fa-reply"></i><span>Back</span></a><a href="doAction.php?act=studLogout" class="" style="color:#fff"><i class="fa fa-power-off"></i><span>Logout</span></a>
+                </b>&nbsp;&nbsp;<a href="index.php" target="_parent" style="color:#fff" class="" ><i class="fa fa-home" ></i><span>Home</span></a><a href="#" class="" onclick="history.go(-1)" style="color:#fff"><i class="fa fa-reply"></i><span>Back</span></a><a href="doAction.php?act=studLogout" class="" style="color:#fff"><i class="fa fa-power-off"></i><span>Logout</span></a>
             <?php }?>
         </div>
     </div>
