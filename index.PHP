@@ -11,6 +11,7 @@ $termInfos=getAllTerm();
 $subInfos=getAllSub();
 $levelInfos=getAllLevel();
 $courInfos=getAllCour();
+$profInfos=getAllProf();
 if(checkStudLogin()==false){
     alertMes("Please Login!!!","login.php");
 }
@@ -90,13 +91,6 @@ if(checkStudLogin()==false){
             <section class="st-panel-3" id="st-panel-3">
                 <div class="st-desc-red-r"></div><i class="fa fa-chevron-circle-right"></i>
                 <div class="st-desc-red-l"></div><i class="fa fa-chevron-circle-left"></i>
-                <?php
-                $sql="select * from troy_professors";
-                $profInfos=fetchAll($sql);
-                if(!$profInfos){
-                    alertMes("No Result!!!","profList.php");
-                }
-                ?>
                 <div class="details">
                     <!--        建立表格-->
                     <table class="table" cellpadding="0" cellspacing="0">
