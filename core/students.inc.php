@@ -99,10 +99,10 @@ function studLogin(){
             print_r($_COOKIE['TroyCourSYSstudentId']);*/
             alertMes("Successful!!","index.php");
         }else{
-            alertMes("ID or Password is wrong!!","index.php");
+            alertMes("ID or Password is wrong!!","login.php");
         }
     }else{
-        alertMes("Verification Wrong!!","index.php");
+        alertMes("Verification Wrong!!","login.php");
     }
 }
 

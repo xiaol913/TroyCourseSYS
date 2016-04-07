@@ -11,14 +11,14 @@ require_once "include.php";
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Courses System</title>
     <link href="css/loginCSS.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <div class="body"></div>
 <div class="grad"></div>
 <div class="header">
-    <div>Troy<span>Courses</span></div><div>System</div>
+    <div><span>Courses</span>System</div><div>@Troy</div>
 </div>
 <br>
 <div class="login">

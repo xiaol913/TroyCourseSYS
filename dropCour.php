@@ -17,7 +17,7 @@ $rows=fetchAll($sql);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Courses List</title>
+    <title>Drop Courses</title>
     <link href="css/main.css" type="text/css" rel="stylesheet">
     <meta http-equiv="X-UA-COMPATIBLE" content="IE-edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
