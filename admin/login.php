@@ -11,14 +11,14 @@ require_once "../include.php";
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Backstage System</title>
     <link href="css/loginCSS.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <div class="body"></div>
 <div class="grad"></div>
 <div class="header">
-    <div>Troy<span>Backstage</span></div><div>System</div>
+    <div><span>Backstage</span>System</div><div>@Troy</div>
 </div>
 <br>
 <div class="login">
@@ -29,6 +29,7 @@ require_once "../include.php";
         <img src="../getVerify.php" alt="">
         <input type="checkbox" id="a1" class="checked" name="autoFlag" value="1"><label for="a1">Keep one week</label>
         <input type="submit" value="Login"><br>
+        <a href="../login.php">I'm student.</a>
     </form>
 </div>
 </body>
