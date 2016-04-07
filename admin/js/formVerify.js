@@ -99,7 +99,7 @@ function phNumCheck(phNum){
     if(phNum.value==""){
         alert("please enter phone number!!!");
         return false;
-    }else if(re_num.test(phNum.value)==false||phNum.value.length>10 || phNum.value.length<10){
+    }else if(re_num.test(phNum.value)==true||phNum.value.length>10 || phNum.value.length<10){
         alert("Phone number is invalid!!!");
         return false;
     }

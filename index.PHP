@@ -1,190 +1,300 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: ElliotGa0
- * Date: 16/4/1
- * Time: 11:12
+ * User: ShawnG
+ * Date: 2016/4/6
+ * Time: 2:21
  */
-require_once "include.php";
 
+require_once "include.php";
+$termInfos=getAllTerm();
+$subInfos=getAllSub();
+$levelInfos=getAllLevel();
+$courInfos=getAllCour();
+if(checkStudLogin()==false){
+    alertMes("Please Login!!!","login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width" initial-scale="1">
     <title>Troy Courses System</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE-edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/normalize.css" type="text/css" rel="stylesheet">
+    <link href="css/main.css" type="text/css" rel="stylesheet">
+    <link href="css/animation.css" type="text/css" rel="stylesheet">
+    <link href="css/font-awesome.css" type="text/css" rel="stylesheet">
+    <link href="css/content.css" type="text/css" rel="stylesheet">
+    <style>
+        body{overflow: hidden;}
+    </style>
 </head>
 <body>
-<!--先构建头部嵌套-->
-<div class="">
-    <iframe src="header.php" frameborder="0" name="headerFrame" width="100%" height="129px" scrolling="no"></iframe>
-</div>
-<!--登录区-->
-<div class="operation_user clearfix">
-    <!--建立一个内部框架，并右浮动-->
-    <div class="link fr">
-        <?php if(checkStudLogin()==true){?>
-        <b>Welcome,
-            <?php
-            if(isset($_SESSION['TroyCourSYSstudentName'])){
-                echo $_SESSION['TroyCourSYSstudentName'];
-            }elseif(isset($_COOKIE['TroyCourSYSstudentName'])){
-                echo $_COOKIE['TroyCourSYSstudentName'];
-            }
-            ?>
-        </b>&nbsp;&nbsp;<a href="index.php" class="homeBtn20x20"><span>Home</span></a><input type="button" class="backBtn20x20" onclick="history.go(-1)" value="Back"/><a href="doAction.php?act=studLogout" class="logoutBtn16x16"><span>Logout</span></a>
-        <?php }else{?>
-        <input type="button" class="loginBtn16x16" value="Login" onclick="loginBox.style.display=''">
-            <div id="loginBox" class="loginBox" style="position: fixed;top: 0;left: 0;width: 100%;height: 100%;display: none; background-color: #e0e0e0;opacity:0.9;z-index:2;">
-            <div style="position: fixed;top: 25%;left:35%;width: 500px;z-index:2;padding: 10px 25px 10px 10px;background: url(img/TROY-login.png) no-repeat top left white ;opacity: 1.0;">
-                <div style="padding-left: 230px;width: 100%;color:#a12638">Troy Courses System</div>
-                <form cellpadding="0" cellspacing="0" style="margin-top: 20px;margin-left:220px;width:240px" action="doAction.php?act=studLogin" method="post">
-                    <ul class="login">
-                        <li class="f_txt">Username:</li>
-                        <li class="f_inp"><input type="text"  name="username" class="login_input"></li>
-                        <li class="f_txt">Password:</li>
-                        <li class="f_inp"><input type="password" name="password" class="login_input"></li>
-                        <li class="f_txt">Verification:</li>
-                        <li class="f_inp"><input type="text" name="verify" class="login_input"></li>
-                        <img src="getVerify.php" alt="">
-                        <li class="autoLogin"><input type="checkbox" id="a1" class="checked" name="autoFlag" value="1"><label for="a1">Stay signed in one week</label></li>
-                        <li>
-                            <input type="submit" value="Login" class="loginBtn64x64">
-                            <input type="button" value="Close" class="closeBtn24x24" onclick="loginBox.style.display='none'">
-                        </li>
-                    </ul>
-                </form>
-            </div>
-            </div>
-            <?php };?>
+<div class="head">
+    <!--建立logo，fl为CSS左浮动-->
+    <div class="logo fl"><a href="#"></a></div>
+    <!--建立头部右边区域文字，并fr右浮动-->
+    <div class="operation_user fr">
+        <div class="link">
+            <?php if(checkStudLogin()==true){?>
+                <b style="color:#fff">Welcome,
+                    <?php
+                    if(isset($_SESSION['TroyCourSYSstudentName'])){
+                        echo $_SESSION['TroyCourSYSstudentName'];
+                    }elseif(isset($_COOKIE['TroyCourSYSstudentName'])){
+                        echo $_COOKIE['TroyCourSYSstudentName'];
+                    }
+                    ?>
+                </b>&nbsp;&nbsp;<a href="index.php" style="color:#fff" class="" ><i class="fa fa-home"></i><span>Home</span></a><a href="#" class="" onclick="history.go(-1)" style="color:#fff"><i class="fa fa-reply"></i><span>Back</span></a><a href="doAction.php?act=studLogout" class="" style="color:#fff"><i class="fa fa-power-off"></i><span>Logout</span></a>
+            <?php }?>
+        </div>
     </div>
 </div>
-<!--菜单区-->
-<div class="menu">
-    <ul class="nav">
-        <li><a href="#" onclick="showFirstMenu()">Menu</a>
-        </li>
-        <li id="n1" style="display: none;width: 25px;;" onclick="closeFirstMenu()"><input type="button" class="closeMenu16x16" value="">
-        </li>
-        <li id="n2" style="display: none"><a href="http://troy.edu">troy.edu</a>
-        </li>
-        <li id="n3" style="display: none"><a href="#">Academics</a>
-            <ul class="nav2">
-                <li><a href="undergradList.php" target="indexFrame">Undergrad</a></li>
-                <li><a href="graduateList.php" target="indexFrame">Graduate</a></li>
-                <li><a href="educationList.php" target="indexFrame">Education</a></li>
-                <li><a href="doctorateList.php" target="indexFrame">Doctorate</a></li>
-            </ul>
-        </li>
-        <li id="n4" style="display: none"><a href="profList.php" target="indexFrame">Instructors</a>
-        </li>
-        <li id="n5" style="display: none"><a href="#">Registration</a>
-            <ul class="nav2">
-                <li><a href="search.php" target="indexFrame">Search</a></li>
-                <?php if(checkStudLogin()==true):?>
-                <li><a href="searchAndRegister.php" target="indexFrame">Register</a></li>
-                <li><a href="dropCour.php?id=<?php
-                    if(isset($_SESSION['TroyCourSYSstudentId'])){
-                        echo $_SESSION['TroyCourSYSstudentId'];
-                    }elseif(isset($_COOKIE['TroyCourSYSstudentId'])){
-                        echo $_COOKIE['TroyCourSYSstudentId'];
-                    }
-                    ?>" target="indexFrame">Drop</a></li>
-                <?php endif;?>
-            </ul>
-        </li>
-        <?php if(checkStudLogin()==true):?>
-        <li id="n6" style="display: none"><a href="#">About You</a>
-            <ul class="nav2">
-                <li><a href="yourProfile.php?id=<?php
-                    if(isset($_SESSION['TroyCourSYSstudentId'])){
-                        echo $_SESSION['TroyCourSYSstudentId'];
-                    }elseif(isset($_COOKIE['TroyCourSYSstudentId'])){
-                        echo $_COOKIE['TroyCourSYSstudentId'];
-                    }
-                    ?>" target="indexFrame">Your Profile</a></li>
-                <li><a href="studSetting.php?id=<?php
-                    if(isset($_SESSION['TroyCourSYSstudentId'])){
-                        echo $_SESSION['TroyCourSYSstudentId'];
-                    }elseif(isset($_COOKIE['TroyCourSYSstudentId'])){
-                        echo $_COOKIE['TroyCourSYSstudentId'];
-                    }
-                    ?>" target="indexFrame">Setting</a></li>
-            </ul>
-        </li>
-        <?php endif;?>
-    </ul>
+<!--main page-->
+<div class="container">
+    <div class="st-container">
+        <!--        nav start-->
+        <input type="radio" name="radio-set" id="st-control-1" checked="checked">
+        <a href="#st-panel-1">Home</a>
+        <input type="radio" name="radio-set" id="st-control-2">
+        <a href="#st-panel-2">Academics</a>
+        <input type="radio" name="radio-set" id="st-control-3">
+        <a href="#st-panel-3">Instructors</a>
+        <input type="radio" name="radio-set" id="st-control-4">
+        <a href="#st-panel-4">Register</a>
+        <input type="radio" name="radio-set" id="st-control-5">
+        <a href="#st-panel-5">Yourself</a>
+        <!--    nav end-->
+        <!--    scroll start-->
+        <div class="st-scroll">
+<!--            first section-->
+            <section class="st-panel-1" id="st-panel-1">
+                <div class="st-desc-red-r"></div><i class="fa fa-chevron-circle-right"></i>
+                <h2>Troy University Courses System</h2>
+                <p>You can search and register course by yourself now!</p>
+            </section>
+            <!--                second section-->
+            <section class="st-panel-2 st-color" id="st-panel-2">
+                <div class="st-desc-white-r"></div><i class="fa fa-chevron-circle-right"></i>
+                <div class="st-desc-white-l"></div><i class="fa fa-chevron-circle-left"></i>
+                <div class="fontBtn1">
+                    <div class="st-btn-1"><input type="button" onclick="window.location.href='undergradList.php'" id="st-control-2-1" ><a href="#">Undergrad</a><i style="color:#fff" class="fa fa-paper-plane fa-5x"></i></div>
+                    <div class="st-btn-2"><input type="button" id="st-control-2-2" onclick="window.location.href='graduateList.php'"><a href="#">Graduate</a><i style="color:#fff" class="fa fa-graduation-cap fa-5x"></i></div>
+                    <div class="st-btn-3"><input type="button" id="st-control-2-3" onclick="window.location.href='educationList.php'"><a href="#" onclick="">Education</a><i style="color:#fff" class="fa fa-flask fa-5x"></i></div>
+                    <div class="st-btn-4"><input type="button" id="st-control-2-4" onclick="window.location.href='doctorateList.php'"><a href="#" onclick="">Doctorate</a><i style="color:#fff" class="fa fa-university fa-5x"></i></div>
+                </div>
+            </section>
+<!--            third section-->
+            <section class="st-panel-3" id="st-panel-3">
+                <div class="st-desc-red-r"></div><i class="fa fa-chevron-circle-right"></i>
+                <div class="st-desc-red-l"></div><i class="fa fa-chevron-circle-left"></i>
+                <?php
+                $sql="select * from troy_professors";
+                $profInfos=fetchAll($sql);
+                if(!$profInfos){
+                    alertMes("No Result!!!","profList.php");
+                }
+                ?>
+                <div class="details">
+                    <!--        建立表格-->
+                    <table class="table" cellpadding="0" cellspacing="0">
+                        <!--靠左显示页面名字-->
+                        <caption>Instructors List</caption>
+                        <!--            表头-->
+                        <thead>
+                        <tr>
+                            <th width="5%">Id</th>
+                            <th width="20%">Name</th>
+                            <th width="20%">E-mail</th>
+                            <th width="15%">Phone #</th>
+                            <th width="40%">Description</th>
+                        </tr>
+                        </thead>
+                        <!--            表格主体-->
+                        <tbody>
+                        <!--            内容部分-->
+                        <?php foreach($profInfos as $profInfo):?>
+                        <tr>
+                            <td><?php echo $profInfo['id']; ?></td>
+                            <td><?php echo $profInfo['profFirstName']." ".$profInfo['profLastName']; ?></td>
+                            <td><?php echo $profInfo['profEmail']; ?></td>
+                            <td><?php echo $profInfo['profPhoneNum']; ?></td>
+                            <td>
+                                <?php
+                                $profImgs=getAllImgsByProfId($profInfo['id']);
+                                if($profImgs&&is_array($profImgs)){?>
+                                    <?php foreach($profImgs as $img):?>
+                                        <img width="60" height="60" src="uploads/<?php echo $img['albumPath'];?>" alt=""/>
+                                    <?php endforeach;?>
+                                <?php }else{echo "No image";};?>
+                                <?php echo $profInfo['profDesc']; ?>
+                            </td>
+                            <?php endforeach;?>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <!--            fourth section-->
+            <section class="st-panel-4  st-color" id="st-panel-4">
+                <div>
+                    <div class="st-desc-white-r"></div><i class="fa fa-chevron-circle-right"></i>
+                    <div class="st-desc-white-l"></div><i class="fa fa-chevron-circle-left"></i>
+                    <div class="searchBox">
+                        <form class="searchForm" method="get" action="registerPage.php" enctype="multipart/form-data">
+                            <!--    标题-->
+                            <div class="title">
+                                <h3>Search and Register for Sections</h3>
+                            </div>
+                            <!--    学期和校区-->
+                            <div class="text">
+                                <span>Term:</span>
+                                <div class="bui_select">
+                                    <select class="select" name="courseTerm">
+                                        <option></option>
+                                        <?php foreach ($termInfos as $termInfo):?>
+                                            <option value="<?php echo $termInfo['id'];?>"><?php echo $termInfo['termName'];?></option>
+                                        <?php endforeach;?>
+                                    </select>
+                                </div>
+                                <span>Location:</span>
+                                <div class="bui_select">
+                                    <select class="select" name="courseLoca">
+                                        <option></option>
+                                        <option value="Troy">Troy</option>
+                                        <option value="Montgomery">Montgomery</option>
+                                        <option value="Phenix City">Phenix City</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--    学科和课程等级-->
+                            <div class="text">
+                                <span>Subject:</span>
+                                <div class="bui_select">
+                                    <select class="select" name="subjectId">
+                                        <option></option>
+                                        <?php foreach ($subInfos as $subInfo):?>
+                                            <option value="<?php echo $subInfo['id'];?>"><?php echo $subInfo['subShortName']."-".$subInfo['subName'];?></option>
+                                        <?php endforeach;?>
+                                    </select>
+                                </div>
+                                <span>Course Level:</span>
+                                <div class="bui_select">
+                                    <select class="select" name="courseLevel">
+                                        <option></option>
+                                        <?php foreach ($levelInfos as $levelInfo):?>
+                                            <option value="<?php echo $levelInfo['id'];?>"><?php echo $levelInfo['levelName'];?></option>
+                                        <?php endforeach;?>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--    meeting时间范围-->
+                            <div class="text">
+                                <span>Sections Meeting After:</span>
+                                <div class="bui_select">
+                                    <select class="select" name="courseStartTime">
+                                        <option></option>
+                                        <option value="5">5am</option>
+                                        <option value="6">6am</option>
+                                        <option value="7">7am</option>
+                                        <option value="8">8am</option>
+                                        <option value="9">9am</option>
+                                        <option value="10">10m</option>
+                                        <option value="11">11am</option>
+                                        <option value="12">12pm</option>
+                                        <option value="13">1pm</option>
+                                        <option value="14">2pm</option>
+                                        <option value="15">3pm</option>
+                                        <option value="16">4pm</option>
+                                        <option value="17">5pm</option>
+                                        <option value="18">6pm</option>
+                                        <option value="19">7pm</option>
+                                        <option value="20">8pm</option>
+                                        <option value="21">9pm</option>
+                                        <option value="22">10pm</option>
+                                    </select>
+                                </div>
+                                <span>Sections Ending Before:</span>
+                                <div class="bui_select">
+                                    <select class="select" name="courseEndTime">
+                                        <option></option>
+                                        <option value="5">5am</option>
+                                        <option value="6">6am</option>
+                                        <option value="7">7am</option>
+                                        <option value="8">8am</option>
+                                        <option value="9">9am</option>
+                                        <option value="10">10m</option>
+                                        <option value="11">11am</option>
+                                        <option value="12">12pm</option>
+                                        <option value="13">1pm</option>
+                                        <option value="14">2pm</option>
+                                        <option value="15">3pm</option>
+                                        <option value="16">4pm</option>
+                                        <option value="17">5pm</option>
+                                        <option value="18">6pm</option>
+                                        <option value="19">7pm</option>
+                                        <option value="20">8pm</option>
+                                        <option value="21">9pm</option>
+                                        <option value="22">10pm</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--    周一到周日-->
+                            <div class="text1">
+                                <label for="text1">Sun</label><input type="checkbox" name="day[sun]" value="sun">
+                                <label for="text1">Mon</label><input type="checkbox" name="day[mon]" value="mon">
+                                <label for="text1">Tue</label><input type="checkbox" name="day[tue]" value="tue">
+                                <label for="text1">Wed</label><input type="checkbox" name="day[wed]" value="wed">
+                                <label for="text1">Thu</label><input type="checkbox" name="day[thu]" value="thu">
+                                <label for="text1">Fri</label><input type="checkbox" name="day[fri]" value="fri">
+                                <label for="text1">Sat</label><input type="checkbox" name="day[sat]" value="sat">
+                            </div>
+                            <!--    课程keyword和教师名字-->
+                            <div class="text">
+                                <span>Course keywords:</span>
+                                <input type="text" class="search" name="courseSearch">
+                                <span>Instructor name keywords:</span>
+                                <input type="text" class="search" name="instructorSearch">
+                            </div>
+                            <div class="btn">
+                                <input type="submit"  class="sub24x24" value="Submit"/><input type="reset" class="res24x24"  value="Reset"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+<!--            fifth section-->
+            <section class="st-panel-5" id="st-panel-5">
+                <div class="st-desc-red-r"></div><i class="fa fa-chevron-circle-right"></i>
+                <div class="st-desc-red-l"></div><i class="fa fa-chevron-circle-left"></i>
+                <div class="fontBtn2">
+                    <div class="st-btn-5"><input type="button" id="st-control-5-1" onclick="window.location.href='yourProfile.php?id=<?php
+                        if(isset($_SESSION['TroyCourSYSstudentId'])){
+                            echo $_SESSION['TroyCourSYSstudentId'];
+                        }elseif(isset($_COOKIE['TroyCourSYSstudentId'])){
+                            echo $_COOKIE['TroyCourSYSstudentId'];
+                        }
+                        ?>'"><a href="#" onclick="">Your Info</a><i style="color:#a12638" class="fa fa-child fa-5x"></i></div>
+                    <div class="st-btn-6"><input type="button" id="st-control-5-2" ><a href="#" onclick="">Your Schedule</a><i style="color:#a12638" class="fa fa-calendar fa-5x"></i></div>
+                    <div class="st-btn-7"><input type="button" id="st-control-5-3" onclick="window.location.href='dropCour.php?id=<?php
+                        if(isset($_SESSION['TroyCourSYSstudentId'])){
+                            echo $_SESSION['TroyCourSYSstudentId'];
+                        }elseif(isset($_COOKIE['TroyCourSYSstudentId'])){
+                            echo $_COOKIE['TroyCourSYSstudentId'];
+                        }
+                        ?>'"><a href="#" onclick="">Drop Courses</a><i style="color:#a12638" class="fa fa-calendar-times-o fa-5x"></i></div>
+                    <div class="st-btn-8"><input type="button" id="st-control-5-4" onclick="window.location.href='studSetting.php?id=<?php
+                        if(isset($_SESSION['TroyCourSYSstudentId'])){
+                            echo $_SESSION['TroyCourSYSstudentId'];
+                        }elseif(isset($_COOKIE['TroyCourSYSstudentId'])){
+                            echo $_COOKIE['TroyCourSYSstudentId'];
+                        }
+                        ?>'"><a href="#" onclick="">Setting</a><i style="color:#a12638" class="fa fa-cog fa-5x"></i></div>
+            </section>
+        </div>
+    </div>
 </div>
-<!--主要内容嵌套区-->
-<div>
-    <iframe name="indexFrame" src="main.php" frameborder="0" id="indexFrame" width="100%" ></iframe>
-</div>
-<!--底部嵌套-->
-<div class="">
-    <iframe src="footer.php" frameborder="0" name="footerFrame" width="100%" height="103px" scrolling="no"></iframe>
-</div>
-
-<script type="text/javascript">
-//    页面加载时加载的函数
-    window.onload = function () {
-        showSecondMenu();
-        window.setInterval("setIframeHeight()",200);
-    }
-//嵌套页面自适应内容页面高度
-    function setIframeHeight() {
-        var iframe=document.getElementById("indexFrame");
-        var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
-        iframe.height = Math.max(iframeWin.document.body.scrollHeight, iframeWin.document.documentElement.scrollHeight);
-    }
-//menu菜单显示和隐藏
-    function showFirstMenu() {
-        n1.style.display='';
-        n2.style.display='';
-        n3.style.display='';
-        n4.style.display='';
-        n5.style.display='';
-        n6.style.display='';
-    }
-    function closeFirstMenu() {
-        n1.style.display='none';
-        n2.style.display='none';
-        n3.style.display='none';
-        n4.style.display='none';
-        n5.style.display='none';
-        n6.style.display='none';
-    }
-//显示二级菜单
-    function showSecondMenu() {
-    var allLi=document.getElementsByTagName('li');
-    for(var i=0;i<allLi.length;i++){
-//                鼠标移上时
-        allLi[i].onmouseover=function () {
-            var allUl=this.getElementsByTagName('ul')[0];
-            if(allUl){
-                clearInterval(allUl.time);
-                allUl.time=setInterval(function () {
-                    allUl.style.height=allUl.offsetHeight+6+"px";
-                    if(allUl.offsetHeight>=100)
-                        clearInterval(allUl.time);
-                },50);
-            }
-        }
-//                鼠标移出时
-        allLi[i].onmouseout=function () {
-            var allUl=this.getElementsByTagName('ul')[0];
-            if(allUl) {
-                clearInterval(allUl.time);
-                allUl.time = setInterval(function () {
-                    allUl.style.height = allUl.offsetHeight - 6 + "px";
-                    if (allUl.offsetHeight <= 0)
-                        clearInterval(allUl.time);
-                }, 50);
-            }
-        }
-    }
-}
-</script>
 </body>
 </html>
+

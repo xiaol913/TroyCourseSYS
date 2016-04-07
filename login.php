@@ -5,7 +5,7 @@
  * Date: 2016/4/6
  * Time: 17:47
  */
-require_once "../include.php";
+require_once "include.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +18,7 @@ require_once "../include.php";
 <div class="body"></div>
 <div class="grad"></div>
 <div class="header">
-    <div>Troy<span>Backstage</span></div><div>System</div>
+    <div>Troy<span>Courses</span></div><div>System</div>
 </div>
 <br>
 <div class="login">
@@ -26,9 +26,10 @@ require_once "../include.php";
         <input type="text" placeholder="username" name="username"><br>
         <input type="password" placeholder="password" name="password"><br><br>
         <input type="text" name="verify" placeholder="verify"><br>
-        <img src="../getVerify.php" alt="">
+        <img src="getVerify.php" alt="">
         <input type="checkbox" id="a1" class="checked" name="autoFlag" value="1"><label for="a1">Keep one week</label>
         <input type="submit" value="Login"><br>
+        <a href="admin/login.php">I'm administrator.</a>
     </form>
 </div>
 </body>

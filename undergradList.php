@@ -37,9 +37,19 @@ echo "<br>??????????????><br>";*/
 <head>
     <meta charset="UTF-8">
     <title>Courses List</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link href="css/main.css" type="text/css" rel="stylesheet">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE-edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/normalize.css" type="text/css" rel="stylesheet">
+    <link href="css/animation.css" type="text/css" rel="stylesheet">
+    <link href="css/font-awesome.css" type="text/css" rel="stylesheet">
+    <link href="css/content.css" type="text/css" rel="stylesheet">
 </head>
 <body>
+<!--头部框架嵌套-->
+<div>
+    <iframe src="header.php" frameborder="0" name="headerFrame" width="100%" height="129px" scrolling="no"></iframe>
+</div>
 <!--首先将整个页面编辑为一个大框体-->
 <div class="details">
     <!--建立头部-->
@@ -48,10 +58,10 @@ echo "<br>??????????????><br>";*/
         <div class="fr">
             <!--                排序-->
             <div class="text">
-                <span>Sort by</span>
+                <span style="color:#a12638">Sort by</span>
                 <div class="bui_select">
                     <!--                        改变事件，传给一个脚本函数-->
-                    <select id="" class="select" onchange="change(this.value)">
+                    <select id="" class="select" onchange="change(this.value)" style="color:#a12638">
                         <!--                            默认给一个值为NULL的选择-->
                         <option>-select-</option>
                         <!--                            根据ID排序,数据库里为id-->
@@ -65,9 +75,9 @@ echo "<br>??????????????><br>";*/
             </div>
             <!--                搜索-->
             <div class="text">
-                <span>Search By Name:</span>
+                <span style="color:#a12638">Search By Name:</span>
                 <!--                    给搜索text条添加一个按回车的事件-->
-                <input type="text" value="" class="search" id="search" onkeypress="search()">
+                <input type="text" value="" class="search" id="search" onkeypress="search()" style="color:#a12638">
             </div>
         </div>
     </div>

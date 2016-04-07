@@ -527,7 +527,7 @@ function search1(){
             }
             //一个数据也没有的情况
         }else{
-            echo "At least one condition!!!<br/><a href='searchAndRegister.php'>Return to Search and Register Page</a>";
+            echo "At least one condition!!!<br/><a href='index.php'>Return to Home Page</a>";
             exit;
         }
     }
@@ -536,6 +536,7 @@ function search1(){
     if ($rows){
         return $rows;
     }else{
-        echo "No result!!!<br/><a href='searchAndRegister.php'>Return to Search and Register Page</a>";
+        echo "No result!!!<br/><a href='index.php'>Return to Home Page</a>";
+        exit;
     }
 }

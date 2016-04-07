@@ -18,9 +18,19 @@ $rows=fetchAll($sql);
 <head>
     <meta charset="UTF-8">
     <title>Courses List</title>
-    <link rel="stylesheet" href="css/main.css" type="text/css">
+    <link href="css/main.css" type="text/css" rel="stylesheet">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE-edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/normalize.css" type="text/css" rel="stylesheet">
+    <link href="css/animation.css" type="text/css" rel="stylesheet">
+    <link href="css/font-awesome.css" type="text/css" rel="stylesheet">
+    <link href="css/content.css" type="text/css" rel="stylesheet">
 </head>
 <body>
+<!--头部框架嵌套-->
+<div>
+    <iframe src="header.php" frameborder="0" name="headerFrame" width="100%" height="129px" scrolling="no"></iframe>
+</div>
 <!--首先将整个页面编辑为一个大框体-->
 <div class="details">
     <!--        建立表格-->

@@ -24,7 +24,7 @@ $sql="select c.id,c.courseName,c.courseId,c.subjectId,c.courseStartTime,c.course
 $rows=fetchAll($sql);
 
 if(!$rows){
-    alertMes("No Data!!!","main.php");
+    alertMes("No Data!!!","index.php");
 }
 
 //验证是否有数据从数据库里返回
@@ -37,9 +37,19 @@ echo "<br>??????????????><br>";*/
 <head>
     <meta charset="UTF-8">
     <title>Courses List</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link href="css/main.css" type="text/css" rel="stylesheet">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE-edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/normalize.css" type="text/css" rel="stylesheet">
+    <link href="css/animation.css" type="text/css" rel="stylesheet">
+    <link href="css/font-awesome.css" type="text/css" rel="stylesheet">
+    <link href="css/content.css" type="text/css" rel="stylesheet">
 </head>
 <body>
+<!--头部框架嵌套-->
+<div>
+    <iframe src="header.php" frameborder="0" name="headerFrame" width="100%" height="129px" scrolling="no"></iframe>
+</div>
 <!--首先将整个页面编辑为一个大框体-->
 <div class="details">
     <!--建立头部-->

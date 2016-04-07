@@ -20,18 +20,18 @@ function register($cId,$sId){
     foreach ($res as $num)
         $newNum=$num-1;
     if($newNum<0){
-        echo "This course can not be register!!<br/><a href='searchAndRegister.php'>Return to Search and Register page</a>";
+        echo "This course can not be register!!<br/><a href='index.php'>Return to Home page</a>";
         exit;
     }
     $courArr['courseAvai']=$newNum;
     if(insert("troy_register",$arr)){
         if(update("troy_courses",$courArr,$where)){
-            echo "Successful!!!<br/><a href='searchAndRegister.php'>Return to Search and Register page</a>";
+            echo "Successful!!!<br/><a href='index.php'>Return to Home page</a>";
         }else{
-            echo "Fail!!!<br/><a href='searchAndRegister.php'>Return to Search and Register page</a>";
+            echo "Fail!!!<br/><a href='index.php'>Return to Home page</a>";
         }
     }else{
-        echo "Fail!!!<br/><a href='searchAndRegister.php'>Return to Search and Register page</a>";
+        echo "Fail!!!<br/><a href='index.php'>Return to Home page</a>";
     }
     return;
 }
@@ -64,7 +64,7 @@ function drop($cId,$sId){
         if (update("troy_courses", $courArr, $whereCour)) {
             echo "Successful!!!<br/><a href='dropCour.php?id={$sId}'>Return to Drop Course page</a>";
         } else {
-            echo "Fail!!!<br/><a href='searchAndRegister.php'>Return to Search and Register page</a>";
+            echo "Fail!!!<br/><a href='index.php'>Return to Search and Register page</a>";
         }
     }else{
         echo "Fail!!!<br/><a href='dropCour.php?id={$sId}''>Return to Drop Course page</a>";
