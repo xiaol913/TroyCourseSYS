@@ -14,6 +14,12 @@ checkLogined();
 <head>
     <meta charset="UTF-8">
     <title>Add Subject</title>
+    <link rel="stylesheet" href="css/details.css" type="text/css">
+    <link rel="stylesheet" href="css/nav.css" type="text/css">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE-edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/normalize.css" type="text/css" rel="stylesheet">
+    <link href="../css/font-awesome.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="css/backstage.css" type="text/css">
     <script src="js/formVerify.js" type="text/javascript"></script>
 </head>

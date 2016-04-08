@@ -40,6 +40,12 @@ if(!$rows){
 <head>
     <meta charset="UTF-8">
     <title>Courses List</title>
+    <link rel="stylesheet" href="css/details.css" type="text/css">
+    <link rel="stylesheet" href="css/nav.css" type="text/css">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE-edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/normalize.css" type="text/css" rel="stylesheet">
+    <link href="../css/font-awesome.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="css/backstage.css" type="text/css">
 </head>
 <body>
@@ -105,11 +111,11 @@ if(!$rows){
                     <input type="button" value="Edit" class="btn edit20x20" onclick="editCour(<?php echo $row['id']; ?>)">
                     <input type="button" value="Delete" class="btn del20x20" onclick="delCour(<?php echo $row['id']; ?>)">
 <!--                    详情-->
-                    <div id="div<?php echo $row['id']; ?>" style="position: absolute;top:0;left:20%;background-color:#e7e9ea;width: 60%;z-index:1; display: none;">
+                    <div id="div<?php echo $row['id']; ?>" style="position: absolute;top:0;left:0;background-color:#e7e9ea;width: 60%;z-index:1; display: none;">
                         <!--用来关闭显示-->
-                        <input type="button" value="Close" class="closeBtn24x24" onClick="div<?php echo $row['id']; ?>.style.display='none'" style="font-weight:bolder;">
+                        <input type="button-close" value="Close" class="closeBtn24x24" onClick="div<?php echo $row['id']; ?>.style.display='none'" style="font-weight:bolder;">
                         <div id="showDetail<?php echo $row['id'];?>">
-                        <table class="table" cellspacing="0" cellpadding="0">
+                        <table class="detailTable" cellspacing="0" cellpadding="0">
                             <caption>Course: <?php echo $row['courseName'];?></caption>
                             <tr>
                                 <td width="20%" align="right">ID</td>

@@ -5,113 +5,156 @@ checkLogined();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Troy Courses Management System</title>
+    <meta charset="utf-8"/>
+    <title>Side Menu</title>
+    <link rel="stylesheet" href="css/nav.css" type="text/css">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE-edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/normalize.css" type="text/css" rel="stylesheet">
+    <link href="../css/font-awesome.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="css/backstage.css" type="text/css">
+    <style>
+        body{overflow: hidden;}
+    </style>
 </head>
 <body>
 <!--头部框架嵌套-->
 <div>
-    <iframe src="header.php" frameborder="0" name="headerFrame" width="100%" height="106px" scrolling="no"></iframe>
+    <iframe src="header.php" frameborder="0" name="headerFrame" width="100%" height="129px" scrolling="no"></iframe>
 </div>
-<!--建立欢迎管理员信息栏，clearfix作用查看css-->
-<div class="operation_user clearfix">
-    <!--建立一个内部框架，并右浮动-->
-    <div class="link fr">
-        <b>Welcome,
+<!--中间嵌套区-->
+<div class="ifrPage">
+    <!--嵌套网页-->
+    <iframe src="main.php" frameborder="0" name="mainPage" id="mainPage"width="100%" height="50%" ></iframe>
+</div>
+<!--侧边导航-->
+<nav class="main-menu">
+    <div class="scrollBar" id="style-1">
+        <ul style="padding-left: 0px">
+            <li>
+                <a href="#">
+                    <i class="fa fa-sitemap fa-2x" style="padding-top:5px"></i>
+                    <span class="nav-text">Subjects Info</span>
+                </a>
+            </li>
+            <li class="darkerlishadow">
+                <a href="listSub.php" target="mainPage">
+                    <i class="fa"></i>
+                    <span class="nav-text"> List</span>
+                </a>
+            </li>
+            <li class="darkerlishadowdown">
+                <a href="addSub.php" target="mainPage">
+                    <i class="fa"></i>
+                    <span class="nav-text">Add </span>
+                </a>
+            </li>
+            <li class="">
+                <a href="#">
+                    <i class="fa fa-book fa-2x" style="padding-top:5px"></i>
+                    <span class="nav-text">Courses Info</span>
+                </a>
+            </li>
+            <li class="darkerlishadow">
+                <a href="listCour.php" target="mainPage">
+                    <i class="fa"></i>
+                    <span class="nav-text"> List</span>
+                </a>
+            </li>
+            <li class="darkerlishadowdown">
+                <a href="addCour.php" target="mainPage">
+                    <i class="fa"></i>
+                    <span class="nav-text"> Add </span>
+                </a>
+            </li>
+            <li class="">
+                <a href="#">
+                    <i class="fa fa-users fa-2x" style="padding-top:5px"></i>
+                    <span class="nav-text">Students Info</span>
+                </a>
+            </li>
+            <li class="darkerlishadow">
+                <a href="listStud.php" target="mainPage">
+                    <i class="fa"></i>
+                    <span class="nav-text">List</span>
+                </a>
+            </li>
+            <li class="darkerlishadowdown">
+                <a href="addStud.php" target="mainPage">
+                    <i class="fa"></i>
+                    <span class="nav-text">Add</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="#">
+                    <i class="fa fa-reddit-alien fa-2x" style="padding-top:5px"></i>
+                    <span class="nav-text">Professor Info</span>
+                </a>
+            </li>
+            <li class="darkerlishadow">
+                <a href="listProf.php" target="mainPage">
+                    <i class="fa"></i>
+                    <span class="nav-text"> List</span>
+                </a>
+            </li>
+            <li class="darkerlishadowdown">
+                <a href="addProf.php" target="mainPage">
+                    <i class="fa"></i>
+                    <span class="nav-text">Add </span>
+                </a>
+            </li>
+            <li class="">
+                <a href="#">
+                    <i class="fa fa-tasks fa-2x" style="padding-top:5px"></i>
+                    <span class="nav-text">Term Info</span>
+                </a>
+            </li>
+            <li class="darkerlishadow">
+                <a href="listTerm.php" target="mainPage">
+                    <i class="fa"></i>
+                    <span class="nav-text"> List</span>
+                </a>
+            </li>
+            <li class="darkerlishadowdown">
+                <a href="addTerm.php" target="mainPage">
+                    <i class="fa"></i>
+                    <span class="nav-text"> Add</span>
+                </a>
+            </li>
             <?php
-            if(isset($_SESSION['TroyCourSYSadminName'])){
-                echo $_SESSION['TroyCourSYSadminName'];
-            }elseif(isset($_COOKIE['TroyCourSYSadminName'])){
-                echo $_COOKIE['TroyCourSYSadminName'];
+            if(isset($_SESSION['TroyCourSYSadminId'])){
+                $userId=$_SESSION['TroyCourSYSadminId'];
+            }elseif(isset($_COOKIE['TroyCourSYSadminId'])){
+                $userId=$_COOKIE['TroyCourSYSadminId'];
             }
-            ?>
-        </b>&nbsp;&nbsp;<a href="index.php" class="homeBtn20x20"><span>Home</span></a><input type="button" class="backBtn20x20" onclick="history.go(-1)" value="Back"/><a href="doAdminAction.php?act=logout" class="logoutBtn16x16"><span>Logout</span></a>
+            //通过该ID查找管理员的level
+            $sql="select level from troy_admins where id=".$userId;
+            $serLvl=fetchOne($sql);
+            $lvl=$serLvl['level'];
+            if($lvl==1):
+                ?>
+            <li class="">
+                <a href="#">
+                    <i class="fa fa-user-secret fa-2x" style="padding-top:5px"></i>
+                    <span class="nav-text">Administrators</span>
+                </a>
+            </li>
+            <li class="darkerlishadow">
+                <a href="listAdmin.php" target="mainPage">
+                    <i class="fa"></i>
+                    <span class="nav-text">Admin List</span>
+                </a>
+            </li>
+                <li class="darkerlishadowdown">
+                    <a href="addAdmin.php" target="mainPage">
+                    <i class="fa"></i>
+                    <span class="nav-text">Add Admin</span>
+                </a>
+            </li>
+            <?php endif;?>
+        </ul>
     </div>
-</div>
-<!--开始建立主要框架-->
-<div class="content clearfix">
-    <!--右侧内容，主要内容，含嵌套网页-->
-    <div class="main">
-        <div class="cont">
-            <div class="title">Management System</div>
-            <div class="ifrPage">
-                <!--嵌套网页-->
-                <iframe src="main.php" frameborder="0" name="mainPage" scrolling="no" id="mainPage"width="100%" ></iframe>
-            </div>
-        </div>
-    </div>
-    <!--左侧内容，主要为菜单-->
-    <div class="menu">
-        <div class="cont">
-            <div class="title">Menu</div>
-            <ul class="mList">
-                <!--学科管理菜单-->
-                <li>
-                    <!--为管理菜单添加一个点击展开事件-->
-                    <a href="#" onclick="show('menu1','change1')"><span id="change1">+</span>Subjects Info</a>
-                    <dl id="menu1" style="display:none">
-                        <!--target是把url传给嵌套程序代码里-->
-                        <dd><a href="listSub.php" target="mainPage">Subjects List</a></dd>
-                        <dd><a href="addSub.php" target="mainPage">Add Subjects</a></dd>
-                    </dl>
-                </li>
-                <!--课程管理菜单-->
-                <li>
-                    <a href="#" onclick="show('menu2','change2')"><span id="change2">+</span>Courses Info</a>
-                    <dl id="menu2" style="display:none">
-                        <dd><a href="listCour.php" target="mainPage">Courses List</a></dd>
-                        <dd><a href="addCour.php" target="mainPage">Add Courses</a></dd>
-                    </dl>
-                </li>
-                <!--学生管理菜单-->
-                <li>
-                    <a href="#" onclick="show('menu3','change3')"><span id="change3">+</span>Students Info</a>
-                    <dl id="menu3" style="display:none">
-                        <dd><a href="listStud.php" target="mainPage">Students List</a></dd>
-                        <dd><a href="addStud.php" target="mainPage">Add Student</a></dd>
-                    </dl>
-                </li>
-                <!--导师管理菜单-->
-                <li>
-                    <a href="#" onclick="show('menu4','change4')"><span id="change4">+</span>Professor Info</a>
-                    <dl id="menu4" style="display:none">
-                        <dd><a href="listProf.php" target="mainPage">Professors List</a></dd>
-                        <dd><a href="addProf.php" target="mainPage">Add Professor</a></dd>
-                    </dl>
-                </li>
-<!--                学期管理菜单-->
-                <li>
-                    <a href="#" onclick="show('menu5','change5')"><span id="change5">+</span>Term Info</a>
-                    <dl id="menu5" style="display:none">
-                        <dd><a href="listTerm.php" target="mainPage">Term List</a></dd>
-                        <dd><a href="addTerm.php" target="mainPage">Term Professor</a></dd>
-                    </dl>
-                </li>
-                <!--管理员管理菜单，通过level判断是否显示-->
-                <li>
-                    <?php
-                    if(isset($_SESSION['TroyCourSYSadminId'])){
-                        $userId=$_SESSION['TroyCourSYSadminId'];
-                    }elseif(isset($_COOKIE['TroyCourSYSadminId'])){
-                        $userId=$_COOKIE['TroyCourSYSadminId'];
-                    }
-                    //通过该ID查找管理员的level
-                    $sql="select level from troy_admins where id=".$userId;
-                    $serLvl=fetchOne($sql);
-                    $lvl=$serLvl['level'];
-                    if($lvl==1):
-                    ?>
-                    <a href="#" onclick="show('menu6','change6')"><span id="change6">+</span>Administrators</a>
-                    <dl id="menu6" style="display:none">
-                        <dd><a href="listAdmin.php" target="mainPage">Admin List</a></dd>
-                        <dd><a href="addAdmin.php" target="mainPage">Add Admin</a></dd>
-                        <?php endif;?>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+</nav>
 <!--底部框架嵌套-->
 <div class="footer cilearfix">
     <p><span>Troy University, Troy, Alabama 36082 | </span><a href="tel:+18004145756">1-800-414-5756</a><span> | </span>
@@ -122,26 +165,7 @@ checkLogined();
         <i> © 1996-2016 Troy University </i>
     </p>
 </div>
-<script type="text/javascript">
-    //        菜单展开脚本
-    function show(fst,snd){
-        var menu = document.getElementById(fst);
-        var change = document.getElementById(snd);
-        //            菜单名+号变化
-        if(change.innerHTML=="+"){
-            change.innerHTML="-";
-        }else{
-            change.innerHTML="+";
-        }
-        //            展开菜单
-        if(menu.style.display=='none'){
-            menu.style.display='';
-        }else{
-            menu.style.display='none';
-        }
-    }
-
-    //    页面加载时加载的函数
+<script>
     window.onload = function () {
         window.setInterval("setIframeHeight()",200);
     }

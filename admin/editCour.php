@@ -31,10 +31,17 @@ print_r($scheInfo);*/
 <head>
     <meta charset="UTF-8">
     <title>Edit Course</title>
+    <link rel="stylesheet" href="css/details.css" type="text/css">
+    <link rel="stylesheet" href="css/nav.css" type="text/css">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE-edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/normalize.css" type="text/css" rel="stylesheet">
+    <link href="../css/font-awesome.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="css/backstage.css" type="text/css">
     <script src="js/formVerify.js" type="text/javascript"></script>
 </head>
 <body>
+<div>
 <form action="doAdminAction.php?act=editCour&id=<?php echo $id;?>" method="post" onsubmit="return FormCourCheck()" enctype="multipart/form-data">
     <table class="table" width="70%" border="1" cellpadding="5" cellspacing="0" bgcolor="#cccccc">
         <caption>Edit Course</caption>
@@ -190,6 +197,16 @@ print_r($scheInfo);*/
             <td colspan="2"><input type="submit" class="sub24x24" value="Submit"><input type="reset" class="res24x24"  value="Reset"/></td>
         </tr>
     </table>
+    <!--底部框架嵌套-->
+    <div class="footer" style="bottom: -200px;">
+        <p><span>Troy University, Troy, Alabama 36082 | </span><a href="tel:+18004145756">1-800-414-5756</a><span> | </span>
+            <a href="http://sos.troy.edu/" target="_blank">Emergency Information</a><span> | </span><a href="http://splash.troy.edu/feedback/" target="_blank">Send us your comments</a>
+            <span> | </span><a href="http://trojan.troy.edu/students/documents/TROY-Student-Complaint-Policy-and-Form.pdf" target="_blank">Student Complaints</a>
+            <span> | </span><a href="http://trojan.troy.edu/privacy-statement.html" target="_blank">Privacy Statement</a><span> | </span><a href="http://trojan.troy.edu/disclaimer.html" target="_blank">Read Our Disclaimer</a>
+            <span> | </span><a href="http://trojan.troy.edu/accreditation.html" target="_blank">Accreditation Statement</a><span> | </span><a href="http://splash.troy.edu/go-to/jobs/" target="_blank">Employment</a>
+            <i> © 1996-2016 Troy University </i>
+        </p>
+    </div>
 </form>
 </body>
 </html>
