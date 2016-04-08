@@ -24,6 +24,10 @@ $level=getLevelById($row['level']);
     <link href="css/animation.css" type="text/css" rel="stylesheet">
     <link href="css/font-awesome.css" type="text/css" rel="stylesheet">
     <link href="css/content.css" type="text/css" rel="stylesheet">
+    <style>
+        .table th:first-child {-moz-border-radius:0;-webkit-border-radius: 0;border-radius:  0;}
+        .table th:last-child {-moz-border-radius:0;-webkit-border-radius: 0;border-radius:  0;}
+    </style>
 </head>
 <body>
 <!--头部框架嵌套-->

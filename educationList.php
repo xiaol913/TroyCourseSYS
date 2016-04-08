@@ -209,6 +209,20 @@ echo "<br>??????????????><br>";*/
         </tfoot>
     </table>
 </div>
+<div class="st-container" style="height: 30px">
+    <!--        nav start-->
+    <input type="radio" name="radio-set" id="st-control-1" onclick="window.location.href='index.php'">
+    <a href="#st-panel-1">Home</a>
+    <input type="radio" name="radio-set" id="st-control-2" onclick="window.location.href='index.php'">
+    <a href="#st-panel-2">Academics</a>
+    <input type="radio" name="radio-set" id="st-control-3" onclick="window.location.href='index.php'">
+    <a href="#st-panel-3">Instructors</a>
+    <input type="radio" name="radio-set" id="st-control-4" onclick="window.location.href='index.php'">
+    <a href="#st-panel-4">Register</a>
+    <input type="radio" name="radio-set" id="st-control-5" onclick="window.location.href='index.php'">
+    <a href="#st-panel-5">Yourself</a>
+    <!--    nav end-->
+</div>
 <script type="text/javascript">
     //    排序框发生改变时运行的函数,在本页面返回一个order=val值
     function change(val){

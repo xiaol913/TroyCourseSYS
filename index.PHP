@@ -70,7 +70,7 @@ if(checkStudLogin()==false){
         <!--    nav end-->
         <!--    scroll start-->
         <div class="st-scroll">
-<!--            first section-->
+            <!--            first section-->
             <section class="st-panel-1" id="st-panel-1">
                 <div class="st-desc-red-r"></div><i class="fa fa-chevron-circle-right"></i>
                 <h2>Troy University Courses System</h2>
@@ -87,7 +87,7 @@ if(checkStudLogin()==false){
                     <div class="st-btn-4"><input type="button" id="st-control-2-4" onclick="window.location.href='doctorateList.php'"><a href="#" onclick="">Doctorate</a><i style="color:#fff" class="fa fa-university fa-5x"></i></div>
                 </div>
             </section>
-<!--            third section-->
+            <!--            third section-->
             <section class="st-panel-3" id="st-panel-3">
                 <div class="st-desc-red-r"></div><i class="fa fa-chevron-circle-right"></i>
                 <div class="st-desc-red-l"></div><i class="fa fa-chevron-circle-left"></i>
@@ -136,15 +136,16 @@ if(checkStudLogin()==false){
                     <div class="st-desc-white-r"></div><i class="fa fa-chevron-circle-right"></i>
                     <div class="st-desc-white-l"></div><i class="fa fa-chevron-circle-left"></i>
                     <div class="searchBox">
-                        <form class="searchForm" method="get" action="registerPage.php" enctype="multipart/form-data">
+                        <form class="searchForm" name="CourseSearchForm" method="get" action="registerPage.php" enctype="multipart/form-data">
                             <!--    标题-->
                             <div class="title">
                                 <h3>Search and Register for Sections</h3>
                             </div>
-                            <!--    学期和校区-->
+                            <!--        搜索内容-->
                             <div class="text">
-                                <span>Term:</span>
-                                <div class="bui_select">
+                                <!--    学期和校区-->
+                                <div class="selectArea">
+                                    <span>Term:</span>
                                     <select class="select" name="courseTerm">
                                         <option></option>
                                         <?php foreach ($termInfos as $termInfo):?>
@@ -152,8 +153,8 @@ if(checkStudLogin()==false){
                                         <?php endforeach;?>
                                     </select>
                                 </div>
-                                <span>Location:</span>
-                                <div class="bui_select">
+                                <div class="selectArea">
+                                    <span>Location:</span>
                                     <select class="select" name="courseLoca">
                                         <option></option>
                                         <option value="Troy">Troy</option>
@@ -161,11 +162,9 @@ if(checkStudLogin()==false){
                                         <option value="Phenix City">Phenix City</option>
                                     </select>
                                 </div>
-                            </div>
-                            <!--    学科和课程等级-->
-                            <div class="text">
-                                <span>Subject:</span>
-                                <div class="bui_select">
+                                <!--    学科和课程等级-->
+                                <div class="selectArea">
+                                    <span>Subject:</span>
                                     <select class="select" name="subjectId">
                                         <option></option>
                                         <?php foreach ($subInfos as $subInfo):?>
@@ -173,8 +172,8 @@ if(checkStudLogin()==false){
                                         <?php endforeach;?>
                                     </select>
                                 </div>
-                                <span>Course Level:</span>
-                                <div class="bui_select">
+                                <div class="selectArea">
+                                    <span>Course Level:</span>
                                     <select class="select" name="courseLevel">
                                         <option></option>
                                         <?php foreach ($levelInfos as $levelInfo):?>
@@ -182,11 +181,8 @@ if(checkStudLogin()==false){
                                         <?php endforeach;?>
                                     </select>
                                 </div>
-                            </div>
-                            <!--    meeting时间范围-->
-                            <div class="text">
-                                <span>Sections Meeting After:</span>
-                                <div class="bui_select">
+                                <div class="selectArea">
+                                    <span>Sections Meeting After:</span>
                                     <select class="select" name="courseStartTime">
                                         <option></option>
                                         <option value="5">5am</option>
@@ -209,9 +205,9 @@ if(checkStudLogin()==false){
                                         <option value="22">10pm</option>
                                     </select>
                                 </div>
-                                <span>Sections Ending Before:</span>
-                                <div class="bui_select">
-                                    <select class="select" name="courseEndTime">
+                                <div class="selectArea">
+                                    <span>Sections Ending Before:</span>
+                                    <select class="select timeT" name="courseEndTime">
                                         <option></option>
                                         <option value="5">5am</option>
                                         <option value="6">6am</option>
@@ -233,32 +229,84 @@ if(checkStudLogin()==false){
                                         <option value="22">10pm</option>
                                     </select>
                                 </div>
-                            </div>
-                            <!--    周一到周日-->
-                            <div class="text1">
-                                <label for="text1">Sun</label><input type="checkbox" name="day[sun]" value="sun">
-                                <label for="text1">Mon</label><input type="checkbox" name="day[mon]" value="mon">
-                                <label for="text1">Tue</label><input type="checkbox" name="day[tue]" value="tue">
-                                <label for="text1">Wed</label><input type="checkbox" name="day[wed]" value="wed">
-                                <label for="text1">Thu</label><input type="checkbox" name="day[thu]" value="thu">
-                                <label for="text1">Fri</label><input type="checkbox" name="day[fri]" value="fri">
-                                <label for="text1">Sat</label><input type="checkbox" name="day[sat]" value="sat">
-                            </div>
-                            <!--    课程keyword和教师名字-->
-                            <div class="text">
-                                <span>Course keywords:</span>
-                                <input type="text" class="search" name="courseSearch">
-                                <span>Instructor name keywords:</span>
-                                <input type="text" class="search" name="instructorSearch">
-                            </div>
-                            <div class="btn">
-                                <input type="submit"  class="sub24x24" value="Submit"/><input type="reset" class="res24x24"  value="Reset"/>
+                                <!--    周一到周日-->
+
+                                <div class="selectArea">
+                                    <div class="checkArea">
+                                        <span>Sun</span>
+                                        <div class="checkbox">
+                                            <input type="checkbox" name="day[sun]" id="sun" value="sun"><label for="sun"></label>
+                                        </div>
+                                    </div>
+                                    <div class="checkArea">
+                                        <span>Mon</span>
+                                        <div class="checkbox">
+                                            <input type="checkbox" name="day[mon]" id="mon" value="mon"><label for="mon"></label>
+                                        </div>
+                                    </div>
+                                    <div class="checkArea">
+                                        <span>Tue</span>
+                                        <div class="checkbox">
+                                            <input type="checkbox" name="day[tue]" id="tue" value="tue"><label for="tue"></label>
+                                        </div>
+                                    </div>
+                                    <div class="checkArea">
+                                        <span>Wed</span>
+                                        <div class="checkbox">
+                                            <input type="checkbox" name="day[wed]" id="wed" value="wed"><label for="wed"></label>
+                                        </div>
+                                    </div>
+                                    <div class="checkArea">
+                                        <span>Thu</span>
+                                        <div class="checkbox">
+                                            <input type="checkbox" name="day[thu]" id="thu" value="thu"><label for="thu"></label>
+                                        </div>
+                                    </div>
+                                    <div class="checkArea">
+                                        <span>Fri</span>
+                                        <div class="checkbox">
+                                            <input type="checkbox" name="day[fri]" id="fri" value="fri"><label for="fri"></label>
+                                        </div>
+                                    </div>
+                                    <div class="checkArea">
+                                        <span>Sat</span>
+                                        <div class="checkbox">
+                                            <input type="checkbox" name="day[sat]" id="sat" value="sat"><label for="sat"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="textArea">
+                                    <div class="textSearch">
+                                        <span>Course keywords:</span>
+                                        <input type="text" class="searchName" name="courseSearch">
+                                    </div>
+                                    <div class="textSearch">
+                                        <span>Instructor name keywords:</span>
+                                        <input type="text" class="searchName" name="instructorSearch">
+                                    </div>
+                                </div>
+                                <div class="searchBtn">
+                                    <a href="javascript:document.CourseSearchForm.submit()" onfocus="this.blur();" class="searchSubBtn">
+                                        <i class="fa fa-search"></i>Search
+                                        <span class="btnLine lineTop"></span>
+                                        <span class="btnLine lineRight"></span>
+                                        <span class="btnLine lineBottom"></span>
+                                        <span class="btnLine lineLeft"></span>
+                                    </a>
+                                    <a href="javascript:document.CourseSearchForm.reset()" onfocus="this.blur();" class="searchResBtn">
+                                        <i class="fa fa-times"></i>Reset
+                                        <span class="btnLine lineTop"></span>
+                                        <span class="btnLine lineRight"></span>
+                                        <span class="btnLine lineBottom"></span>
+                                        <span class="btnLine lineLeft"></span>
+                                    </a>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </section>
-<!--            fifth section-->
+            <!--            fifth section-->
             <section class="st-panel-5" id="st-panel-5">
                 <div class="st-desc-red-r"></div><i class="fa fa-chevron-circle-right"></i>
                 <div class="st-desc-red-l"></div><i class="fa fa-chevron-circle-left"></i>
@@ -270,15 +318,14 @@ if(checkStudLogin()==false){
                             echo $_COOKIE['TroyCourSYSstudentId'];
                         }
                         ?>'"><a href="#" onclick="">Your Info</a><i style="color:#a12638" class="fa fa-child fa-5x"></i></div>
-                    <div class="st-btn-6"><input type="button" id="st-control-5-2" ><a href="#" onclick="">Your Schedule</a><i style="color:#a12638" class="fa fa-calendar fa-5x"></i></div>
-                    <div class="st-btn-7"><input type="button" id="st-control-5-3" onclick="window.location.href='dropCour.php?id=<?php
+                    <div class="st-btn-6"><input type="button" id="st-control-5-2" onclick="window.location.href='dropCour.php?id=<?php
                         if(isset($_SESSION['TroyCourSYSstudentId'])){
                             echo $_SESSION['TroyCourSYSstudentId'];
                         }elseif(isset($_COOKIE['TroyCourSYSstudentId'])){
                             echo $_COOKIE['TroyCourSYSstudentId'];
                         }
-                        ?>'"><a href="#" onclick="">Drop Courses</a><i style="color:#a12638" class="fa fa-calendar-times-o fa-5x"></i></div>
-                    <div class="st-btn-8"><input type="button" id="st-control-5-4" onclick="window.location.href='studSetting.php?id=<?php
+                        ?>'"><a href="#" onclick="">Your Schedule</a><i style="color:#a12638" class="fa fa-calendar fa-5x"></i></div>
+                    <div class="st-btn-7"><input type="button" id="st-control-5-3" onclick="window.location.href='studSetting.php?id=<?php
                         if(isset($_SESSION['TroyCourSYSstudentId'])){
                             echo $_SESSION['TroyCourSYSstudentId'];
                         }elseif(isset($_COOKIE['TroyCourSYSstudentId'])){

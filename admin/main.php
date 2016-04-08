@@ -34,5 +34,4 @@ checkLogined();
             <td>Xiang Gao</td>
         </tr>
     </table>
-</body>
 </html>

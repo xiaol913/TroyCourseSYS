@@ -22,7 +22,7 @@ require_once "../include.php";
 </div>
 <br>
 <div class="login">
-    <form cellpadding="0" cellspacing="0" style="margin-top: 20px;margin-left:220px;width:240px" action="doAction.php?act=studLogin" method="post">
+    <form cellpadding="0" cellspacing="0" style="margin-top: 20px;margin-left:220px;width:240px" action="doAdminAction.php?act=login" method="post">
         <input type="text" placeholder="username" name="username"><br>
         <input type="password" placeholder="password" name="password"><br><br>
         <input type="text" name="verify" placeholder="verify"><br>
