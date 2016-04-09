@@ -1,0 +1,41 @@
+@import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+*{margin: 0;padding:0;font-family: 'Exo', sans-serif;}
+body{font-family: Georgia,Serif;background: #fff;font-weight: 400;font-size: 15px;color: #333;/*设置字体抗锯齿和光滑度*/-webkit-font-smoothing:antialiased;}
+a{text-decoration: none;color: #555;}
+li{list-style: none;}
+input,select,textarea{outline: none;border: none; background: none;}
+textarea{resize: none;}
+.fr{float:right}
+.fl{float:left}
+.clearfix:after,
+.clearfix:before{content: ""; display: table;}
+.clearfix:after{ clear: both}
+.clearfix{zoom:1;}
+
+/*头部*/
+.head{position:relative;height: 129px;width:100%; background:#a12638;overflow: hidden;z-index: 999999;font-family:"Josefin Slab","Myriad Pro",Arial,sans-serif;}
+.logo{width: 282px; height: 100%; background: url(../../img/logo-TROY.png) 10px center no-repeat;}
+.head_text{height: 100%; font-size:25px;line-height:129px ; color: #FFF; padding-right: 10px;}
+
+/*登录信息*/
+.operation_user{height:27px;font-size:14px;overflow: hidden;position: absolute;top:0;right:0%;margin-right:80px;}
+.link{line-height:27px;}
+.link span{padding: 0 2px;}
+.link input{padding: 0 2px;}
+.link a{padding: 0 10px;}
+
+/*导航区*/
+.st-container{width: 100%;height: 100%;position: absolute;left:0;bottom:0px;font-family:"Josefin Slab","Myriad Pro",Arial,sans-serif;}
+.st-container>input,.st-container>a{width: 20%;height: 34px;line-height:34px;position: fixed;bottom:0px;/*让光标形状变为手型，因为点击的是a 不是input*/cursor: pointer;}
+.st-container>input{opacity: 0;z-index: 1000;}
+.st-container>a{z-index: 10;font-weight: 700;font-size: 16px;background: #ddd;text-align: center;color:#A22638;text-shadow:1px 1px 1px rgba(151,24,64,0.2);}
+#st-control-1,#st-control-1 + a{left:0;}
+#st-control-2,#st-control-2 + a{left:20%;}
+#st-control-3,#st-control-3 + a{left:40%;}
+#st-control-4,#st-control-4 + a{left:60%;}
+#st-control-5,#st-control-5 + a{left:80%;}
+.st-container input:checked + a,.st-container input:checked:hover + a{background:#A22638;color:#FFF}/*选中之后的效果*/
+.st-container input:checked  + a:after{content: "";width: 0;height: 0;overflow: hidden;border:20px solid transparent;border-bottom-color: #A22638;position: absolute;left: 50%;margin-left: -20px;bottom:100%;margin-top: 34px;}
+.st-container input:hover + a{background: #a05948;color:#FFF}/*移动时的效果*/
