@@ -6,5 +6,4 @@
  * Time: 22:05
  */
 require_once 'include.php';
-checkLogined();
 verifyImage();
