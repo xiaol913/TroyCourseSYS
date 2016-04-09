@@ -161,9 +161,16 @@ print_r($scheInfo);*/
                         </td>
                     </tr>
                     <tr>
+                        <td>Available</td>
+                        <td>
+                            <input type="text" name="courseAvai" id="courseAvai" value="<?php echo $courInfo['courseAvai'];?>">
+                            <span style="color:#a12638;font-size:8px;"><li>(max 3 characters long)</li></span>
+                        </td>
+                    </tr>
+                    <tr>
                         <td>Capacity</td>
                         <td>
-                            <input type="number" name="courseCapa" id="courseCapa" value="<?php echo $courInfo['courseCapa'];?>">
+                            <input type="text" name="courseCapa" id="courseCapa" value="<?php echo $courInfo['courseCapa'];?>">
                             <span style="color:#a12638;font-size:8px;"><li>(max 3 characters long)</li></span>
                         </td>
                     </tr>
@@ -172,7 +179,7 @@ print_r($scheInfo);*/
                         <td>
                             <select name="courseTerm">
                                 <?php foreach ($termInfos as $termInfo):?>
-                                <option value="Fall Semester 2016" <?php echo ($courInfo['courseTerm']==$termInfo['id'])?"selected=selected":NULL;?>><?php echo $termInfo['termName'];?></option>
+                                <option value="<?php echo $termInfo['id'];?>" <?php echo ($courInfo['courseTerm']==$termInfo['id'])?"selected=selected":NULL;?>><?php echo $termInfo['termName'];?></option>
                                 <?php endforeach;?>
                             </select>
                         </td>
@@ -181,8 +188,8 @@ print_r($scheInfo);*/
                         <td>Status</td>
                         <td>
                             <select name="courseStat">
-                                <option value="open" <?php echo ($courInfo['courseStat']=="open")?"selected=selected":NULL;?>>open</option>
-                                <option value="close" <?php echo ($courInfo['courseStat']=="open")?"selected=selected":NULL;?>>close</option>
+                                <option value="1" <?php echo ($courInfo['courseStat']=="1")?"selected=selected":NULL;?>>Open</option>
+                                <option value="2" <?php echo ($courInfo['courseStat']=="2")?"selected=selected":NULL;?>>Close</option>
                         </td>
                     </tr>
                     <tr>
@@ -208,7 +215,7 @@ print_r($scheInfo);*/
                     <tr>
                         <td>Credits</td>
                         <td>
-                            <input type="number" name="courseCred" id="courseCred" value="<?php echo $courInfo['courseCred'];?>">
+                            <input type="text" name="courseCred" id="courseCred" value="<?php echo $courInfo['courseCred'];?>">
                             <span style="color:#a12638;font-size:8px;"><li>(1 characters long)</li></span>
                         </td>
                     </tr>
@@ -217,7 +224,7 @@ print_r($scheInfo);*/
                         <td>
                             <select name="courseLevel">
                                 <?php foreach ($levelInfos as $levelInfo):?>
-                                    <option value="Fall Semester 2016" <?php echo ($courInfo['courseLevel']==$levelInfo['id'])?"selected=selected":NULL;?>><?php echo $levelInfo['levelName'];?></option>
+                                    <option value="<?php echo $levelInfo['id'];?>" <?php echo ($courInfo['courseLevel']==$levelInfo['id'])?"selected=selected":NULL;?>><?php echo $levelInfo['levelName'];?></option>
                                 <?php endforeach;?>
                             </select>
                         </td>

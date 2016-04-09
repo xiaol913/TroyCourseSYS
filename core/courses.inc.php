@@ -89,7 +89,6 @@ function editCour($id){
     $arr=$_POST;
     $toCour=$arr;
     $scheInfo=getScheByCourId($toCour['courseId']);
-    $toCour['courseAvai']=$arr['courseCapa'];
     unset($toCour['day']);
     if($arr['day']['mon']){
         $toSche['mon']=$arr['courseId'];
@@ -132,6 +131,8 @@ function editCour($id){
         }else{
             echo "Fail!!!<br/><a href='listCour.php'>Return to Courses List</a>";
         }
+    }else{
+        echo "Fail!!!<br/><a href='listCour.php'>Return to Courses List</a>";
     }
     return;
 }

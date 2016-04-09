@@ -180,8 +180,8 @@ if(!$levelInfos){
                     <td>Status</td>
                     <td>
                         <select name="courseStat">
-                            <option value="open">open</option>
-                            <option value="close">close</option>
+                            <option value="1">Open</option>
+                            <option value="2">Close</option>
                     </td>
                 </tr>
                 <tr>

@@ -23,6 +23,9 @@ function register($cId,$sId){
         echo "This course can not be register!!<br/><a href='index.php'>Return to Home page</a>";
         exit;
     }
+    if($newNum==0){
+        $courArr['courseStat']=2;
+    }
     $courArr['courseAvai']=$newNum;
     if(insert("troy_register",$arr)){
         if(update("troy_courses",$courArr,$where)){
@@ -60,6 +63,9 @@ function drop($cId,$sId){
     foreach ($res as $num)
         $newNum=$num+1;
     $courArr['courseAvai']=$newNum;
+    if($newNum>=0){
+        $courArr['courseStat']=1;
+    }
     if(delete("troy_register",$where)) {
         if (update("troy_courses", $courArr, $whereCour)) {
             echo "Successful!!!<br/><a href='dropCour.php?id={$sId}'>Return to Drop Course page</a>";

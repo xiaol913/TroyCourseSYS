@@ -144,7 +144,7 @@ function courIdCheck(courId){
  * @returns {boolean}
  */
 function courNameCheck(courName){
-    var re_cha = /[^a-zA-Z]/g;
+    var re_cha = /[^a-zA-Z\s]/g;
     if(courName.value==""){
         alert("Please enter course name!!!");
         return false;
@@ -177,10 +177,11 @@ function capaCheck(capaValue){
  * @returns {boolean}
  */
 function credCheck(credNum){
+    var re_num=/[^0-9]/g;
     if(credNum.value==""){
         alert("please enter credit!!!");
         return false;
-    }else if(credNum.value.length>1){
+    }else if(credNum.value.length!=1||re_num.test(credNum.value)){
         alert("Credit is invalid!!!");
         return false;
     }

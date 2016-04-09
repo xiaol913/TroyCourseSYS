@@ -61,7 +61,7 @@ if(checkStudLogin()==false){
                                 echo $_SESSION['TroyCourSYSstudentId'];
                             }elseif(isset($_COOKIE['TroyCourSYSstudentId'])){
                                 echo $_COOKIE['TroyCourSYSstudentId'];
-                            }?>)"><i class="fa fa-registered"></i>Register</a>
+                            }?>,<?php echo $row['courseStat']; ?>)"><i class="fa fa-registered"></i>Register</a>
                             <!--                    详情-->
                             <div id="<?php echo $row['id']; ?>" style="position: absolute;top:0;left:0;background-color:#e7e9ea;width: 60%;z-index:1; display: none;">
                                 <div id="showDetail<?php echo $row['id'];?>">
@@ -97,7 +97,7 @@ if(checkStudLogin()==false){
                                         </tr>
                                         <tr>
                                             <td width="20%" align="right">Status</td>
-                                            <td><?php echo $row['courseStat'];?></td>
+                                            <td><?php if($row['courseStat']==1){echo "Open";}else{echo "Close";};?></td>
                                         </tr>
                                         <tr>
                                             <td width="20%" align="right">Available/Capacity</td>
@@ -182,9 +182,13 @@ if(checkStudLogin()==false){
         </div>
         <script>
 //            注册
-            function register(cId,sId) {
-                if(window.confirm("Are you sure?")){
-                    window.location="doAction.php?act=register&cId="+cId+"&sId="+sId;
+            function register(cId,sId,status) {
+                if(status==1){
+                    if(window.confirm("Are you sure?")){
+                        window.location="doAction.php?act=register&cId="+cId+"&sId="+sId;
+                    }
+                }else{
+                    alert("This course is closed!!");
                 }
             }
             //    显示详情

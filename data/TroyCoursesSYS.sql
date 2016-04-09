@@ -68,7 +68,7 @@ CREATE TABLE `troy_courses` (
   `courseAvai` int unsigned NOT NULL,
   `courseCapa` int unsigned NOT NULL,
   `courseTerm` int(10) NOT NULL,
-  `courseStat` varchar(45) NOT NULL,
+  `courseStat` int(10) NOT NULL,
   `courseLoca` varchar(45) NOT NULL,
   `courseDesc` TEXT NOT NULL,
   `courseCred` decimal(10,2) NOT NULL,
@@ -81,9 +81,9 @@ CREATE TABLE `troy_courses` (
 SET character_set_client = @saved_cs_client;
 LOCK TABLES `troy_courses` WRITE;
 ALTER TABLE `troy_courses` DISABLE KEYS;
-INSERT INTO troy_courses (courseAvai,courseName,courseId,subjectId,courseStartTime,courseEndTime,courseCapa,courseTerm,courseStat,courseLoca,courseDesc,courseCred,courseLevel,courseProfId) VALUES ('30','Advanced Programming I','2265','1','11','12','30','3','open','Troy','Provides student the opportunity to gain experience and training in an additional high-level language. The course focuses on advanced topics including objects, structures, applets, graphics, exception handling, files, and streaming.','3','1','1');
-INSERT INTO troy_courses (courseAvai,courseName,courseId,subjectId,courseStartTime,courseEndTime,courseCapa,courseTerm,courseStat,courseLoca,courseDesc,courseCred,courseLevel,courseProfId) VALUES ('30','Fundamentals of Algebra','1100','2','17','18','30','3','open','Troy','Topics include integer and rational arithmetic, linear equations, inequalities, integer exponents, polynomials and factoring, rational expression. Prerequisite: Placement or a grade of C or better in MTH 0096. Note: This course is for institutional credit only and will not be used in meeting degree requirements. This course will not substitute for any general studies requirement.','3','1','2');
-INSERT INTO troy_courses (courseAvai,courseName,courseId,subjectId,courseStartTime,courseEndTime,courseCapa,courseTerm,courseStat,courseLoca,courseDesc,courseCred,courseLevel,courseProfId) VALUES ('30','Introductory Spanish II','1142','3','8','9','30','3','open','Troy','Introduction to the Spanish language and cultures.','3','1','3');
+INSERT INTO troy_courses (courseAvai,courseName,courseId,subjectId,courseStartTime,courseEndTime,courseCapa,courseTerm,courseStat,courseLoca,courseDesc,courseCred,courseLevel,courseProfId) VALUES ('30','Advanced Programming I','2265','1','11','12','30','3','1','Troy','Provides student the opportunity to gain experience and training in an additional high-level language. The course focuses on advanced topics including objects, structures, applets, graphics, exception handling, files, and streaming.','3','1','1');
+INSERT INTO troy_courses (courseAvai,courseName,courseId,subjectId,courseStartTime,courseEndTime,courseCapa,courseTerm,courseStat,courseLoca,courseDesc,courseCred,courseLevel,courseProfId) VALUES ('30','Fundamentals of Algebra','1100','2','17','18','30','3','1','Troy','Topics include integer and rational arithmetic, linear equations, inequalities, integer exponents, polynomials and factoring, rational expression. Prerequisite: Placement or a grade of C or better in MTH 0096. Note: This course is for institutional credit only and will not be used in meeting degree requirements. This course will not substitute for any general studies requirement.','3','1','2');
+INSERT INTO troy_courses (courseAvai,courseName,courseId,subjectId,courseStartTime,courseEndTime,courseCapa,courseTerm,courseStat,courseLoca,courseDesc,courseCred,courseLevel,courseProfId) VALUES ('30','Introductory Spanish II','1142','3','8','9','30','3','1','Troy','Introduction to the Spanish language and cultures.','3','1','3');
 ALTER TABLE `troy_courses` ENABLE KEYS;
 UNLOCK TABLES;
 /*添加课程表 done*/

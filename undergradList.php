@@ -143,7 +143,7 @@ echo "<br>??????????????><br>";*/
                                 </tr>
                                 <tr>
                                     <td width="20%" align="right">Status</td>
-                                    <td><?php echo $row['courseStat'];?></td>
+                                    <td><?php if($row['courseStat']==1){echo "Open";}else{echo "Close";};?></td>
                                 </tr>
                                 <tr>
                                     <td width="20%" align="right">Available/Capacity</td>
