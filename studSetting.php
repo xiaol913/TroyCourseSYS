@@ -15,6 +15,9 @@ $levelInfos=getAllLevel();
 $row=fetchOne($sql);
 $major=getSubById($row['sMajorId']);
 $level=getLevelById($row['level']);
+if(checkStudLogin()==false){
+    alertMes("Please Login!!!","login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -93,7 +96,7 @@ $level=getLevelById($row['level']);
     <a href="#st-panel-3">Instructors</a>
     <input type="radio" name="radio-set" id="st-control-4" onclick="window.location.href='index.php'">
     <a href="#st-panel-4">Register</a>
-    <input type="radio" name="radio-set" id="st-control-5" onclick="window.location.href='index.php'">
+    <input type="radio" name="radio-set" id="st-control-5" checked="checked" onclick="window.location.href='index.php'">
     <a href="#st-panel-5">Yourself</a>
     <!--    nav end-->
 </div>

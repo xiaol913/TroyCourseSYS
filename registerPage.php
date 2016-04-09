@@ -8,7 +8,7 @@
 require_once "include.php";
 $rows=search1();
 if(checkStudLogin()==false){
-    alertMes("Please Login!!!","index.php");
+    alertMes("Please Login!!!","login.php");
 }
 ?>
 <!DOCTYPE html>
@@ -57,17 +57,15 @@ if(checkStudLogin()==false){
                         <td><?php echo $row['subName']; ?></td>
                         <!--                    按钮-->
                         <td align="center">
-                            <input type="button" value="Detail" class="btn detail20x20" onclick="div<?php echo $row['id']; ?>.style.display=''"><input type="button" value="Register" class="btn detail20x20" onclick="register(<?php echo $row['courseId']; ?>,<?php if(isset($_SESSION['TroyCourSYSstudentId'])){
+                            <a href="javascript:showDetail(<?php echo $row['id']; ?>)"><i class="fa fa-list-alt"></i>Detail</a>&nbsp;&nbsp;<a href="javascript:register(<?php echo $row['courseId']; ?>,<?php if(isset($_SESSION['TroyCourSYSstudentId'])){
                                 echo $_SESSION['TroyCourSYSstudentId'];
                             }elseif(isset($_COOKIE['TroyCourSYSstudentId'])){
                                 echo $_COOKIE['TroyCourSYSstudentId'];
-                            }?>)">
+                            }?>)"><i class="fa fa-registered"></i>Register</a>
                             <!--                    详情-->
-                            <div id="div<?php echo $row['id']; ?>" style="position: absolute;top:0;left:20%;background-color:#e7e9ea;width: 60%;z-index:1; display: none;">
-                                <!--用来关闭显示-->
-                                <input type="button" value="Close" class="closeBtn24x24" onClick="div<?php echo $row['id']; ?>.style.display='none'" style="font-weight:bolder;">
+                            <div id="<?php echo $row['id']; ?>" style="position: absolute;top:0;left:0;background-color:#e7e9ea;width: 60%;z-index:1; display: none;">
                                 <div id="showDetail<?php echo $row['id'];?>">
-                                    <table class="table" cellspacing="0" cellpadding="0">
+                                    <table class="detailTable" cellspacing="0" cellpadding="0">
                                         <caption>Course: <?php echo $row['courseName'];?></caption>
                                         <tr>
                                             <td width="20%" align="right">ID</td>
@@ -83,6 +81,7 @@ if(checkStudLogin()==false){
                                         </tr>
                                         <tr>
                                             <td width="20%" align="right">Time</td>
+                                            <!--                                得到星期的函数-->
                                             <td><?php
                                                 $scheInfos=getScheByCourId($row['courseId']);
                                                 foreach ($scheInfos as $key=> $scheInfo){
@@ -153,6 +152,11 @@ if(checkStudLogin()==false){
                                             <td width="20%" align="right">Description</td>
                                             <td><?php echo $row['courseDesc'];?></td>
                                         </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <!--用来关闭显示-->
+                                                <a href="javascript:closeDetail(<?php echo $row['id']; ?>)"><i class="fa fa-times"></i>Close</a>
+                                        </tr>
                                     </table>
                                 </div>
                             </div>
@@ -170,17 +174,28 @@ if(checkStudLogin()==false){
             <a href="#st-panel-2">Academics</a>
             <input type="radio" name="radio-set" id="st-control-3" onclick="window.location.href='index.php'">
             <a href="#st-panel-3">Instructors</a>
-            <input type="radio" name="radio-set" id="st-control-4" onclick="window.location.href='index.php'">
+            <input type="radio" name="radio-set" id="st-control-4" checked="checked" onclick="window.location.href='index.php'">
             <a href="#st-panel-4">Register</a>
             <input type="radio" name="radio-set" id="st-control-5" onclick="window.location.href='index.php'">
             <a href="#st-panel-5">Yourself</a>
             <!--    nav end-->
         </div>
         <script>
+//            注册
             function register(cId,sId) {
                 if(window.confirm("Are you sure?")){
                     window.location="doAction.php?act=register&cId="+cId+"&sId="+sId;
                 }
+            }
+            //    显示详情
+            function showDetail(id) {
+                var detailTable = document.getElementById(id);
+                detailTable.style.display="";
+            }
+            //    关闭详情
+            function closeDetail(id) {
+                var detailTable = document.getElementById(id);
+                detailTable.style.display="none";
             }
         </script>
 </body>

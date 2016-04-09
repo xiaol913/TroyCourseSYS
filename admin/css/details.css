@@ -15,7 +15,7 @@ textarea{resize: none;}
 .clearfix{zoom:1;}
 
 /*表格格式*/
-.detailTable {font-size: 15px;font-family:"Josefin Slab","Myriad Pro",Arial,sans-serif;background:#fefefe;border-collapse:collapse;width:70%;height:70%;margin:5% auto;border-radius:10px;-webkit-border-radius:10px;-moz-border-radius:10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);-moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);color:#a12638;position: absolute;top:0;left:5%}
+.detailTable {font-size: 15px;font-family:"Josefin Slab","Myriad Pro",Arial,sans-serif;background:#fefefe;border-collapse:collapse;width:70%;height:70%;margin:5% auto;border-radius:10px;-webkit-border-radius:10px;-moz-border-radius:10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);-moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);color:#a12638;position: absolute;top: 90px;left:5%}
 .detailTable caption {color: #a12638;padding-bottom: 5px;font-size: 20px;font-weight: bold}
 .detailTable th, .table td{padding:3px 5px 3px;text-align:left;}
 .detailTable tr{-o-transition: all 0.1s ease-in-out;-webkit-transition: all 0.1s ease-in-out;-moz-transition: all 0.1s ease-in-out;-ms-transition: all 0.1s ease-in-out;transition: all 0.1s ease-in-out;}

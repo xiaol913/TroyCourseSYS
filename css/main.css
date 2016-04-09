@@ -43,16 +43,8 @@ textarea{resize: none;}
 
 
 /*按钮图片样式*/
-.loginBtn64x64{background: url(../admin/img/icon/loginBtn64x64.png) no-repeat left center;width: 130px;height: 34px;}
-.closeBtn24x24{background: url(../admin/img/icon/closeBtn24x24.png) no-repeat left center;padding-left:30px;width: 80px;height: 34px;}
 .sub24x24{background: url(../admin/img/icon/submitBtn24x24.png) no-repeat left center;padding-left:25px;width: 70px;height: 24px;}
 .res24x24{background: url(../admin/img/icon/resetBtn24x24.png) no-repeat left center;padding-left:25px;width: 70px;height: 24px;margin-left: 10px}
-.detail20x20{background: url(../admin/img/icon/detailBtn20x20.png) no-repeat left center;padding-left:20px;width: 65px;height: 20px;}
-.backBtn20x20{background: url(../admin/img/icon/goBack20x20.png) no-repeat left center;padding-top:5px;width: 65px;height: 20px;}
-.homeBtn20x20{background: url(../admin/img/icon/homePage20x20.png) no-repeat left center;padding-top:5px;width: 65px;height: 20px;}
-.closeMenu16x16{background: url(../img/icon/closeMenu16x16.png) no-repeat left center;width: 20px;height: 20px;}
-.logoutBtn16x16{background: url(../admin/img/icon/logoutBtn16x16.png) no-repeat left center;padding-top:5px;width: 65px;height: 20px;}
-.loginBtn16x16{background: url(../admin/img/icon/loginBtn16x16.png) no-repeat left center;padding-top:5px;width: 65px;height: 20px;}
 
 /*表格格式*/
 table {font-size: 15px;font-family:"Josefin Slab","Myriad Pro",Arial,sans-serif;background:#fefefe;border-collapse:collapse;width:70%;height:70%;margin:5% auto;border-radius:10px;-webkit-border-radius:10px;-moz-border-radius:10px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);-moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);overflow: auto;color:#a12638;}

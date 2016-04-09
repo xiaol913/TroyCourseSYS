@@ -14,6 +14,7 @@
  * @param string $sep
  * @return string
  */
+
 function showPage($page,$totalPage,$where=null,$sep="&nbsp;"){
     $where=($where==null)?null:"&".$where;
     $url = $_SERVER ['PHP_SELF'];

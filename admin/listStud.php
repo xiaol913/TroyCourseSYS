@@ -40,91 +40,137 @@ if(!$rows){
 <head>
     <meta charset="UTF-8">
     <title>Students List</title>
-    <link rel="stylesheet" href="css/backstage.css">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE-edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/normalize.css" type="text/css" rel="stylesheet">
+    <link href="css/main.css" type="text/css" rel="stylesheet">
+    <link href="css/content.css" type="text/css" rel="stylesheet">
+    <link href="../css/font-awesome.css" type="text/css" rel="stylesheet">
+    <link href="css/animation.css" type="text/css" rel="stylesheet">
+    <link href="css/backstage.css" type="text/css" rel="stylesheet">
+    <style>
+        body{overflow: hidden;}
+    </style>
 </head>
 <body>
-<!--首先将整个页面编辑为一个大框体-->
-<div class="details">
-    <!--建立头部-->
-    <div class="details_operation clearfix">
-        <!--        添加按钮-->
-        <div class="additionBtn fl">
-            <input type="button" value="Addition" class="add add48x48" onclick="addStud()">
-        </div>
-        <!--            右部排序以及搜索-->
-        <div class="fr">
-            <!--                排序-->
-            <div class="text">
-                <span>Sort by</span>
-                <div class="bui_select">
-                    <!--                        改变事件，传给一个脚本函数-->
-                    <select id="" class="select" onchange="change(this.value)">
-                        <!--                            默认给一个值为NULL的选择-->
-                        <option>-select-</option>
-                        <!--                            根据ID排序,数据库里为id-->
-                        <option value="sId asc">Id: Low to High</option>
-                        <option value="sId desc">Id: High to Low</option>
-                        <!--                            根据名称排序，数据库里为subName-->
-                        <option value="sFirstName asc">Name: A to Z</option>
-                        <option value="sFirstName desc">Name: Z to A</option>
-                    </select>
-                </div>
-            </div>
-            <!--                搜索-->
-            <div class="text">
-                <span>Search By Name:</span>
-                <!--                    给搜索text条添加一个按回车的事件-->
-                <input type="text" value="" class="search" id="search" onkeypress="search()">
-            </div>
+<!--head-->
+<div class="head">
+    <!--建立logo，fl为CSS左浮动-->
+    <div class="logo fl"><a href="#"></a></div>
+    <!--建立头部右边区域文字，并fr右浮动-->
+    <div class="operation_user fr">
+        <div class="link">
+            <b style="color:#fff">Welcome,
+                <?php
+                if(isset($_SESSION['TroyCourSYSadminName'])){
+                    echo $_SESSION['TroyCourSYSadminName'];
+                }elseif(isset($_COOKIE['TroyCourSYSadminName'])){
+                    echo $_COOKIE['TroyCourSYSadminName'];
+                }
+                ?>
+            </b>&nbsp;&nbsp;<a href="index.php" style="color:#fff" class="" ><i class="fa fa-home"></i><span>Home</span></a><a href="#" class="" onclick="history.go(-1)" style="color:#fff"><i class="fa fa-reply"></i><span>Back</span></a><a href="doAdminAction.php?act=logout" class="" style="color:#fff"><i class="fa fa-power-off"></i><span>Logout</span></a>
         </div>
     </div>
-    <!--        建立表格-->
-    <table class="table" cellpadding="0" cellspacing="0">
-        <!--靠左显示页面名字-->
-        <caption>Students List</caption>
-        <!--            表头-->
-        <thead>
-        <tr>
-            <th width="5%">Id</th>
-            <th width="5%">username</th>
-            <th width="20%">Name</th>
-            <th width="10%">BTD</th>
-            <th width="25%">Address</th>
-            <th width="15%">E-mail</th>
-            <th width="5%">Phone #</th>
-            <th width="15%">Major</th>
-            <th width="10%">Level</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <!--            表格主体-->
-        <tbody>
-        <!--            内容部分-->
-        <?php foreach($rows as $row):?>
-            <tr>
-                <td><?php echo $row['sId']; ?></td>
-                <td><?php echo $row['username']; ?></td>
-                <td><?php echo $row['sFirstName']." ".$row['sLastName']; ?></td>
-                <td><?php echo $row['sBTD']; ?></td>
-                <td><?php echo $row['sAddress']; ?></td>
-                <td><?php echo $row['sEmail']; ?></td>
-                <td><?php echo $row['phoneNum']; ?></td>
-                <td><?php echo $row['subShortName']."--".$row['subName']; ?></td>
-                <td><?php echo $row['levelName']; ?></td>
-                <!--                    修改按钮添加editSub()函数,删除添加delSub()-->
-                <td align="center"><input type="button" value="Edit" class="btn edit20x20" onclick="editStud(<?php echo $row['sId']; ?>)"><input type="button" value="Delete" class="btn del20x20" onclick="delStud(<?php echo $row['sId']; ?>)"></td>
-            </tr>
-        <?php endforeach;?>
-        </tbody>
-        <tfoot>
-        <!--            页码部分-->
-        <?php if($totalRows>$pageSize):?>
-            <tr>
-                <td colspan="10"><?php echo showPage($page,$totalPage,"keywords={$keywords}&order={$order}");?></td>
-            </tr>
-        <?php endif;?>
-        </tfoot>
-    </table>
+</div>
+<!--main page-->
+<div class="container">
+    <div class="st-container">
+        <!--        nav start-->
+        <input type="radio" name="radio-set" id="st-control-1" onclick="window.location.href='index.php'">
+        <a href="#st-panel-1">Home</a>
+        <input type="radio" name="radio-set" id="st-control-2" onclick="window.location.href='index.php'">
+        <a href="#st-panel-2">Academics</a>
+        <input type="radio" name="radio-set" id="st-control-3" checked="checked" onclick="window.location.href='index.php'">
+        <a href="#st-panel-3">Personnel</a>
+        <input type="radio" name="radio-set" id="st-control-4" onclick="window.location.href='index.php'">
+        <a href="#st-panel-4">Term</a>
+        <input type="radio" name="radio-set" id="st-control-5" onclick="window.location.href='index.php'">
+        <a href="#st-panel-5">Administrators</a>
+        <!--    nav end-->
+<!--首先将整个页面编辑为一个大框体-->
+        <div class="details">
+            <!--建立头部-->
+            <div class="details_operation clearfix">
+                <!--        添加按钮-->
+                <div class="additionBtn fl">
+                    <input type="button" value="Addition" class="add add48x48" onclick="addStud()">
+                </div>
+                <!--            右部排序以及搜索-->
+                <div class="fr">
+                    <!--                排序-->
+                    <div class="text">
+                        <span>Sort by</span>
+                        <div class="bui_select">
+                            <!--                        改变事件，传给一个脚本函数-->
+                            <select id="" class="select" onchange="change(this.value)">
+                                <!--                            默认给一个值为NULL的选择-->
+                                <option>-select-</option>
+                                <!--                            根据ID排序,数据库里为id-->
+                                <option value="sId asc">Id: Low to High</option>
+                                <option value="sId desc">Id: High to Low</option>
+                                <!--                            根据名称排序，数据库里为subName-->
+                                <option value="sFirstName asc">Name: A to Z</option>
+                                <option value="sFirstName desc">Name: Z to A</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--                搜索-->
+                    <div class="text">
+                        <span>Search By Name:</span>
+                        <!--                    给搜索text条添加一个按回车的事件-->
+                        <input type="text" value="" class="search" id="search" onkeypress="search()">
+                    </div>
+                </div>
+            </div>
+            <!--        建立表格-->
+            <table class="table" cellpadding="0" cellspacing="0">
+                <!--靠左显示页面名字-->
+                <caption>Students List</caption>
+                <!--            表头-->
+                <thead>
+                <tr>
+                    <th width="5%">Id</th>
+                    <th width="5%">username</th>
+                    <th width="20%">Name</th>
+                    <th width="10%">BTD</th>
+                    <th width="25%">Address</th>
+                    <th width="15%">E-mail</th>
+                    <th width="5%">Phone #</th>
+                    <th width="15%">Major</th>
+                    <th width="10%">Level</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <!--            表格主体-->
+                <tbody>
+                <!--            内容部分-->
+                <?php foreach($rows as $row):?>
+                    <tr>
+                        <td><?php echo $row['sId']; ?></td>
+                        <td><?php echo $row['username']; ?></td>
+                        <td><?php echo $row['sFirstName']." ".$row['sLastName']; ?></td>
+                        <td><?php echo $row['sBTD']; ?></td>
+                        <td><?php echo $row['sAddress']; ?></td>
+                        <td><?php echo $row['sEmail']; ?></td>
+                        <td><?php echo $row['phoneNum']; ?></td>
+                        <td><?php echo $row['subShortName']."--".$row['subName']; ?></td>
+                        <td><?php echo $row['levelName']; ?></td>
+                        <!--                    修改按钮添加editSub()函数,删除添加delSub()-->
+                        <td align="center"><a href="javascript:editStud(<?php echo $row['sId']; ?>)"><i class="fa fa-pencil-square-o"></i>Edit</a>&nbsp;&nbsp;<a href="javascript:delStud(<?php echo $row['sId']; ?>)"><i class="fa fa-trash-o"></i>Delete</a></td>
+                    </tr>
+                <?php endforeach;?>
+                </tbody>
+                <tfoot>
+                <!--            页码部分-->
+                <?php if($totalRows>$pageSize):?>
+                    <tr>
+                        <td colspan="10"><?php echo showPage($page,$totalPage,"keywords={$keywords}&order={$order}");?></td>
+                    </tr>
+                <?php endif;?>
+                </tfoot>
+            </table>
+        </div>
+    </div>
 </div>
 
 <script type="text/javascript">

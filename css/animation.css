@@ -309,16 +309,16 @@
 }
 /*panel-5动画*/
 #st-control-5:checked ~ .st-scroll #st-panel-5 a{
-    -webkit-animation:moveRight 2s ease-in-out 0.2s backwards;
-    -moz-animation:moveRight 2s ease-in-out 0.2s backwards;
-    -o-animation:moveRight 2s ease-in-out 0.2s backwards;
-    -ms-animation:moveRight 2s ease-in-out 0.2s backwards;
-    animation:moveRight 2s ease-in-out 0.2s backwards;
+    -webkit-animation:moveUp 2s ease-in-out 0.2s backwards;
+    -moz-animation:moveUp 2s ease-in-out 0.2s backwards;
+    -o-animation:moveUp 2s ease-in-out 0.2s backwards;
+    -ms-animation:moveUp 2s ease-in-out 0.2s backwards;
+    animation:moveUp 2s ease-in-out 0.2s backwards;
 }
-#st-control-5:checked ~ .st-scroll #st-panel-5 a>i{
-    -webkit-animation:moveLeft 4s ease-in-out 0.2s backwards;
-    -moz-animation:moveLeft 4s ease-in-out 0.2s backwards;
-    -o-animation:moveLeft 4s ease-in-out 0.2s backwards;
-    -ms-animation:moveLeft 4s ease-in-out 0.2s backwards;
-    animation:moveLeft 4s ease-in-out 0.2s backwards;
+#st-control-5:checked ~ .st-scroll #st-panel-5 a + i{
+    -webkit-animation:moveDown 2s ease-in-out 0.2s backwards;
+    -moz-animation:moveDown 2s ease-in-out 0.2s backwards;
+    -o-animation:moveDown 2s ease-in-out 0.2s backwards;
+    -ms-animation:moveDown 2s ease-in-out 0.2s backwards;
+    animation:moveDown 2s ease-in-out 0.2s backwards;
 }

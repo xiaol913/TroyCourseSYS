@@ -23,6 +23,9 @@ $offset=($page-1)*$pageSize;
 $sql="select c.id,c.courseName,c.courseId,c.subjectId,c.courseStartTime,c.courseEndTime,c.courseAvai,c.courseCapa,c.courseTerm,c.courseStat,c.courseLoca,c.courseDesc,c.courseProfId,c.courseCred,c.courseLevel,p.profFirstName,p.profLastName,p.profEmail,p.profDesc,p.profPhoneNum,s.subShortName,s.subName,l.levelName,t.termName from troy_courses as c left join troy_subjects s on c.subjectId=s.id left join troy_professors as p on c.courseProfId=p.id LEFT JOIN troy_level as l on c.courseLevel=l.id LEFT JOIN troy_term as t on c.courseTerm=t.id WHERE c.courseLevel= 1 {$where} {$orderBy} limit {$offset},{$pageSize}";
 $rows=fetchAll($sql);
 
+if(checkStudLogin()==false){
+    alertMes("Please Login!!!","login.php");
+}
 if(!$rows){
     alertMes("No Data!!!","main.php");
 }
@@ -104,13 +107,11 @@ echo "<br>??????????????><br>";*/
                 <td><?php echo $row['subName']; ?></td>
                 <!--详情按钮-->
                 <td align="center">
-                    <input type="button" value="Detail" class="btn detail20x20" onclick="div<?php echo $row['id']; ?>.style.display=''">
+                    <a href="javascript:showDetail(<?php echo $row['id']; ?>)"><i class="fa fa-list-alt"></i>Detail</a>
                    <!--                    详情-->
-                    <div id="div<?php echo $row['id']; ?>" style="position: absolute;top:0;left:20%;background-color:#e7e9ea;width: 60%;z-index:1; display: none;">
-                        <!--用来关闭显示-->
-                        <input type="button" value="Close" class="closeBtn24x24" onClick="div<?php echo $row['id']; ?>.style.display='none'" style="font-weight:bolder;">
+                    <div id="<?php echo $row['id']; ?>" style="position: absolute;top:0;left:0;background-color:#e7e9ea;width: 60%;z-index:1; display: none;">
                         <div id="showDetail<?php echo $row['id'];?>">
-                            <table class="table" cellspacing="0" cellpadding="0">
+                            <table class="detailTable" cellspacing="0" cellpadding="0">
                                 <caption>Course: <?php echo $row['courseName'];?></caption>
                                 <tr>
                                     <td width="20%" align="right">ID</td>
@@ -126,6 +127,7 @@ echo "<br>??????????????><br>";*/
                                 </tr>
                                 <tr>
                                     <td width="20%" align="right">Time</td>
+                                    <!--                                得到星期的函数-->
                                     <td><?php
                                         $scheInfos=getScheByCourId($row['courseId']);
                                         foreach ($scheInfos as $key=> $scheInfo){
@@ -149,7 +151,9 @@ echo "<br>??????????????><br>";*/
                                 </tr>
                                 <tr>
                                     <td width="20%" align="right">Term</td>
-                                    <td><?php echo $row['termName'];?></td>
+                                    <td>
+                                        <?php echo $row['termName'];?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td width="20%" align="right">Location</td>
@@ -186,11 +190,18 @@ echo "<br>??????????????><br>";*/
                                 </tr>
                                 <tr>
                                     <td width="20%" align="right">Level</td>
-                                    <td><?php echo $row['levelName'];?></td>
+                                    <td>
+                                        <?php echo $row['levelName'];?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td width="20%" align="right">Description</td>
                                     <td><?php echo $row['courseDesc'];?></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <!--用来关闭显示-->
+                                        <a href="javascript:closeDetail(<?php echo $row['id']; ?>)"><i class="fa fa-times"></i>Close</a>
                                 </tr>
                             </table>
                         </div>
@@ -213,7 +224,7 @@ echo "<br>??????????????><br>";*/
     <!--        nav start-->
     <input type="radio" name="radio-set" id="st-control-1" onclick="window.location.href='index.php'">
     <a href="#st-panel-1">Home</a>
-    <input type="radio" name="radio-set" id="st-control-2" onclick="window.location.href='index.php'">
+    <input type="radio" name="radio-set" id="st-control-2" checked="checked" onclick="window.location.href='index.php'">
     <a href="#st-panel-2">Academics</a>
     <input type="radio" name="radio-set" id="st-control-3" onclick="window.location.href='index.php'">
     <a href="#st-panel-3">Instructors</a>
@@ -235,6 +246,16 @@ echo "<br>??????????????><br>";*/
             var val=document.getElementById("search").value;
             window.location="ungraduateList.php?keywords="+val;
         }
+    }
+    //    显示详情
+    function showDetail(id) {
+        var detailTable = document.getElementById(id);
+        detailTable.style.display="";
+    }
+    //    关闭详情
+    function closeDetail(id) {
+        var detailTable = document.getElementById(id);
+        detailTable.style.display="none";
     }
 </script>
 </body>

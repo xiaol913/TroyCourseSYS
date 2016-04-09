@@ -39,7 +39,6 @@ if(checkStudLogin()==false){
     <!--建立头部右边区域文字，并fr右浮动-->
     <div class="operation_user fr">
         <div class="link">
-            <?php if(checkStudLogin()==true){?>
                 <b style="color:#fff">Welcome,
                     <?php
                     if(isset($_SESSION['TroyCourSYSstudentName'])){
@@ -49,7 +48,6 @@ if(checkStudLogin()==false){
                     }
                     ?>
                 </b>&nbsp;&nbsp;<a href="index.php" style="color:#fff" class="" ><i class="fa fa-home"></i><span>Home</span></a><a href="#" class="" onclick="history.go(-1)" style="color:#fff"><i class="fa fa-reply"></i><span>Back</span></a><a href="doAction.php?act=studLogout" class="" style="color:#fff"><i class="fa fa-power-off"></i><span>Logout</span></a>
-            <?php }?>
         </div>
     </div>
 </div>
@@ -230,7 +228,6 @@ if(checkStudLogin()==false){
                                     </select>
                                 </div>
                                 <!--    周一到周日-->
-
                                 <div class="selectArea">
                                     <div class="checkArea">
                                         <span>Sun</span>

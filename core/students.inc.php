@@ -133,7 +133,7 @@ function studLogout(){
         setcookie("TroyCourSYSstudentName","",time()-1);
     }
     session_destroy();
-    alertMes("Bye Bye!!","index.php");
+    alertMes("Bye Bye!!","login.php");
 }
 
 /**

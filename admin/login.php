@@ -12,7 +12,7 @@ require_once "../include.php";
 <head>
     <meta charset="UTF-8">
     <title>Backstage System</title>
-    <link href="css/loginCSS.css" type="text/css" rel="stylesheet">
+    <link href="css/adminLogin.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <div class="body"></div>

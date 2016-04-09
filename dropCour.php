@@ -8,7 +8,7 @@
 require_once "include.php";
 $id=$_REQUEST['id'];
 if(checkStudLogin()==false){
-    alertMes("Please Login!!!","index.php");
+    alertMes("Please Login!!!","login.php");
 }
 $sql="select stud.sId,cour.*,prof.profFirstName,prof.profLastName,prof.profEmail,prof.profPhoneNum,prof.profDesc,album.albumPath,sub.subName,sub.subShortName,term.termName,level.levelName from troy_students as stud LEFT JOIN troy_register as reg on stud.sId=reg.sId LEFT JOIN troy_courses as cour on reg.cId=cour.courseId LEFT JOIN troy_professors as prof on cour.courseProfId=prof.id LEFT JOIN troy_album as album ON prof.id=album.pId LEFT join troy_subjects as sub on cour.subjectId=sub.id LEFT JOIN troy_term as term ON cour.courseTerm=term.id LEFT JOIN troy_level as level on cour.courseLevel=level.id WHERE stud.sId={$id}";
 $rows=fetchAll($sql);
@@ -57,20 +57,17 @@ $rows=fetchAll($sql);
                 <td><?php echo $row['courseId']; ?></td>
                 <td><?php echo $row['courseName']; ?></td>
                 <td><?php echo $row['subName']; ?></td>
-                <!--                    修改按钮添加editCour()函数,删除添加delCour()-->
+                <!--                    按钮-->
                 <td align="center">
-                    <input type="button" value="Detail" class="btn detail20x20" onclick="div<?php echo $row['id']; ?>.style.display=''"><input type="button" value="Drop" class="btn detail20x20" onclick="drop(<?php echo $row['courseId']; ?>,<?php if(isset($_SESSION['TroyCourSYSstudentId'])){
+                    <a href="javascript:showDetail(<?php echo $row['id']; ?>)"><i class="fa fa-list-alt"></i>Detail</a>&nbsp;&nbsp;<a href="javascript:drop(<?php echo $row['courseId']; ?>,<?php if(isset($_SESSION['TroyCourSYSstudentId'])){
                         echo $_SESSION['TroyCourSYSstudentId'];
                     }elseif(isset($_COOKIE['TroyCourSYSstudentId'])){
                         echo $_COOKIE['TroyCourSYSstudentId'];
-                    }?>)">
+                    }?>)"><i class="fa fa-minus-square-o"></i>Drop</a>
                     <!--                    详情-->
-                    <div id="div<?php echo $row['id']; ?>" style="position: absolute;top:0;left:20%;background-color:#e7e9ea;width: 60%;z-index:1; display: none;">
-
-                        <!--用来关闭显示-->
-                        <input type="button" value="Close" class="closeBtn24x24" onClick="div<?php echo $row['id']; ?>.style.display='none'" style="font-weight:bolder;">
+                    <div id="<?php echo $row['id']; ?>" style="position: absolute;top:0;left:0;background-color:#e7e9ea;width: 60%;z-index:1; display: none;">
                         <div id="showDetail<?php echo $row['id'];?>">
-                            <table class="table" cellspacing="0" cellpadding="0">
+                            <table class="detailTable" cellspacing="0" cellpadding="0">
                                 <caption>Course: <?php echo $row['courseName'];?></caption>
                                 <tr>
                                     <td width="20%" align="right">ID</td>
@@ -86,6 +83,7 @@ $rows=fetchAll($sql);
                                 </tr>
                                 <tr>
                                     <td width="20%" align="right">Time</td>
+                                    <!--                                得到星期的函数-->
                                     <td><?php
                                         $scheInfos=getScheByCourId($row['courseId']);
                                         foreach ($scheInfos as $key=> $scheInfo){
@@ -156,6 +154,11 @@ $rows=fetchAll($sql);
                                     <td width="20%" align="right">Description</td>
                                     <td><?php echo $row['courseDesc'];?></td>
                                 </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <!--用来关闭显示-->
+                                        <a href="javascript:closeDetail(<?php echo $row['id']; ?>)"><i class="fa fa-times"></i>Close</a>
+                                </tr>
                             </table>
                         </div>
                     </div>
@@ -175,15 +178,26 @@ $rows=fetchAll($sql);
     <a href="#st-panel-3">Instructors</a>
     <input type="radio" name="radio-set" id="st-control-4" onclick="window.location.href='index.php'">
     <a href="#st-panel-4">Register</a>
-    <input type="radio" name="radio-set" id="st-control-5" onclick="window.location.href='index.php'">
+    <input type="radio" name="radio-set" id="st-control-5" checked="checked" onclick="window.location.href='index.php'">
     <a href="#st-panel-5">Yourself</a>
     <!--    nav end-->
 </div>
 <script>
+//    drop课
     function drop(cId,sId) {
         if(window.confirm("Are you sure?")){
             window.location="doAction.php?act=drop&cId="+cId+"&sId="+sId;
         }
+    }
+    //    显示详情
+    function showDetail(id) {
+        var detailTable = document.getElementById(id);
+        detailTable.style.display="";
+    }
+    //    关闭详情
+    function closeDetail(id) {
+        var detailTable = document.getElementById(id);
+        detailTable.style.display="none";
     }
 </script>
 </body>
