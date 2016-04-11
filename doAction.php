@@ -11,9 +11,6 @@ $act=$_REQUEST['act'];
 $id=$_REQUEST['id'];
 $cId=$_REQUEST['cId'];
 $sId=$_REQUEST['sId'];
-if(checkStudLogin()==false){
-    alertMes("Please Login!!!","login.php");
-}
 
 if($act==studLogin){
     $mes=studLogin();

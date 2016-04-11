@@ -194,7 +194,7 @@ function credCheck(credNum){
  * @returns {boolean}
  */
 function subNameCheck(subN){
-    var re_cha = /[^a-zA-Z\ \-\_]/g;
+    var re_cha = /[^a-zA-Z\s\-]/g;
     if(subN.value==""){
         alert("Please enter subject name!!!");
         return false;
@@ -215,7 +215,7 @@ function subShortNameCheck(subN_short){
     if(subN_short.value==""){
         alert("Please enter abbreviation!!!");
         return false;
-    }else if(re_cha.test(subN_short.value)==true || subN_short.value.length>40){
+    }else if(re_cha.test(subN_short.value)==true || subN_short.value.length>5){
         alert("Abbreviation is invalid!!!");
         return false;
     }
@@ -268,10 +268,10 @@ function FormAdminCheck(){
  */
 function FormProfCheck(){
     var allIn = document.getElementsByTagName('input');
-    var fstN = allIn[0];
-    var lstN = allIn[1];
-    var eMail = allIn[2];
-    var phNum = allIn[3];
+    var fstN = allIn[5];
+    var lstN = allIn[6];
+    var eMail = allIn[7];
+    var phNum = allIn[8];
     //first name 验证
     if(fstCheck(fstN)==false){
         return false;
@@ -297,13 +297,13 @@ function FormProfCheck(){
  */
 function FormStudCheck(){
     var allIn = document.getElementsByTagName('input');
-    var userN = allIn[0];
-    var passW = allIn[1];
-    var fstN = allIn[2];
-    var lstN = allIn[3];
-    var Addre = allIn[5];
-    var eMail = allIn[6];
-    var phNum = allIn[7];
+    var userN = allIn[5];
+    var passW = allIn[6];
+    var fstN = allIn[7];
+    var lstN = allIn[8];
+    var Addre = allIn[10];
+    var eMail = allIn[11];
+    var phNum = allIn[12];
     //username值的验证
     if(usernameCheck(userN)==false){
         return false;
@@ -361,8 +361,8 @@ function FormCourCheck(){
  */
 function FormSubCheck(){
     var allIn = document.getElementsByTagName('input');
-    var subN = allIn[0];
-    var subN_short = allIn[1];
+    var subN = allIn[5];
+    var subN_short = allIn[6];
     if(subNameCheck(subN)==false){
         return false;
     }
@@ -379,7 +379,7 @@ function FormSubCheck(){
  */
 function FormTermCheck() {
     var allIn = document.getElementsByTagName('input');
-    var termN = allIn[0];
+    var termN = allIn[5];
     if(termNameCheck(termN)==false){
         return false;
     }
@@ -393,10 +393,10 @@ function FormTermCheck() {
  */
 function FormProfileCheck() {
     var allIn = document.getElementsByTagName('input');
-    var passW = allIn[0];
-    var Addre = allIn[1];
-    var eMail = allIn[2];
-    var phNum = allIn[3];
+    var passW = allIn[5];
+    var Addre = allIn[6];
+    var eMail = allIn[7];
+    var phNum = allIn[8];
     //password验证
     if(passwordCheck(passW)==false){
         return false;

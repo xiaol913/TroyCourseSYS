@@ -17,6 +17,12 @@ function register($cId,$sId){
     $where = "courseId={$cId}";
     $sql="select courseAvai from troy_courses WHERE courseId={$cId}";
     $res=fetchOne($sql);
+    $regH="select * from troy_register WHERE cId={$cId} AND sId={$sId}";
+    $result=fetchOne($regH);
+    if($regH){
+        echo "You have registered this course!!!<br/><a href='index.php'>Return to Home page</a>";
+        exit;
+    }
     foreach ($res as $num)
         $newNum=$num-1;
     if($newNum<0){
