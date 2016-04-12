@@ -114,24 +114,24 @@ print_r($scheInfo);*/
                         <td>Sections Meeting After</td>
                         <td>
                             <select name="courseStartTime">
-                                <option value="5am" <?php echo ($courInfo['courseStartTime']=="5")?"selected=selected":NULL;?>">5am</option>
-                                <option value="6am" <?php echo ($courInfo['courseStartTime']=="6")?"selected=selected":NULL;?>">6am</option>
-                                <option value="7am" <?php echo ($courInfo['courseStartTime']=="7")?"selected=selected":NULL;?>">7am</option>
-                                <option value="8am" <?php echo ($courInfo['courseStartTime']=="8")?"selected=selected":NULL;?>">8am</option>
-                                <option value="9am" <?php echo ($courInfo['courseStartTime']=="9")?"selected=selected":NULL;?>">9am</option>
-                                <option value="10am" <?php echo ($courInfo['courseStartTime']=="10")?"selected=selected":NULL;?>">10am</option>
-                                <option value="11am" <?php echo ($courInfo['courseStartTime']=="11")?"selected=selected":NULL;?>">11am</option>
-                                <option value="12pm" <?php echo ($courInfo['courseStartTime']=="12")?"selected=selected":NULL;?>">12pm</option>
-                                <option value="1pm" <?php echo ($courInfo['courseStartTime']=="13")?"selected=selected":NULL;?>">1pm</option>
-                                <option value="2pm" <?php echo ($courInfo['courseStartTime']=="14")?"selected=selected":NULL;?>">2pm</option>
-                                <option value="3pm" <?php echo ($courInfo['courseStartTime']=="15")?"selected=selected":NULL;?>">3pm</option>
-                                <option value="4pm" <?php echo ($courInfo['courseStartTime']=="16")?"selected=selected":NULL;?>">4pm</option>
-                                <option value="5pm" <?php echo ($courInfo['courseStartTime']=="17")?"selected=selected":NULL;?>">5pm</option>
-                                <option value="6pm" <?php echo ($courInfo['courseStartTime']=="18")?"selected=selected":NULL;?>">6pm</option>
-                                <option value="7pm" <?php echo ($courInfo['courseStartTime']=="19")?"selected=selected":NULL;?>">7pm</option>
-                                <option value="8pm" <?php echo ($courInfo['courseStartTime']=="20")?"selected=selected":NULL;?>">8pm</option>
-                                <option value="9pm" <?php echo ($courInfo['courseStartTime']=="21")?"selected=selected":NULL;?>">9pm</option>
-                                <option value="10pm" <?php echo ($courInfo['courseStartTime']=="22")?"selected=selected":NULL;?>">10pm</option>
+                                <option value="5" <?php echo ($courInfo['courseStartTime']=="5")?"selected=selected":NULL;?>">5am</option>
+                                <option value="6" <?php echo ($courInfo['courseStartTime']=="6")?"selected=selected":NULL;?>">6am</option>
+                                <option value="7" <?php echo ($courInfo['courseStartTime']=="7")?"selected=selected":NULL;?>">7am</option>
+                                <option value="8" <?php echo ($courInfo['courseStartTime']=="8")?"selected=selected":NULL;?>">8am</option>
+                                <option value="9" <?php echo ($courInfo['courseStartTime']=="9")?"selected=selected":NULL;?>">9am</option>
+                                <option value="10" <?php echo ($courInfo['courseStartTime']=="10")?"selected=selected":NULL;?>">10am</option>
+                                <option value="11" <?php echo ($courInfo['courseStartTime']=="11")?"selected=selected":NULL;?>">11am</option>
+                                <option value="12" <?php echo ($courInfo['courseStartTime']=="12")?"selected=selected":NULL;?>">12pm</option>
+                                <option value="13" <?php echo ($courInfo['courseStartTime']=="13")?"selected=selected":NULL;?>">1pm</option>
+                                <option value="14" <?php echo ($courInfo['courseStartTime']=="14")?"selected=selected":NULL;?>">2pm</option>
+                                <option value="15" <?php echo ($courInfo['courseStartTime']=="15")?"selected=selected":NULL;?>">3pm</option>
+                                <option value="16" <?php echo ($courInfo['courseStartTime']=="16")?"selected=selected":NULL;?>">4pm</option>
+                                <option value="17" <?php echo ($courInfo['courseStartTime']=="17")?"selected=selected":NULL;?>">5pm</option>
+                                <option value="18" <?php echo ($courInfo['courseStartTime']=="18")?"selected=selected":NULL;?>">6pm</option>
+                                <option value="19" <?php echo ($courInfo['courseStartTime']=="19")?"selected=selected":NULL;?>">7pm</option>
+                                <option value="20" <?php echo ($courInfo['courseStartTime']=="20")?"selected=selected":NULL;?>">8pm</option>
+                                <option value="21" <?php echo ($courInfo['courseStartTime']=="21")?"selected=selected":NULL;?>">9pm</option>
+                                <option value="22" <?php echo ($courInfo['courseStartTime']=="22")?"selected=selected":NULL;?>">10pm</option>
                             </select>
                         </td>
                     </tr>
@@ -139,24 +139,24 @@ print_r($scheInfo);*/
                         <td>Sections Ending Before</td>
                         <td>
                             <select name="courseEndTime">
-                                <option value="5am" <?php echo ($courInfo['courseEndTime']=="5")?"selected=selected":NULL;?>>5am</option>
-                                <option value="6am" <?php echo ($courInfo['courseEndTime']=="6")?"selected=selected":NULL;?>>6am</option>
-                                <option value="7am" <?php echo ($courInfo['courseEndTime']=="7")?"selected=selected":NULL;?>>7am</option>
-                                <option value="8am" <?php echo ($courInfo['courseEndTime']=="8")?"selected=selected":NULL;?>>8am</option>
-                                <option value="9am" <?php echo ($courInfo['courseEndTime']=="9")?"selected=selected":NULL;?>>9am</option>
-                                <option value="10am" <?php echo ($courInfo['courseEndTime']=="10")?"selected=selected":NULL;?>>10am</option>
-                                <option value="11am" <?php echo ($courInfo['courseEndTime']=="11")?"selected=selected":NULL;?>>11am</option>
-                                <option value="12pm" <?php echo ($courInfo['courseEndTime']=="12")?"selected=selected":NULL;?>>12pm</option>
-                                <option value="1pm" <?php echo ($courInfo['courseEndTime']=="13")?"selected=selected":NULL;?>>1pm</option>
-                                <option value="2pm" <?php echo ($courInfo['courseEndTime']=="14")?"selected=selected":NULL;?>>2pm</option>
-                                <option value="3pm" <?php echo ($courInfo['courseEndTime']=="15")?"selected=selected":NULL;?>>3pm</option>
-                                <option value="4pm" <?php echo ($courInfo['courseEndTime']=="16")?"selected=selected":NULL;?>>4pm</option>
-                                <option value="5pm" <?php echo ($courInfo['courseEndTime']=="17")?"selected=selected":NULL;?>>5pm</option>
-                                <option value="6pm" <?php echo ($courInfo['courseEndTime']=="18")?"selected=selected":NULL;?>>6pm</option>
-                                <option value="7pm" <?php echo ($courInfo['courseEndTime']=="19")?"selected=selected":NULL;?>>7pm</option>
-                                <option value="8pm" <?php echo ($courInfo['courseEndTime']=="20")?"selected=selected":NULL;?>>8pm</option>
-                                <option value="9pm" <?php echo ($courInfo['courseEndTime']=="21")?"selected=selected":NULL;?>>9pm</option>
-                                <option value="10pm" <?php echo ($courInfo['courseEndTime']=="22")?"selected=selected":NULL;?>>10pm</option>
+                                <option value="5" <?php echo ($courInfo['courseEndTime']=="5")?"selected=selected":NULL;?>>5am</option>
+                                <option value="6" <?php echo ($courInfo['courseEndTime']=="6")?"selected=selected":NULL;?>>6am</option>
+                                <option value="7" <?php echo ($courInfo['courseEndTime']=="7")?"selected=selected":NULL;?>>7am</option>
+                                <option value="8" <?php echo ($courInfo['courseEndTime']=="8")?"selected=selected":NULL;?>>8am</option>
+                                <option value="9" <?php echo ($courInfo['courseEndTime']=="9")?"selected=selected":NULL;?>>9am</option>
+                                <option value="10" <?php echo ($courInfo['courseEndTime']=="10")?"selected=selected":NULL;?>>10am</option>
+                                <option value="11" <?php echo ($courInfo['courseEndTime']=="11")?"selected=selected":NULL;?>>11am</option>
+                                <option value="12" <?php echo ($courInfo['courseEndTime']=="12")?"selected=selected":NULL;?>>12pm</option>
+                                <option value="13" <?php echo ($courInfo['courseEndTime']=="13")?"selected=selected":NULL;?>>1pm</option>
+                                <option value="14" <?php echo ($courInfo['courseEndTime']=="14")?"selected=selected":NULL;?>>2pm</option>
+                                <option value="15" <?php echo ($courInfo['courseEndTime']=="15")?"selected=selected":NULL;?>>3pm</option>
+                                <option value="16" <?php echo ($courInfo['courseEndTime']=="16")?"selected=selected":NULL;?>>4pm</option>
+                                <option value="17" <?php echo ($courInfo['courseEndTime']=="17")?"selected=selected":NULL;?>>5pm</option>
+                                <option value="18" <?php echo ($courInfo['courseEndTime']=="18")?"selected=selected":NULL;?>>6pm</option>
+                                <option value="19" <?php echo ($courInfo['courseEndTime']=="19")?"selected=selected":NULL;?>>7pm</option>
+                                <option value="20" <?php echo ($courInfo['courseEndTime']=="20")?"selected=selected":NULL;?>>8pm</option>
+                                <option value="21" <?php echo ($courInfo['courseEndTime']=="21")?"selected=selected":NULL;?>>9pm</option>
+                                <option value="22" <?php echo ($courInfo['courseEndTime']=="22")?"selected=selected":NULL;?>>10pm</option>
                             </select>
                         </td>
                     </tr>
