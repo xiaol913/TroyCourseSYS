@@ -5,7 +5,6 @@
  * Date: 2016/4/6
  * Time: 2:21
  */
-
 require_once "include.php";
 $termInfos=getAllTerm();
 $subInfos=getAllSub();
@@ -180,7 +179,7 @@ if(checkStudLogin()==false){
                                     </select>
                                 </div>
                                 <div class="selectArea">
-                                    <span>Sections Meeting After:</span>
+                                    <abc>Sections Meeting After:</abc>
                                     <select class="select" name="courseStartTime">
                                         <option></option>
                                         <option value="5">5am</option>
@@ -188,7 +187,7 @@ if(checkStudLogin()==false){
                                         <option value="7">7am</option>
                                         <option value="8">8am</option>
                                         <option value="9">9am</option>
-                                        <option value="10">10m</option>
+                                        <option value="10">10am</option>
                                         <option value="11">11am</option>
                                         <option value="12">12pm</option>
                                         <option value="13">1pm</option>
@@ -202,9 +201,7 @@ if(checkStudLogin()==false){
                                         <option value="21">9pm</option>
                                         <option value="22">10pm</option>
                                     </select>
-                                </div>
-                                <div class="selectArea">
-                                    <span>Sections Ending Before:</span>
+                                    <abc>Sections Ending Before:</abc>
                                     <select class="select timeT" name="courseEndTime">
                                         <option></option>
                                         <option value="5">5am</option>
@@ -274,6 +271,10 @@ if(checkStudLogin()==false){
                                 </div>
                                 <div class="textArea">
                                     <div class="textSearch">
+                                        <span>Course Id:</span>
+                                        <input type="text" class="searchName" name="courseId" >
+                                    </div>
+                                    <div class="textSearch">
                                         <span>Course keywords:</span>
                                         <input type="text" class="searchName" name="courseSearch">
                                     </div>
@@ -335,4 +336,3 @@ if(checkStudLogin()==false){
 </div>
 </body>
 </html>
-
