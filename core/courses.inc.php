@@ -76,6 +76,8 @@ function addCour(){
         }else{
             echo "Fail!!!<br/><a href='listCour.php'>Return to Courses List</a>";
         }
+    }else{
+        echo "Fail!!!<br/><a href='listCour.php'>Return to Courses List</a>";
     }
     return;
 }
