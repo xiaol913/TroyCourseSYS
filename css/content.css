@@ -229,7 +229,7 @@
 .checkArea{float: left;position: relative;width: 61px;height: 40px;margin: 0 5px;border-radius: 10px;-webkit-border-radius: 10px;-moz-border-radius: 10px;}
 .checkArea span{position: absolute;left: 18px;top:-15px;}
 .checkArea .checkbox{width: 40px;height: 16px;border:1px solid #fff;position: relative;top:25%;left:8px;border-radius: 8px;-webkit-border-radius: 8px;-moz-border-radius: 8px;}
-.checkArea .checkbox label{width: 12px;height: 12px;top:1px;left:2px;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius:50%;background: #ff0;cursor: pointer;position: absolute;-webkit-transition: all .5s ease;-moz-transition:all .5s ease;-o-transition: all .5s ease;transition: all .5s ease;}
+.checkArea .checkbox label{width: 12px;height: 12px;top:1px;left:2px;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius:50%;background: #fff;cursor: pointer;position: absolute;-webkit-transition: all .5s ease;-moz-transition:all .5s ease;-o-transition: all .5s ease;transition: all .5s ease;}
 .checkArea .checkbox input[type=checkbox]:checked + label {left: 24px;background: #26ca28;font-family: 'Exo', sans-serif;}
 .textArea{margin: 70px 0 0 15px;}
 .textSearch .searchName{width:150px;border: 1px solid #fff;margin-bottom: 24px;border-radius: 15px;-webkit-border-radius: 15px;-moz-border-radius: 15px;}
