@@ -269,10 +269,6 @@ CREATE TABLE IF NOT EXISTS `troy_subjects` (
 -- 导出表中的数据 `troy_subjects`
 --
 
-REPLACE INTO `troy_subjects` (`id`, `subShortName`, `subName`) VALUES
-(1, 'CS', 'Computer Science'),
-(2, 'MTH', 'Math'),
-(3, 'SPN', 'Spanish');
 
 -- --------------------------------------------------------
 
