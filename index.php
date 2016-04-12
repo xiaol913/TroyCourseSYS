@@ -209,7 +209,7 @@ if(checkStudLogin()==false){
                                         <option value="7">7am</option>
                                         <option value="8">8am</option>
                                         <option value="9">9am</option>
-                                        <option value="10">10m</option>
+                                        <option value="10">10am</option>
                                         <option value="11">11am</option>
                                         <option value="12">12pm</option>
                                         <option value="13">1pm</option>
