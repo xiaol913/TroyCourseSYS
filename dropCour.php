@@ -86,6 +86,7 @@ $rows=fetchAll($sql);
                                     <!--                                得到星期的函数-->
                                     <td><?php
                                         $scheInfos=getScheByCourId($row['courseId']);
+                                        unset($scheInfos['id']);
                                         foreach ($scheInfos as $key=> $scheInfo){
                                             if($scheInfos[$key]){
                                                 $notNulls[$key]=$key;
