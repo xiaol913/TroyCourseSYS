@@ -156,7 +156,7 @@ print_r($scheInfo);*/
                                 <option value="19" <?php echo ($courInfo['courseEndTime']=="19")?"selected=selected":NULL;?>>7pm</option>
                                 <option value="20" <?php echo ($courInfo['courseEndTime']=="20")?"selected=selected":NULL;?>>8pm</option>
                                 <option value="21" <?php echo ($courInfo['courseEndTime']=="21")?"selected=selected":NULL;?>>9pm</option>
-                                <option value="22am" <?php echo ($courInfo['courseEndTime']=="22")?"selected=selected":NULL;?>>10pm</option>
+                                <option value="22" <?php echo ($courInfo['courseEndTime']=="22")?"selected=selected":NULL;?>>10pm</option>
                             </select>
                         </td>
                     </tr>
