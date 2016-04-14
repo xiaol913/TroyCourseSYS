@@ -99,16 +99,6 @@ CREATE TABLE IF NOT EXISTS `troy_courses` (
   UNIQUE KEY `courseName` (`courseName`),
   UNIQUE KEY `courseId` (`courseId`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
-
---
--- 导出表中的数据 `troy_courses`
---
-
-REPLACE INTO `troy_courses` (`id`, `courseName`, `courseId`, `subjectId`, `courseStartTime`, `courseEndTime`, `courseAvai`, `courseCapa`, `courseTerm`, `courseStat`, `courseLoca`, `courseDesc`, `courseCred`, `courseLevel`, `courseProfId`) VALUES
-(1, 'Advanced Programming I', 2265, 1, 11, 12, 30, 30, 3, 1, 'Troy', 'Provides student the opportunity to gain experience and training in an additional high-level language. The course focuses on advanced topics including objects, structures, applets, graphics, exception handling, files, and streaming.', '3.00', 1, 1),
-(2, 'Fundamentals of Algebra', 1100, 2, 17, 18, 30, 30, 3, 1, 'Troy', 'Topics include integer and rational arithmetic, linear equations, inequalities, integer exponents, polynomials and factoring, rational expression. Prerequisite: Placement or a grade of C or better in MTH 0096. Note: This course is for institutional credit only and will not be used in meeting degree requirements. This course will not substitute for any general studies requirement.', '3.00', 1, 2),
-(3, 'Introductory Spanish II', 1142, 3, 8, 9, 30, 30, 3, 1, 'Troy', 'Introduction to the Spanish language and cultures.', '3.00', 1, 3);
-
 -- --------------------------------------------------------
 
 --
@@ -153,15 +143,6 @@ CREATE TABLE IF NOT EXISTS `troy_professors` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
---
--- 导出表中的数据 `troy_professors`
---
-
-REPLACE INTO `troy_professors` (`id`, `profFirstName`, `profLastName`, `profEmail`, `profPhoneNum`, `profDesc`) VALUES
-(1, 'profF1', 'profL1', 'prof1@troy.edu', '3313313311', NULL),
-(2, 'profF2', 'profL2', 'prof2@troy.edu', '3323323322', NULL),
-(3, 'profF3', 'profL3', 'prof3@troy.edu', '3343343344', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -204,14 +185,6 @@ CREATE TABLE IF NOT EXISTS `troy_schedule` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
---
--- 导出表中的数据 `troy_schedule`
---
-
-REPLACE INTO `troy_schedule` (`id`, `mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`) VALUES
-(1, '2265', NULL, '2265', NULL, '2265', NULL, NULL),
-(2, NULL, '1100', NULL, '1100', NULL, NULL, NULL),
-(3, '1142', NULL, '1142', NULL, '1142', NULL, NULL);
 
 -- --------------------------------------------------------
 
