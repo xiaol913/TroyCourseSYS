@@ -14,16 +14,6 @@ $profInfos=getAllProf();
 if(checkStudLogin()==false){
     alertMes("Please Login!!!","login.php");
 }
-$sql="select * from troy_professors";
-$totalRows=getResultNum($sql);
-$pageSize=2;
-$totalPage=ceil($totalRows/$pageSize);
-$page=$_REQUEST['page']?(int)$_REQUEST['page']:1;
-if($page<1||$page==null||!is_numeric($page))$page=1;
-if($page>=$totalPage)$page=$totalPage;
-$offset=($page-1)*$pageSize;
-$sql="select * from troy_professors limit {$offset},{$pageSize}";
-$rows=fetchAll($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,9 +27,6 @@ $rows=fetchAll($sql);
     <link href="css/animation.css" type="text/css" rel="stylesheet">
     <link href="css/font-awesome.css" type="text/css" rel="stylesheet">
     <link href="css/content.css" type="text/css" rel="stylesheet">
-    <style>
-        body{overflow: hidden;}
-    </style>
 </head>
 <body>
 <div class="head">
@@ -116,35 +103,25 @@ $rows=fetchAll($sql);
                         <!--            表格主体-->
                         <tbody>
                         <!--            内容部分-->
-                        <?php foreach($rows as $row):?>
+                        <?php foreach($profInfos as $profInfo):?>
                             <tr>
-                                <td><?php echo $row['id']; ?></td>
-                                <td><?php echo $row['profFirstName']." ".$row['profLastName']; ?></td>
-                                <td><?php echo $row['profEmail']; ?></td>
-                                <td><?php echo $row['profPhoneNum']; ?></td>
+                                <td><?php echo $profInfo['id']; ?></td>
+                                <td><?php echo $profInfo['profFirstName']." ".$profInfo['profLastName']; ?></td>
+                                <td><?php echo $profInfo['profEmail']; ?></td>
+                                <td><?php echo $profInfo['profPhoneNum']; ?></td>
                                 <td>
                                     <?php
-                                    $profImgs=getAllImgsByProfId($row['id']);
+                                    $profImgs=getAllImgsByProfId($profInfo['id']);
                                     if($profImgs&&is_array($profImgs)){?>
                                         <?php foreach($profImgs as $img):?>
                                             <img width="60" height="60" src="admin/uploads/<?php echo $img['albumPath'];?>" alt=""/>
                                         <?php endforeach;?>
                                     <?php }else{echo "No image";};?>
-                                    <?php echo $row['profDesc']; ?>
+                                    <?php echo $profInfo['profDesc']; ?>
                                 </td>
-                                <!--                    修改按钮添加editProf()函数,删除添加delProf()-->
-                                <td align="center"><a href="javascript:editProf(<?php echo $row['id']; ?>)"><i class="fa fa-pencil-square-o"></i>Edit</a>&nbsp;&nbsp;<a href="javascript:delProf(<?php echo $row['id']; ?>)"><i class="fa fa-trash-o"></i>Delete</a></td>
                             </tr>
                         <?php endforeach;?>
                         </tbody>
-                        <tfoot>
-                        <!--            页码部分-->
-                        <?php if($totalRows>$pageSize):?>
-                            <tr>
-                                <td colspan="6"><?php echo showPage($page,$totalPage);?></td>
-                            </tr>
-                        <?php endif;?>
-                        </tfoot>
                     </table>
                 </div>
             </section>
