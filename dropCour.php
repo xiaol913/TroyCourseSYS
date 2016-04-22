@@ -12,6 +12,10 @@ if(checkStudLogin()==false){
 }
 $sql="select stud.sId,cour.*,prof.profFirstName,prof.profLastName,prof.profEmail,prof.profPhoneNum,prof.profDesc,album.albumPath,sub.subName,sub.subShortName,term.termName,level.levelName from troy_students as stud LEFT JOIN troy_register as reg on stud.sId=reg.sId LEFT JOIN troy_courses as cour on reg.cId=cour.courseId LEFT JOIN troy_professors as prof on cour.courseProfId=prof.id LEFT JOIN troy_album as album ON prof.id=album.pId LEFT join troy_subjects as sub on cour.subjectId=sub.id LEFT JOIN troy_term as term ON cour.courseTerm=term.id LEFT JOIN troy_level as level on cour.courseLevel=level.id WHERE stud.sId={$id}";
 $rows=fetchAll($sql);
+if(!$rows[1]['courseId']){
+    alertMes("No Courses!!! Please register!!","index.php");
+}
+unset($rows[0]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -136,7 +140,7 @@ $rows=fetchAll($sql);
                                         $profImgs=getAllImgsByProfId($row['courseProfId']);
                                         if($profImgs&&is_array($profImgs)){?>
                                             <?php foreach($profImgs as $img):?>
-                                                <img width="100" height="100" src="uploads/<?php echo $img['albumPath'];?>" alt=""/>&nbsp;&nbsp;
+                                                <img width="100" height="100" src="admin/uploads/<?php echo $img['albumPath'];?>" alt=""/>&nbsp;&nbsp;
                                             <?php endforeach;?>
                                         <?php }else{echo "No image";};?>
                                     </td>

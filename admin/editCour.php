@@ -93,7 +93,7 @@ print_r($scheInfo);*/
                         <td>
                             <select name="subjectId">
                                 <?php foreach($rows as $row):?>
-                                    <option value="<?php echo $row['id'];?>"><?php echo $courInfo['subShortName']."--".$courInfo['subName'];?></option>
+                                    <option <?php echo ($row['id']==$courInfo['subjectId'])?"selected=selected":NULL;?> value="<?php echo $row['id'];?>"><?php echo $row['subShortName']."--".$row['subName'];?></option>
                                 <?php endforeach;?>
                             </select>
                         </td>

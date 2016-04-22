@@ -19,7 +19,7 @@ function register($cId,$sId){
     $res=fetchOne($sql);
     $regH="select * from troy_register WHERE cId={$cId} AND sId={$sId}";
     $result=fetchOne($regH);
-    if($regH){
+    if($result){
         echo "You have registered this course!!!<br/><a href='index.php'>Return to Home page</a>";
         exit;
     }
@@ -74,12 +74,12 @@ function drop($cId,$sId){
     }
     if(delete("troy_register",$where)) {
         if (update("troy_courses", $courArr, $whereCour)) {
-            echo "Successful!!!<br/><a href='dropCour.php?id={$sId}'>Return to Drop Course page</a>";
+            echo "Successful!!!<br/><a href='dropCour.php?id={$sId}'>Return to Courses List page</a>";
         } else {
             echo "Fail!!!<br/><a href='index.php'>Return to Search and Register page</a>";
         }
     }else{
-        echo "Fail!!!<br/><a href='dropCour.php?id={$sId}''>Return to Drop Course page</a>";
+        echo "Fail!!!<br/><a href='dropCour.php?id={$sId}''>Return to Courses List page</a>";
     }
     return;
 }
