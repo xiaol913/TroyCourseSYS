@@ -15,7 +15,7 @@ $where=$keywords?"where profFirstName like '%{$keywords}%' or profLastName like 
 //得到所有教授信息，并分页
 $sql="select * from troy_professors {$where}";
 $totalRows=getResultNum($sql);
-$pageSize=2;
+$pageSize=5;
 $totalPage=ceil($totalRows/$pageSize);
 $page=$_REQUEST['page']?(int)$_REQUEST['page']:1;
 if($page<1||$page==null||!is_numeric($page))$page=1;
@@ -51,9 +51,6 @@ if(!$rows){
     <link href="../css/font-awesome.css" type="text/css" rel="stylesheet">
     <link href="css/animation.css" type="text/css" rel="stylesheet">
     <link href="css/backstage.css" type="text/css" rel="stylesheet">
-    <style>
-        body{overflow: hidden;}
-    </style>
 </head>
 <body>
 <!--head-->

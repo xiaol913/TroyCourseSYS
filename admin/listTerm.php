@@ -16,7 +16,7 @@ $where=$keywords?"where termName like '%{$keywords}%'":null;
 //得到所有学科信息，并分页
 $sql="select * from troy_term {$where}";
 $totalRows=getResultNum($sql);
-$pageSize=2;
+$pageSize=5;
 $totalPage=ceil($totalRows/$pageSize);
 $page=$_REQUEST['page']?(int)$_REQUEST['page']:1;
 if($page<1||$page==null||!is_numeric($page))$page=1;

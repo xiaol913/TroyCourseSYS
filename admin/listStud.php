@@ -15,7 +15,7 @@ $where=$keywords?"where sFirstName like '%{$keywords}%' or sLastName like '%{$ke
 //得到所有学科信息，并分页
 $sql="select * from troy_students as stud LEFT JOIN troy_subjects as sub ON stud.sMajorId=sub.id LEFT JOIN troy_level as l on stud.level=l.id {$where}";
 $totalRows=getResultNum($sql);
-$pageSize=2;
+$pageSize=5;
 $totalPage=ceil($totalRows/$pageSize);
 $page=$_REQUEST['page']?(int)$_REQUEST['page']:1;
 if($page<1||$page==null||!is_numeric($page))$page=1;

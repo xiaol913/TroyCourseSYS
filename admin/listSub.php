@@ -15,7 +15,7 @@ $where=$keywords?"where subName like '%{$keywords}%'":null;
 //得到所有学科信息，并分页
 $sql="select * from troy_subjects {$where}";
 $totalRows=getResultNum($sql);
-$pageSize=2;
+$pageSize=8;
 $totalPage=ceil($totalRows/$pageSize);
 $page=$_REQUEST['page']?(int)$_REQUEST['page']:1;
 if($page<1||$page==null||!is_numeric($page))$page=1;

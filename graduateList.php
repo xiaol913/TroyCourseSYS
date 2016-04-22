@@ -14,7 +14,7 @@ $where=$keywords?"and courseName like '%{$keywords}%'":null;
 //得到所有课程信息，并分页
 $sql="select c.id,c.courseName,c.courseId,c.subjectId,c.courseStartTime,c.courseEndTime,c.courseAvai,c.courseCapa,c.courseTerm,c.courseStat,c.courseLoca,c.courseDesc,c.courseProfId,c.courseCred,c.courseLevel,p.profFirstName,p.profLastName,p.profEmail,p.profPhoneNum,p.profDesc,s.subShortName,s.subName,l.levelName,t.termName from troy_courses as c left join troy_subjects s on c.subjectId=s.id left join troy_professors as p on c.courseProfId=p.id LEFT JOIN troy_level as l on c.courseLevel=l.id LEFT JOIN troy_term as t on c.courseTerm=t.id WHERE c.courseLevel= 2 {$where}";
 $totalRows=getResultNum($sql);
-$pageSize=2;
+$pageSize=4;
 $totalPage=ceil($totalRows/$pageSize);
 $page=$_REQUEST['page']?(int)$_REQUEST['page']:1;
 if($page<1||$page==null||!is_numeric($page))$page=1;
@@ -179,7 +179,7 @@ echo "<br>??????????????><br>";*/
                                         $profImgs=getAllImgsByProfId($row['courseProfId']);
                                         if($profImgs&&is_array($profImgs)){?>
                                             <?php foreach($profImgs as $img):?>
-                                                <img width="100" height="100" src="uploads/<?php echo $img['albumPath'];?>" alt=""/>&nbsp;&nbsp;
+                                                <img width="100" height="100" src="admin/uploads/<?php echo $img['albumPath'];?>" alt=""/>&nbsp;&nbsp;
                                             <?php endforeach;?>
                                         <?php }else{echo "No image";};?>
                                     </td>

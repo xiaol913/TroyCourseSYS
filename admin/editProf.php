@@ -30,9 +30,6 @@ $profImgs=getAllImgsByProfId($id);
     <link href="../css/font-awesome.css" type="text/css" rel="stylesheet">
     <link href="css/animation.css" type="text/css" rel="stylesheet">
     <link href="css/backstage.css" type="text/css" rel="stylesheet">
-    <style>
-        body{overflow: hidden;}
-    </style>
 </head>
 <body>
 <!--head-->
