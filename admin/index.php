@@ -59,7 +59,7 @@ checkLogined();
         <input type="radio" name="radio-set" id="st-control-2">
         <a href="#st-panel-2">Academics</a>
         <input type="radio" name="radio-set" id="st-control-3">
-        <a href="#st-panel-3">Personnel</a>
+        <a href="#st-panel-3">Personel</a>
         <input type="radio" name="radio-set" id="st-control-4">
         <a href="#st-panel-4">Term</a>
         <input type="radio" name="radio-set" id="st-control-5">
