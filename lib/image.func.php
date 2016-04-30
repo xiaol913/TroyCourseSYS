@@ -15,7 +15,7 @@ require_once "string.func.php";
  * @param int $line
  * @param string $sess_name
  */
-function verifyImage($type=1,$length=4,$pixel=0,$line=0,$sess_name="verify"){
+function verifyImage($type=3,$length=4,$pixel=10,$line=1,$sess_name="verify"){
 //    type：种类  length：位数  pixel：干扰点  line：干扰线
 //    创建画布
     $width=80;

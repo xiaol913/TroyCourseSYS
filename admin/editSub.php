@@ -57,7 +57,7 @@ $row=getSubById($id);
         <input type="radio" name="radio-set" id="st-control-2" checked="checked" onclick="window.location.href='index.php'">
         <a href="#st-panel-2">Academics</a>
         <input type="radio" name="radio-set" id="st-control-3" onclick="window.location.href='index.php'">
-        <a href="#st-panel-3">Personnel</a>
+        <a href="#st-panel-3">Personal</a>
         <input type="radio" name="radio-set" id="st-control-4" onclick="window.location.href='index.php'">
         <a href="#st-panel-4">Term</a>
         <input type="radio" name="radio-set" id="st-control-5" onclick="window.location.href='index.php'">

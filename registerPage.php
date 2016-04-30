@@ -134,7 +134,7 @@ if(checkStudLogin()==false){
                                                 $profImgs=getAllImgsByProfId($row['courseProfId']);
                                                 if($profImgs&&is_array($profImgs)){?>
                                                     <?php foreach($profImgs as $img):?>
-                                                        <img width="100" height="100" src="uploads/<?php echo $img['albumPath'];?>" alt=""/>&nbsp;&nbsp;
+                                                        <img width="100" height="100" src="admin/uploads/<?php echo $img['albumPath'];?>" alt=""/>&nbsp;&nbsp;
                                                     <?php endforeach;?>
                                                 <?php }else{echo "No image";};?>
                                             </td>
