@@ -12,10 +12,9 @@ if(checkStudLogin()==false){
 }
 $sql="select stud.sId,cour.*,prof.profFirstName,prof.profLastName,prof.profEmail,prof.profPhoneNum,prof.profDesc,album.albumPath,sub.subName,sub.subShortName,term.termName,level.levelName from troy_students as stud LEFT JOIN troy_register as reg on stud.sId=reg.sId LEFT JOIN troy_courses as cour on reg.cId=cour.courseId LEFT JOIN troy_professors as prof on cour.courseProfId=prof.id LEFT JOIN troy_album as album ON prof.id=album.pId LEFT join troy_subjects as sub on cour.subjectId=sub.id LEFT JOIN troy_term as term ON cour.courseTerm=term.id LEFT JOIN troy_level as level on cour.courseLevel=level.id WHERE stud.sId={$id}";
 $rows=fetchAll($sql);
-if(!$rows[1]['courseId']){
+if(!$rows[0]['courseId']){
     alertMes("No Courses!!! Please register!!","index.php");
 }
-unset($rows[0]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,9 +28,6 @@ unset($rows[0]);
     <link href="css/animation.css" type="text/css" rel="stylesheet">
     <link href="css/font-awesome.css" type="text/css" rel="stylesheet">
     <link href="css/content.css" type="text/css" rel="stylesheet">
-    <style>
-        #footerName{width: 100%;position: absolute;left:0;bottom:0px;}
-    </style>
 </head>
 <body>
 <!--头部框架嵌套-->
