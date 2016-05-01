@@ -6,7 +6,7 @@
  * Time: 8:44
  */
 require_once "include.php";
-$rows=search1();
+$rows=search();
 if(checkStudLogin()==false){
     alertMes("Please Login!!!","login.php");
 }
